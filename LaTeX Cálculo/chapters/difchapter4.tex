@@ -1,0 +1,245 @@
+\chapter{Conjuntos conexos en espacios métricos}
+	\section{Conjuntos conexos}
+	\begin{defi}
+		Sea $(M,d)$ espacio métrico y sea $A\subset M$ diremos que \underline{$A$ es conexo} si no existen dos abietos $U$ y $V\in M$ tal que:\\
+		\begin{itemize}
+			\item $U\cap A \neq \emptyset$
+			\item $V\cap A\neq\emptyset$
+			\item $A\cap U\cap V= \emptyset$
+			\item $(U\cap A)\cup (V\cap A) = A\ \ (\iff U\cup V \supset A)$
+		\end{itemize}
+		\begin{nota}
+			Podemos definirlo coloquialmente como no poder partir el conjunto en dos abiertos relativos no triviales.
+		\end{nota}
+	\end{defi}
+	\begin{ejem}\ 
+	\begin{itemize}
+	\item CONEXOS.
+		\begin{enumerate}[1)]
+			\item Conjuntos unitarios.
+		\end{enumerate}
+	\item NO CONEXOS. 
+		\begin{enumerate}[1)]
+			\item $\R \setminus \{0\}$
+			\item Si $card(A) \geq 2$ y tiene al menos un punto aislado.
+		\end{enumerate}
+	\end{itemize}
+	\end{ejem}
+	\newpage
+	\begin{proposicion} Sea $(M,d)$ espacio métrico y $A\subset M$. Son equivalentes:
+		\begin{enumerate}[a)]
+			\item $A$ es conexo
+			\item No existen dos cerrados $F$ y $H \in M$ tal que:
+				\begin{enumerate}[1)]
+					\item $F\cap A \neq\emptyset$
+					\item $H\cap A \neq\emptyset$
+					\item $H\cap F \cap A =\emptyset$
+					\item $(F\cap A)\cup (H\cap A) = A\ \ (\iff F\cup H \supset A)$
+				\end{enumerate}					
+			\item Los únicos subconjuntos de $A$ que son a la vez abiertos y cerrados relativos son $\emptyset$ y $A$.		
+		\end{enumerate}
+	\end{proposicion}
+	
+	\begin{observacion} En general $A$ y $B$ conexos:
+		\begin{itemize}
+			\item $\nimplies A\cup B$ conexo.
+			\item $\nimplies A\cap B$ conexo.
+			\item $\mathring{A}$ conexo.
+		\end{itemize}
+	\end{observacion}
+	
+	\begin{proposicion} Sea $(M,d)$ espacio métrico y sea $A\subset M$ conexo, entonces $\overline{A}$ es conexo. Más aún, si $B\subset M\talque A\subset B\subset \overline{A}\subset M,\ B$ es conexo.
+		\begin{proof}
+			Sea $B$ tal que $A\subset B\subset \overline{A}$ veamos que $B$ es conexo.
+			Sean $F$ y $H$ dos cerrados en $M$ tales que $H\cap F \cap B =\emptyset$ y $(F\cap B)\cup (H\cap B) = B$, veamos que bien $F\cap B=\emptyset$ o bien $H\cap B=\emptyset$. En efecto:\\ Como $A \subset B \implies \boxed{(F\cap A)\cup (H\cap A) = A\cap B = A}\textbf{(*)}$ Tenemos además que\\ $(A\cap F)\cap(A\cap H)=\emptyset$\\
+			Supongamos $A\neq\emptyset$\\
+			Si $A\cap F \neq \emptyset \ximplies{\mathrm{Por\ ser\ A\ conexo}}{} A\cap H=\emptyset\ximplies{(\textbf{*})}{}A\subset F$\\
+			Y tenemos $\doubleright{A\subset F}{F\mathrm{\ cerrado}}\implies\overline{A}\subset F\implies \overline{A}\cap H=\emptyset\implies B\cap H=\emptyset$\\
+			Análogamente si $ A\cap H\neq\emptyset\implies B\cap F = \emptyset$ y entonces que bien $B\cap F = \emptyset$ o bien $B\cap H =\emptyset$	. Por tanto $B$ es conexo.
+		\end{proof}		
+	\end{proposicion}
+	  
+	\begin{proposicion}
+		Si $A$ y $B$ son conexos y $A\cap B\neq\emptyset \implies A\cup B$ es conexo.
+		\begin{proof}
+			Llamemos $C= A\cup B$ Sean $U, V$ abiertos en $M$ tales que $U\cap V \cap C =\emptyset$ y $   (U\cap C)\cup (H\cap C) = C$, veamos que bien $C\cap U=\emptyset$ o bien $C\cap V=\emptyset$. En efecto:\\
+			\[ \mathrm{Como\ }\doubleright{A\subset C}{B\subset C} \mathrm{\ tenemos \ } 
+			\double{(U\cap A)\cup(V\cap A)=C\cap A=A}{(U\cap B)\cup(V\cap B)=C\cap B=B} \] 
+		    \[ \mathrm{Ademas}
+		     \double{(U\cup A)\cap(V\cup A)=\emptyset}{(U\cup B)\cap(V\cup B)=\emptyset} \]
+			Como $A\cap B \neq \emptyset \implies \exists x_0 \in A\cap B\subset C\subset U\cup V\implies x_0\in U$ ó $x_0 \in V$  
+			\[ \mathrm{Si\ }x_0 \in U \ximplies{x_0\in A\cap B}{} 
+			 \doubleleftright
+			 {x_0 \in A \cap U \implies A\cap U \neq \emptyset \ximplies{A \mathrm{\ conexo}}{} A\cap V = \emptyset}
+			 {x_0 \in B \cap U \implies B\cap U \neq \emptyset \ximplies{B \mathrm{\ conexo}}{} B\cap V = \emptyset}
+			  \implies \]
+			\[ \implies (A\cap V)\cup(B\cap V) = C \cap V = \emptyset \] 
+			Análogamente si $x_0 \in V$, entonces $C\cap U= \emptyset$. Esto implica que bien $C\cap U=\emptyset$ o bien $C\cap V=\emptyset$, por tanto $C$ es conexo.
+		\end{proof}
+	\end{proposicion}
+	
+	\begin{corolario} En consecuencia:\\
+		Si $A$ y $B$ son conexos y $\overline{A}\cap B \neq \emptyset \implies A\cup B$ es conexo.
+		\begin{proof}
+			$\overline{A}\cap B\neq\emptyset \implies \exists x_0 \in \overline{A}\cap B$, como $A \subset A\cup \{x_0\}\subset \overline{A} \implies \implies A\cup \{x_0\}$ es conexo.
+			\[ \doubleright{A\cup \{x_0\} \mathrm{\ es\ conexo\ }}{B \mathrm{\ es\ conexo\ }}
+			\ximplies{\mathrm{por\ prop.\ anterior}}{} (A\cup \{x_0\})\cup B = A\cup B\]
+			y $A\cup B$ es conexo pues $x_0\in B$
+		\end{proof}
+	\end{corolario}
+	
+	\begin{teor} \underline{Teorema del pivote.}\\
+		Sea $(M, d)$ espacio métrico y sean $C$ y $C_\alpha,\alpha\in \Gamma$ una familia de subconjuntos de $M$ conexos. Si $C\cap C_\alpha\neq\emptyset\ \forall \alpha\in\Gamma$ entonces $C\cup(\bigcup_{\alpha\in\Gamma} C_{\alpha})$ es un conjunto conexo.
+		\begin{proof}\ \\
+		Llamemos $D= C\cup(\bigcup_{\alpha\in\Gamma} C_{\alpha})$ y llamemos $D_\alpha = C\cup C_\alpha$ para cada $\alpha\in\Gamma$\\
+		$\tripleright{C \mathrm{\ conexo}}{C_\alpha \mathrm{\ conexo}}{C\cap C_\alpha\neq\emptyset} \ximplies{\mathrm{Por\ proposicion\ 21}}{}D_\alpha=C\cup C_\alpha$ es conexo.\\\\
+		Sea $D = C\cup(\bigcup_{\alpha\in\Gamma} C_{\alpha}) = \bigcup_{\alpha\in\Gamma} D_\alpha$ e $\bigcap_{\alpha\in\Gamma} D_\alpha\neq\emptyset$ pues $C\subset D_\alpha\ \forall\alpha\in\Gamma$\\
+		Sean $U$ y $V$ abiertos en $M$ tal que  $(D\cap U)\cup(C\cap V)= D$ y $(D\cap U)\cap(D\cap V)=\emptyset$\\
+		 Como $\bigcap_{\alpha\in\Gamma}D_\alpha\neq\emptyset\implies\exists x_0\in\bigcap_{\alpha\in\Gamma}D_\alpha$\\
+		 Tenemos ahora que $\forall\alpha$\\
+		 $\double{(D_\alpha\cap U)\cup(D_\alpha\cap V)=D_\alpha\cap D= D_\alpha}
+		 {(D_\alpha\cap U)\cap(D_\alpha\cap V)\subset(D\cap U)\cap(D\cap V)=\emptyset}$\\
+		 $x_0\in\bigcap_{\alpha\in\Gamma}D_\alpha\subset D\subset U\cup V\implies$ bien $x_0\in U$ o bien $x_0\in V$\\
+		 Si $x_0\in U\implies D_\alpha\cap V=\emptyset\ \forall \alpha\in\Gamma$ (por ser $D_\alpha$ conexo $\forall\alpha\in\Gamma$).$\implies \bigcup_{\alpha\in\Gamma}(V\cap D_\alpha)=\\=V\cap D = \emptyset$\\
+		 Análogamente si $x_0\in V\implies \bigcup_{\alpha\in\Gamma}(U\cap D_\alpha)=U\cap D = \emptyset$. Por tanto, bien $U\cap D = \emptyset$ o bien $V\cap D = \emptyset$. Luego $D$ es conexo.
+		\end{proof}
+	\end{teor}
+	
+	\section{Intervalos, segmentos, convexidad y  poligonales}	
+	
+	\begin{defi} Conexos de $\R$: Intervalos.\\
+		Sea $A\subset \R$, $A$ es un intervalo si es equivalente a una de estas formas:
+		\begin{itemize}
+			\item $(a,b)=\{x\in\R \talque a<x<b\}$
+			\item $[a,b]=\{x\in\R \talque a\leq x\leq b\}$
+			\item $(a,b]=\{x\in\R \talque a< x\leq b\}$
+			\item $[a,b)=\{x\in\R \talque a\leq x< b\}$
+			\item $[a,+\infty)=\{x\in\R \talque a\leq x\}$
+			\item $(a,+\infty)=\{x\in\R \talque a< x\}$
+			\item $(-\infty, b]=\{x\in\R \talque  x\leq b\}$
+			\item $(-\infty, b)=\{x\in\R \talque  x < b\}$
+			\item $(-\infty, +\infty)=\R$ 
+			\item ó es $\emptyset$
+		\end{itemize}
+	\end{defi}
+	\begin{lema}
+		Luego $A$ es un intervalo si para cada par de elementos $x,y\in A\ (x<y)$, se tiene $[x,y]\subset A$
+ 	\end{lema}
+ 	
+ 	\begin{teor}\ \\
+ 		Sea $A\subset\R$, entonces $A$ es conexo$\iff A$ es intervalo.
+ 		\begin{proof}\ \\
+ 		\begin{itemize}
+ 			\item ($\implies$) Por contrarrecíproco\\
+ 			Si $A$ no es intervalo $\ximplies{por\ Lema\ anterior}{}\exists x,y\in A,\ x<y\talque [x,y]=\\=\{t\in\R\talque x\leq t\leq y\} \nsubset A\implies\exists t_0\in[x,y]\talque t_0\notin A$, luego sea$(-\infty,t_0)$ y $(t_0,+\infty)$ son abiertos de $\R$ tal que:\\
+ 			$\doubleright{((-\infty,t_0)\cap A)\cup((t_0,+\infty)\cap A)=A}
+ 			{((-\infty,t_0)\cap A)\cap((t_0,+\infty)\cap A)=\emptyset}\implies\\
+ 			\implies\doubleright{x\in((-\infty,t_0)\cap A)\implies(-\infty,t_0)\cap A\neq\emptyset}
+ 			{y\in((t_0,+\infty)\cap A)\implies(t_0,+\infty)\cap A\neq\emptyset}\implies$ $A$ no es conexo. 
+ 			\item ($\impliedby$) Supongamos que $A$ es intervalo no conexo y llegaremos a una contradicción.\\
+ 			Supongamos que $\exists U,V$ abiertos en $R$ tal que $\left\} \begin{array}{ll}
+ 				(U\cap A)\cup(V\cap A)=A\ (1)\\
+ 				(U\cap A)\cap(V\cap A)=\emptyset\ (2)\\
+ 				U\cap A\neq\emptyset\\
+ 				V\cap A\neq\emptyset\\	 				
+ 					\end{array} 	\right.$\\ 
+ 					Entonces $\doubleright{U\cap A\neq\emptyset\implies\exists a\in U\cap A}
+ 					{V\cap A\neq\emptyset\implies\exists b\in V\cap A}\ximplies{(2)}{}a\neq b$\\
+ 					Supongamos $a<b$ entonces, $\doubleright{a\in A}{b\in A}\implies[a,b]\subset A$\\
+ 					Llamemos $\doubleleft{G_1=U\cap[a,b]}{G_2=V\cap[a,b]}$ tenemos que:\\
+ 	$\double{G_1\cup G_2=[a,b]}{G_1\cap G_2=(U\cap V)\cap[a,b]\subset(U\cap V)\cap A= \emptyset}$\\
+ 	$\doubleright{G_1\neq\emptyset\mathrm{\ pues\ }a\in G_1}{G_1\mathrm{\ esta\ acotado\ superiormente\ (pues\ }G_1\subset[a,b])}\exists\alpha=sup\ G_1$\\\\
+ 	$\doubleright{G_1\mathrm{\ acotado\ superiormente\ por\ }b\implies \alpha\leq b}
+ 	{a\in G_1\implies a\leq\alpha}\implies\alpha\in[a,b]$\\
+ 	Veamos que en realidad $\alpha\in (a,b)$\\
+ 	Como $b\in V$ y $V$ es abierto$\implies\exists r<b-a(>0)\talque(b-r,b+r)\subset V\implies\\
+ 	\implies(b-r,b]\subset V \implies (b-r,b]\cap G_1=\emptyset\implies G_1\subset [a,b-r]\implies\\
+ 	\ximplies{}{\alpha=sup\ G_1}\alpha\leq b-r<b\implies \alpha < b $\\
+ 	Como $\doubleright{a\in U}{U\mathrm{\ abierto}}\implies \exists r' <b-a(>0)\talque (a-r,a+r)\subset U\implies\\ \implies [a,a+r)\subset U\implies a + \dfrac{r}{2}\in U\cap [a,b]=G_1\ximplies{}{\alpha=sup\ G_1}\alpha<a+\dfrac{r}{2}\leq \alpha \implies a<\alpha$\\
+ 	Por tanto $\alpha\in (a,b)$. Veamos ahora que $\alpha\notin G_1$ y $\alpha\notin G_2$\\\\
+ 	$\alpha\notin G_1=U\cap[a,b]$. En efecto: Si $\alpha\in G_1$, como $U$ es abierto $\exists r>0\talque (\alpha-r,\alpha+r)\subset U\cap[a,b]$ pero esto contradice que $\alpha=sup\ U\cap[a,b]$ por tanto $\alpha\notin G_1$\\\\
+ 	$\alpha\notin G_2=V\cap[a,b]$. En efecto: Si $\alpha\in G_2$ por ser $V$ abierto y $\alpha\in(a,b)\ \exists r>0\talque (\alpha-r,\alpha+r)\subset V\cap(a,b)\implies (\alpha-r,\alpha]\subset V\cap(a,b)\implies (\alpha-r,\alpha] \cap U = \emptyset\implies\implies U\cap[a,b]\subset[a,\alpha-r]$ y contradice $\alpha = sup\ (U\cap[a,b])$ por tanto $\alpha\notin G_2$\\
+ 	Por lo que $\alpha$ no pertenece ni a $G_1$ ni a $G_2$ y esto es absurdo $\implies A$ conexo.
+ 		\end{itemize}	
+ 		\end{proof}
+ 	\end{teor}
+ 	
+ 	\begin{defi} Conexos en ($\R^n,d_2$), y en general en cualquier espacio normado.\\
+ 		Sea $E$ espacio vectorial y sean $x,\ y\in E$ se define \underline{el segmento de extremos $x$ e $y$} al conjunto $[x,y]=\{(1-t)x+ty:0\leq t\leq 1\}$
+ 	\end{defi}
+ 	
+ 	\begin{proposicion} En un espacio normado $E$ los segmentos son conjuntos conexos.
+ 	\begin{proof}\ \\
+ 		Muy parecida a la demostración del teorema anterior. Sean  $x$ e $y$ $\in E$, $x\neq y$. Sean $U$ y $V$ abiertos tal que $[x,y]\subset U\cup V$ y $[x,y]\cap U\cap V = \emptyset$. Consideramos que $x\in U$ y definamos $A=\{t\in[0,1]\talque (1-t)x+yt\in U\}$, y ahora procederíamos como en la demostración anterior, tomamos $\alpha = sup\ A$ y suponemos que $V\cap [x,y]\neq\emptyset$ llegando a una contradicción.
+ 	\end{proof}
+ 	\end{proposicion}
+
+ 	\begin{proposicion} En $E$ normado, las bolas son conjuntos conexos.
+ 	\begin{proof}\ \\
+ 	Sea $x_0\in E$ y $r>0$\\
+ 	$B(x_0,r)=\{x\in E\talque d(x,x_0)<r\}=\{x_0\}\cup\left(\bigcup_{x=B(x_0,r)}[x_0,x]\right)$
+ 	Por la proposición anterior los segmentos $[x,x_0]$ con $x\in B(x_0,r)$ son conexos, $\{x_0\}$ es conexo y $\{x_0\}\cap[x_0,x]\neq\emptyset\\ \forall x\in B(x_0,r)\ximplies{\mathrm{Por\ el\ T.\ del\ pivote}}{}\{x_0\}\cup\left(\bigcup_{x=B(x_0,r)}[x_0,x]\right)$ es conexo$\implies B(x,r)$ es conexo y $\overline{B}(x_0,r)=\{x\in E\talque d(x,x_0)\leq r\} = \overline{B(x_0,r)}$ es conexo.
+ 	\end{proof}
+ 	\end{proposicion}
+ 	
+ 	\begin{defi} Sea $E$ espacio vectorial y sea $A\subset E$, $A$ es \underline{convexo} si $\forall x,y\in A$, $[x,y]\subset A$
+ 	\end{defi}
+ 	
+ 	\begin{proposicion} En un espacio normado convexo $\implies$ conexo.
+ 	\begin{proof}\ \\
+ 	Por el Teorema del Pivote.
+ 	\end{proof}
+ 	\end{proposicion}
+ 	
+ 	\begin{defi} Sea $E$ es un espacio normado, definimos \underline{una poligonal} en $E$ es un conjunto $\ = [x_1,x_2]\cup[x_2,x_3]\cup...\cup[x_{n-1},x_n]$
+ 	\end{defi}
+ 	
+ 	\begin{proposicion} En un espacio normado, poligonal $\implies$ conexo.
+ 	\begin{proof}\ \\
+ 		Inducción sobre el número de segmentos que conforman la poligonal.
+ 	\end{proof}
+ 	\end{proposicion}
+ 	
+ 	\begin{observacion} En un espacio métrico en general no toda bola es convexa.
+ 	\end{observacion}
+ 	
+ 	\begin{defi}Sea $E$ un espacio normado y sea $A\subset E$, $A$ es \underline{conexo por poligonales} si $\forall x,y\in A\ \exists$ una poligonal $\Gamma\subset A$ donde $x$ e $y$ son los extremos de dicho poligonal.
+ 	\end{defi}
+ 	
+ 	\begin{proposicion} Sea $E$ un espacio normado y sea $A\subset E$. Si $A$ es conexo por poligonales $\implies A$ es conexo.
+ 	\begin{proof}\ \\
+ 	Si $A=\emptyset$ ya está.\\
+ 	Si $A\neq\emptyset\implies\exists a\in A$, entonces $\forall x\in A\setminus \{a\}$, por hipótesis $\exists \Gamma_x$ (poligonal)$\subset A$ de extremos $x$ y $a$. Así $A={a}\cup\left(\bigcup_{x\in A\setminus \{a\}} \Gamma_x \right) \implies A$ es conexo.
+ 	\end{proof}
+ 	\end{proposicion}
+
+	\begin{observacion} Conexo por poligonales $\nimpliedby$ conexo
+		\begin{ejem} Circunferencia en $\R^2$
+		\end{ejem}
+	\end{observacion}
+	
+	\begin{proposicion} Sea $E$ un espacio normado y $G\subset E$ abierto. Entonces $G$ es conexo $\iff G$ es conexo por poligonales. \\\\
+	\begin{proof}\ 
+	\begin{itemize}
+		\item $(\impliedby)$ Ya demostrado.
+		\item $(\implies)$\\
+		Sea $G$ conexo veamos que es conexo por poligonales.\\
+		Si $G=\emptyset$, ya está.\\
+		Si $G\neq\emptyset$, entonces $\exists x_0\in G$\\
+		Sea $A=\{x\in G\talque \exists \Gamma$ (poligonal) $\subset G$ que une $x$ y $x_0\},\ x_0\in A\implies A\neq\emptyset$
+		Veamos que $A$ es abierto: Si $x\in A$, entonces $\exists \Gamma_x$ (poligonal) $\subset A\talque$ une $x$ y $x_0$ y como $x\in A\subset G$ y $G$ es abierto$\implies \exists r>0\talque B(x,r)\in G$\\
+		Entonces, si $y\in B(x,r)\setminus\{x\}$, tenemos que $\Gamma_x\cup[x,y]\subset A\cup B(x,r)\subset G\cup G=G$\\
+		Como $\Gamma_x\cup[x,y]$ es una poligonal que une $x_0$ con $y$ y $\Gamma_x\cup[x,y]\subset G$ tenemos que $y\in A$, luego $B(x,r)\subset A\implies A$ es abierto.\\\\
+			Veamos ahora que $A$ es cerrado (en $G$).
+		Para ello veamos que $G\setminus A$ es abierto. Si $y\in G\setminus A$ entonces $\nexists \Gamma_y$ que una $x_0$ e $y$. Como $y\in G$ abierto, $\exists r >0\talque B(y,r)\subset G$. Ningún punto de $B(y,r)$ se puede unir con $x_0$ mediante una poligonal contenida en $G$ (porque entonces estaría en $A$). Luego $B(y,r)\subset G\setminus A$. Así $G\setminus A$ es abierto en $G\implies A$ es cerrado en $G$.\\
+		Como $A\neq\emptyset$ y $A$ es abierto y cerrado en $G$ y $G$ es conexo $\implies A=G \implies G$ conexo por poligonales.
+ 	\end{itemize}
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{observacion} En $\R$, sea $A\subset \R$:
+	\begin{center}
+	$A$ conexo $\iff A$ intervalo $\iff A$ convexo
+	\end{center}
+	En general $A$ conexo $\nimplies \mathring{A}$ conexo, pero en $\R$ esto sí se cumple.
+	\end{observacion}

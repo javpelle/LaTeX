@@ -1,0 +1,38 @@
+\section{Modelación de problemas de flujo}
+
+En esta sección vamos a tratar de solucionar y normalizar algunos casos de problemas de flujo que no cumplan todas y cada una de las especificaciones dadas en la anterior sección.
+\subsection{Modelación de redes con aristas antiparalelas}
+
+Decimos que dos aristas $(u,v)\y (v,u)$ son antiparalelas si ambas pertenecen a $E$, es decir, son paralelas pero con sentidos opuestos. En la \textit{sección 1} indicamos que si $(u,v)\in E$ entonces $(v,u)\notin E$. Para solucionar este inconveniente tomaremos un vértice auxiliar $v'$ y convertiremos el grafo $G=(V,E)$ en el grafo $G'=(V',E')$.\\
+
+Tenemos que $V'=V\cup \{v'\}$, veamos como redefinimos $E'$:\\
+Puesto que $(u,v)\y (v,u)\in E$, una de estas dos debe ``desaparecer''. Sin pérdida de generalidad quitaremos $(u,v)$ para añadir $(u,v')\y(v',v)$ de tal manera que\\
+$c(u,v')=c(v',v)=c(u,v)$ (a la anterior $c(u,v)$ puesto que al quitarla esta pasa a ser cero). De esta manera hemos tendido un puente auxiliar entre $u$ y $v$ y ahora $G'$ ya está listo para poder trabajar sobre él como un problema de flujo máximo. Así, $E'$ ha quedado como $E'=\left(E\setminus\left\{(u,v)\right\}\right)\cup\left\{(u,v'),(v',v)\right\}$.\\
+
+\begin{ejem} Veamos un ejemplo gráfico de unos posibles $G$ con aristas antiparalelas y su normalización y $G'$.
+
+\begin{figura}\ \begin{center}\input{figuras/figura2.1.tex}\end{center}\end{figura}
+\ \\
+
+En la \textbf{Figura 2.1} podemos observar un grafo al que denotaremos por $G=(V,E)$, en el que tenemos dos aristas antiparalelas: $(v_1,v_2)\y(v_2,v_1)$, con capacidades\\
+$c(v_1,v_2)=10\y(v_2,v_1)=4$. Para solucionar este hecho incluimos en $V$ el vértice $v'$ dando lugar a $V'$. Tomamos la arista $(v_1,v_2)$ y la sustituimos por las aristas $(v_1,v')\y(v',v_2)$ ambas de capacidad $10$ dando lugar a $E'$.
+Así ya tenemos el nuevo grafo $G'$ compuesto por $(V',E')$ que podemos observar en la \textbf{Figura 2.2}.
+
+\begin{figura}\ \begin{center}\input{figuras/figura2.2.tex}\end{center}\end{figura}
+\end{ejem}
+
+\subsection{Modelación de redes con múltiples fuentes y sumideros}
+
+Una red de un problema de flujo máximo puede tener varias fuentes y sumideros. En el ejemplo de los trasvases, es altamente probable que el agua provenga originalmente de más de un embalse fuente y llegue hasta distintos embalses, pantanos y campos de regadío sumidero murcianos. Tenemos así un problema con nuestra definición original puesto que definimos una única fuente y un único sumidero.\\
+
+En la \textbf{Figura 2.3} tenemos un ejemplo de un grafo con 5 fuentes, representadas por $s_1,s_2,s_3,s_4,s_5$ y 3 sumideros, $t_1,t_2,t_3$
+\begin{figura}\ \begin{center}\input{figuras/figura2.3.tex}\end{center}\end{figura}
+
+Para resolver este inconveniente basta con añadir dos vértices auxiliares a los que denotaremos $s$ y $t$ que denotaremos \textbf{superfuente} y \textbf{supersumidero} respectivamente. Tenemos así un nuevo conjunto de vértices $V'=V\cup \{s,t\}$ y nos falta añadir ciertas aristas a $E$ para normalizar nuestro problema.
+
+Nuestro nuevo $E'$ estará compuesto por $E'=E\cup\{(s,s_i)\ |\ s_i\in E\}\cup\{(t_i,t)\ |\ t_i\in E\}$ de manera que las capacidades de estas aristas sean $c(s,s_i)=c(t_i,t)=\infty$. Hemos construido así puentes entre nuestras fuentes y la superfuente auxiliar y entre nuestros sumideros y el supersumidero auxiliar con aristas de capacidad infinita.\\
+
+Intuitivamente, cualquier movimiento de flujo en el nuevo grafo $G'=(V',E')$ se comporta igual que en $G=(V,E)$. $s$ sólo provee la suma de flujo que ya proveían los distintos $s_i$ y $t$ sólo ``engulle'' la suma de lo que ya ``engullían'' los $t_i$.\\
+
+En la \textbf{Figura 2.4} podemos observar cómo queda el grafo de la \textbf{Figura 2.1} tras la adición de la superfuente y el supersumidero y sus correspondientes aristas.
+\begin{figura}\ \begin{center}\input{figuras/figura2.4.tex}\end{center}\end{figura}

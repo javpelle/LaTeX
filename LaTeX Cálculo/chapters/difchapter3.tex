@@ -1,0 +1,220 @@
+\chapter{Congruencia en Espacios métricos}
+	\section{Sucesiones, sucesiones de Cauchy y espacios métricos completos}
+	     
+	\begin{defi} Sea $(M,d)$ un espacio m\'etrico:\\
+	     Sea $\sucesion{x}{n}$ una sucesi\'on en $M$, y sea $x\in M$, diremos que $\sucesion{x}{n}$ converge a $x$ si \\
+	     $\forall \varepsilon>0\ \exists k\in \N\talque d(x_n,x)<\varepsilon\ \forall n\geq k$\\
+	     Si es así denotamos a $x$ \underline{l\'imite de la sucesi\'on}. Y lo denotamos $\limite{x_n}{\ntiende}$ \'o $x_n\xrightarrow{n\rightarrow \infty}x$.
+	\end{defi}
+	     
+	\begin{proposicion}
+     	Si el l\'imite de una funci\'on existe, este es \'unico.
+     \end{proposicion}
+	     
+     \begin{defi} Diremos que $\sucesion{x}{n}$ \underline{converge} si tiene l\'imite. En caso contrario diremos que \underline{diverge}.
+     \end{defi}
+	     
+     \begin{observacion} Si $d$ y $d'$ son m\'etricas equivalentes en $M$ y $\sucesion{x}{n}$ es sucesi\'on en $M$, entonces:\\
+	     \[\sucesion{x}{n}\mathrm{\ converge\ en\ }(M,d)\iff \sucesion{x}{n} \mathrm{\ converge\ en\ }(M,d')\]
+     \end{observacion}
+	
+	\begin{ejem} \
+		\begin{itemize}
+		\item $\mathrm{En\ }(\R,d_2):\ \sucesionelement{c}{n}\mathrm{\  con\ }c\in \mathbb{R},\ \sucesionelement{\dfrac{1}{n}}{n},\ \sucesionelement{\left(1+\dfrac{1}{n}\right)^n}{n}$
+\item  $\mathrm{En\ }(\mathbb{R}^2,d_2):\ \sucesionelement{\dfrac{1}{n},\left(1+\dfrac{1}{n}\right)^n}{n}\ \mathrm{(que\ converge\ a\ }(0,e)).$
+		\end{itemize}
+    \end{ejem}
+	    
+    \begin{proposicion}Sea $(M,d)$ espacio m\'etrico, $A\subset M$ y $x\in M$, se cumple:
+   		\begin{enumerate}[1)]
+    		\item $x\in A'\iff \exists \sucesion{x}{n} \talque \ x_n\in A-\{x\}\ \forall n\in \N$, convergente a $x$.
+    		\item $x\in\overline{A}\iff \exists\sucesion{x}{n}\talque x_n\in A\ \forall n\in \N$ convergente a $x$.
+    		\item $x\in Fr(A)\iff \exists \sucesion{x}{n}\talque x_n\in A\ \forall n\in \mathbb{N}$ y $\exists \sucesion{y}{n}\talque y_n\in A^c\ \forall n\in \mathbb{N}$, convergentes a $x$.
+    		\item $A$ es cerrado $\iff \forall a'\in A', a'\in A\iff \forall \sucesion{x}{n}\talque x_n\in A\ \forall n\in \mathbb{N}$, convergente, cumple que: $\limite{x_n\in A}{n\rightarrow \infty} $
+    	\end{enumerate}
+    \end{proposicion}
+	    
+    \begin{defi}. Sea $(M,d)$ espacio m\'etrico y $\sucesion{x}{n}$ una sucesi\'on en $M$, decimos que $\sucesion{x}{n}$ \underline{es de Cauchy} si $\forall\varepsilon>0\ \exists k\in \mathbb{N}\talque d(x_p,x_q)<\varepsilon\ \forall p,q \geq k$.
+    \end{defi}
+	    
+    \begin{proposicion}. Sea $(M,d)$ un espacio m\'etrico:
+    	\begin{enumerate}[i)]
+    		\item Sea $\sucesion{x}{n}$ convergente $\ximplies{(\nimpliedby)}{} \sucesion{x}{n}$ es sucesi\'on de Cauchy.
+    		\item Sea $\sucesion{x}{n}$ sucesi\'on de Cauchy $\ximplies{(\nimpliedby)}{} \sucesion{x}{n}$ es acotada.
+    	\end{enumerate}
+    \end{proposicion}
+	    
+	\begin{observacion}Veamos, en efecto, que las anteriores propiedades no son equivalentes.
+	    \begin{itemize}
+	    		\item Una sucesi\'on de Cauchy no tiene por qu\'e converger; es el caso de $\sucesionelement{\left(1+\dfrac{1}{n}\right)^n}{n}$ es una sucesi\'on de Cauchy en $(\Q,|\cdot|)$ pero no converge.
+	    		\item $\sucesion{x}{n}$ acotada$ \nimplies \sucesion{x}{n}$ es de Cauchy; Por ejemplo: $\sucesionelement{(-1)^n}{n}$
+	    \end{itemize}
+	\end{observacion}
+	    
+	\begin{defi} Un espacio m\'etrico \underline{es completo} si toda sucesi\'on de Cauchy es convergente.
+	\end{defi}   
+	    
+	\begin{ejem} \
+	    \begin{itemize}
+	    		\item Completos: $(\mathbb{R},|\cdot|),\ (\mathbb{R}^2,d_1),\ (\mathbb{N},|\cdot|)$.
+	    		\item No completos: $(\mathbb{Q},|\cdot|), \ (\mathbb{R}\setminus\mathbb{Q},|\cdot|),\ (\mathbb{R}\setminus\{0\},|\cdot|)$.
+	    \end{itemize}
+	\end{ejem}
+	    
+	\begin{defi}Si $\sucesion{x}{n}$ es una sucesi\'on y $\sucesion{n}{k}$ es una sucesi\'on estrictamente creciente en $\mathbb{N}$ decimos que $\sucesionelement{x_{n_k}}{k}=\{x_{n_1},x_{n_2},x_{n_3}...\}$ \underline{ es una subsucesi\'on} de $\sucesion{x}{n}$.
+	\end{defi}
+	    
+	\begin{proposicion}. Sea $(M,d)$ espacio m\'etrico y sea $\sucesion{x}{n}$ una sucesi\'on en $M$ que converge a $x$, entonces cualquier subsucesi\'on de $\sucesion{x}{n}$ converge tambi\'en a $x$.
+		\begin{proof} \ \\
+			Sea $\sucesionelement{x_{n_k}}{k}$ subsucesi\'on de $\sucesion{x}{n}$, comprobemos que $x_{n_k}\xrightarrow{k\rightarrow\infty}x$\\
+	    Dado $\varepsilon>0$, como $x_n\xrightarrow{k\rightarrow\infty}x,\ \exists n_0\in \mathbb{N}\ \talque\ d(x_n,x)<\varepsilon\ \forall n\geq n_0$. Ahora, si $k\geq n_0$ entonces $n_k\geq n_{n_0}\geq n_0$. Luego $d(x_{n_k},x)<\varepsilon$
+		\end{proof}
+	\end{proposicion}
+	
+	\begin{corolario}\ 
+	    \begin{enumerate}[1)]
+	    		\item Si una sucesi\'on tiene dos subsucesiones que convergen a distinto l\'imite, entonces la sucesi\'on diverge.
+	    		\item Sean $d$ y $d'$ m\'etrcias equivalentes en $M$:
+	    		\[\sucesion{x}{n}\mathrm{\ converge\ en\ }(M,d)\iff \sucesion{x}{n}\mathrm{\ converge\ en\ }(M,d')\]
+	    \end{enumerate}
+	\end{corolario}
+	    
+	\begin{nota} En general $(M,d)$ y $(M,d')$ NO tienen las mismas sucesiones de Cauchy.
+	\end{nota}
+	    
+	\begin{ejem}Sean $(\mathbb{R},|\cdot|)$ y $(\mathbb{R},d)$ siendo $d(x,y)=|arctg(x)-arctg(y)|$ son equivalentes pero no tienen las mismas sucesiones de Cauchy.
+	\end{ejem}
+	    
+	\begin{proposicion}. Si $d$ y $d'$ provienen de una misma norma, entonces $(M,d)$ y $(M,d')$ tienen las mismas sucesiones de Cauchy.
+	    \begin{proof}
+	    	Por provenir $d$ y $d'$ de una misma norma, $\exists\alpha,\beta>0$ tal que $\alpha d(x,y)\leq d'(x,y)\leq \beta d(x,y)\ \forall x,y\in M$
+	    \end{proof}
+	\end{proposicion}
+	    
+	\section{Compacidad de conjuntos}	    
+	 
+	\begin{defi}. Sea $(M,d)$ espacio m\'etrico y $A\subset M$. Entonces definimos un recubrimiento de $A$ como \underline{la familia} $\{G_\alpha:\alpha\in\Gamma\}$ \underline{de conjuntos abiertos} tal que: \[\cup_{\alpha\in\Gamma}G_\alpha\supset K\]
+	\end{defi}
+	    
+	\begin{defi}. Sea $(M,d)$ un espacio m\'etrico y sea $K\subset M$, diremos que \underline{$K$ es compacto} si todo recubrimiento abierto de $K$ posee un subrecubrimiento finito; es decir, para cada familia $\{G_\alpha,\alpha\in\Gamma\}$ de conjuntos abiertos tal que $\cup_{\alpha\in\Gamma}G_\alpha\supset K,\ \exists\sigma\subset\Gamma, \sigma$ finito, tal que: \[\cup_{\alpha\in\sigma}G_\alpha\supset K\]
+	\end{defi}
+	    
+	\begin{ejem} Ejemplos de conjuntos compactos:
+		\begin{itemize}
+	  		\item Cualquier conjunto finito.
+	  		\item Sea $\sucesion{x}{n}$ convergente en $M$ a $x_0$, entonces $\{ x_0\}\cup\{ x_n\talque n\in \mathbb{N}	\}$ es compacto.
+		\end{itemize}
+	\end{ejem}
+	  
+	\begin{proposicion} \underline{Propiedades de los compactos}.\\
+	Sea $(M,d)$ espacio m\'etrico y $K\subset M$:\\
+	  -$K$ es compacto en $(M,d)\iff K$ es compacto en $(K,d|_{K\times K})$.
+		\begin{enumerate}[1)]
+			\item Si $K$ es compacto $\implies K$ es cerrado y acotado.
+	  			\begin{proof}\
+	  				\begin{itemize}
+	  					\item Veamos primero que compacto$\implies$ acotado.\\
+	  			Sea $M\neq\emptyset$, sea $a\in M$ como $M=\cup^\infty_{n=1} B(a,n)$\\
+	  			As\'i $\{B(a,n)\talque n\in \mathbb{N}\}$ es un recubrimiento por abiertos de $K$, y por ser $K$ compacto $\exists	n_1,n_2,...n_k\talque K\subset\cup^k_{i=1}B(a,n_i)=B(a,m)$ con $m=max\{n_1,...n_k\},$ por tanto $K$ es acotado.
+	  					\item Veamos ahora que compacto$\implies$ cerrado.\\
+	  			Veamos que $K^c$ es abierto. Sea $b\in K^c\ \forall x\in K,$ como $x\neq b,\ \exists r_x>0\talque B(x,r_x)\cap B(b,r_x)=\emptyset.$\\
+	  			Entonces $\{B(x,r_x)\talque x\in K\}$ es un recubrimiento de abiertos tal que $\cup_{x\in K}B(x,r_x)\supset K$. Luego por ser $K$ compacto $\exists x_1,x_2,...x_m\in K\talque K\subset\cup^m_{i=1}B(x_i,r_{x_i})$.\\
+	  			Tomemos $r=min\{r_{x_1},r_{x_2},...r_{x_m}\}$, tenemos que $B(b,r)\subset K^c$ ya que $(B(b,r)\cap K)\subset (B(b,r)\cap(\cup^m_{i=1}B(x_i,r_{x_i})))=\cup^m_{i=1}(B(b,r)\cap B(x_i,r_{x_i}))\subset\cup^m_{i=1}(B(b,r_{x_i})\cap B(x_i,r_{x_i}))=\emptyset\implies K$ es cerrado. $_\Box$
+	  				\end{itemize}
+				\end{proof}
+	  		\item Si $K\subset M$ es compacto, entonces $K$ es \underline{precompacto} (también llamado "totalmente acotado"), si $\forall\varepsilon >0\ \exists x_1,x_2...x_n\in K\talque K\subset \bigcup^n_{i=1} B(x_i,\varepsilon)$
+	  			\begin{proof} Dado $\varepsilon>0$, basta tener en cuenta que $\{B(x,r)\talque x\in K\}$ es recubrimiento por abiertos de $K$ por ser $K$ compacto posee un subrecubrimiento finito.
+	  			\end{proof}
+	  		\item Sea $K$ compacto $\subset M$  y sea $C\subset K \talque C$ es cerrado$\implies C$ es compacto.
+	  			\begin{proof}
+	  			Sea $\{G_\alpha :\alpha \in \Gamma\}$ una familia de abiertos en $M \talque \\ \cup_{\alpha\in\Gamma} G_\alpha \supset C$ \\
+	  			Como $C$ es cerrado, entonces $C^c$ es abierto y $M\supset K=C^c \cup (\cup_{\alpha\in\Gamma} G_\alpha)$. Así $\{C^c\}\cup\{G_\alpha :\alpha\in\Gamma\}$ es un recubrimiento por abiertos de $K$. Como $K$ es compacto $\exists \alpha_1,\alpha_2 ...\alpha_k \in\Gamma\talque K\subset C^c\cup(\cup^k_{i=1}G_{\alpha_i})$\\
+	  			Entonces, como $C\subset K$, tenemos $C\subset\cup^k_{i=1}G_{\alpha_i} \implies C$ es compacto.
+	  			\end{proof}
+		\end{enumerate}
+	\end{proposicion}
+	
+	\begin{proposicion} En $\R^n$ con la métrica usual, sea $A\subset \R^n$, entonces $A$ es acotado $\iff$ $A$ es precompacto.
+	\begin{observacion} En otros espacios métricos, en general, no es cierta la proposición:\\
+	\underline{Ejemplo}: En $\R$ con la métrica discreta, $(0,1)$ es acotado pero no precompacto. Sea $\varepsilon_0=0,5$ entonces $(0,1)=\stackbin[x\in(0,1)]{}\bigcup B(x,\varepsilon)$ y en $(0,1)$ hay infinitos puntos.
+	\end{observacion}
+	\end{proposicion}
+	
+	\begin{teor} \textbf{Teorema de Bolzano-Weierstrass}\\
+		Sea $(M,d)$ espacio métrico y sea $K\subset M$, entonces son equivalentes:
+			\begin{enumerate}[(a)]
+				\item $K$ compacto.
+					\[\iff\]
+				\item Todo subconjunto infinito de $K$ posee un punto de acumulación contenido en $K$
+					\[\iff\]
+				\item Toda sucesión en $K$ posee una subsucesión convergente a un elemento de $K$
+			\end{enumerate}
+		\begin{proof}\ 
+			\begin{itemize}
+				\item $(1)\implies(2)$\\
+					Sea $K$ compacto. Sea $S\subset K$, $S$ infinito, probemos que $\exists x\in S'\cap K$\\
+	Supongamos que no, que no hay ningún punto de $K$ que pertenezca a $S'$\\
+	Entonces $\forall x\in K\ \exists\gamma_x>0\talque (B(x,\gamma_x)\setminus\{x\})\cap S=\emptyset\ (*)$\\
+	Tenemos que $\{B(x,\gamma_x)\talque x\in K)$ es un recubrimiento por abiertos de $K$ y por ser $K$ compacto $\exists x_1,x_1...x_m\in K\talque K\subset\cup^m_{i=1}B(x_i,\gamma{x_i})$. Como $S\subset K$, tenemos $S\subset \cup^m_{i=1}B(x_i,\gamma{x_i})$\\
+	Por $(*)\ S\subset\{x_1,x_2...x_m\}$ y esto es absurdo pues $S$ es infinito. Por tanto existe $x_0 \in K\talque x_0\in S'$
+				\item $(2)\implies(3)$\\
+	Sea $\{x_n\}^\infty_{n=1}$ sucesión en $K$, veamos que tiene una subsucesión convergente.
+	Entonces, sea $S$ el rango de $\{x_n\}^\infty_{n=1}$, es decir, $S=\{x_n\talque n\in\N\}$. Si:
+					\begin{itemize}
+						\item $S$ finito. Existe un elemento que se repite infinitas veces y por tanto existe una subsucesión constante y por tanto convergente en un elemento de $K$
+						\item $S$ infinito $\implies$ por (2), $\exists x_0\in S'\cap K$. Construyamos la subsucesión:\\
+	Como $x_0\in S'\ \forall \varepsilon>0 (B(x_0,\varepsilon)\setminus\{x_0\})\cap S \neq\emptyset\implies$ la intersección $B(x_0,\varepsilon)\cap S$ es infinita.					
+	Así, $(B(x_0,1)\setminus\{x_0\})\cap S\neq\emptyset\implies \exists n_1\in\N \talque x_{n_1}\in B(x_0,1)$\\
+	Como $(B(x_0, 1/2)\setminus\{x_0\})\cap S$ es infinito $\implies \exists n_2>n_1 \talque x_{n_2}\in B(x_0,1/2)$\\
+	...\\
+	\ \ \ $(B(x_0, 1/k)\setminus\{x_0\})\cap S$ es infinito $\implies \exists n_k>n_{k-1} \talque x_{n_k}\in B(x_0,1/k)$. Y por tanto $\exists\{n_k\}^\infty_{k=1} \subset\N$ y creciente$\talque x_{n_k} \in B(x_0,1/k)\ \forall k\in\N$. Es claro que $\{n_k\}^\infty_{k=1}$ es subsucesión de $\{x_n\}$ y como $0<d(x_0,x_{n_k})\leq 1/k\ \forall k\in\N$, tenemos que \\
+	$d(x_{n_k},x_0)\xrightarrow{k\rightarrow\infty}0 \iff x_{n_k}\xrightarrow{k\rightarrow\infty}x_0$
+					\end{itemize}
+				\item $(3)\implies(1)$ \\
+	Veamos primero que $K$ es precompacto.\\
+	Supongamos que no. Si $K$ no es precompacto $\implies \exists \varepsilon_0>0\talque K$ no está contenido en la unión de un número finito de bolas centradas en puntos de $K$ y radio $\varepsilon_0$\\
+	Sea $x_1\in K$. Como $K\not\subset B(x_1,\varepsilon_0)\implies \exists x_2\in K\setminus B(x_1,\varepsilon_0)$\\
+	\ \ \ $K\not\subset (B(x_1,\varepsilon_0)\cup B(x_2,\varepsilon_0))\implies\exists x_3\in K\setminus (B(x_1,\varepsilon_0)\cup B(x_2,\varepsilon_0))$\\
+	\ \ \ ...\\
+	Obtenemos $\{x_n\}^\infty_{n=1}\subset K \talque \forall n\in\N x_{n+1}\in K\setminus(\cup^n_{i=1}B(x_i,\varepsilon_0))\implies \{x_n\}$ no es de Cauchy pues $d(x_n,x_m) \geq \varepsilon_0\ \forall n,m; n\neq m.$ Es más, de aquí podemos deducir que ninguna subsucesión de $\{x_n\}$ es de Cauchy $\implies$ ninguna convergente$\implies$ contradice (3)\\
+	Por lo tanto ya sabemos que $K$ es precompacto. Veamos ahora que es compacto:\\
+	Sea $\{G_\alpha\ | \alpha\in\Gamma\}$ recubrimiento por abiertos de $K$. Veamos que\\
+	 $\exists r>0\talque \forall x\in K\ \exists \alpha_x\in\Gamma \talque B(x,r)\subset G_{\alpha_x}$:\\
+	 Si no, $\forall\varepsilon>0\ \exists x_\varepsilon\in K\talque B(x_\varepsilon,\varepsilon) \nsubset G_\alpha\ \forall\alpha\in\Gamma$\\
+	 Luego, $\forall n\in\N\ \exists x_n\in K\talque B(x_n,\dfrac{1}{n})\nsubset G_\alpha\ \forall\alpha\in\Gamma$\\
+	 Tenemos así $\{x_n\}$ sucesión en $K$ y por la hipótesis (3) $\exists \{x_{n_j}\}^\infty_{j=1}$ subsucesión$\talque x_{n_j} \xrightarrow [j\rightarrow\infty]{}x_0\in K$\\
+	 Como $x_0\in K \subset\cup_{\alpha\in\Gamma}G_\alpha\ \exists \alpha_0\in\Gamma \talque x_0\in G_{\alpha_0}$. Como  este es abierto, $\exists \delta>0\talque B(x_0,\delta)\subset G_{\alpha_0}.$ Como $x_{n_j} 
+	 \xrightarrow[j\rightarrow\infty]{}x_0$ y $\dfrac{1}{n_j}\xrightarrow[j\rightarrow\infty]{}0$; para 
+	 $\dfrac{\delta}{2}>0,\ \exists m\in\N\talque d(x_{n_m},x_0)<\dfrac{\delta}{2}$
+	  y $\dfrac{1}{n_m}<\dfrac{\delta}{2}$.\\
+	 Entonces $B(x_{n_m},\dfrac{1}{n_m})\subset B(x_0,\delta)$ con lo que llegamos a una contradicción.\\	 
+	 Visto ahora que $\exists r>0\talque\forall x\in K\ \exists \alpha_x\in\Gamma\talque B(x,r)\subset G_{\alpha_x}$ y sabiendo que es precompacto:\\
+	 $K$ precompacto $\implies \exists y_1,...,y_m\in K\talque K\subset\cup^m_{i=1}B(y_i,r)\subset \cup^m_{i=1}G_{\alpha_{y_i}}\implies$hemos extraído un subrecubrimiento finito.
+					
+			\end{itemize}
+		\end{proof}
+	\end{teor}
+	
+	\begin{proposicion} Consecuencia del teorema.\\
+		Si $K$ es compacto$\implies K$ es completo.
+	\end{proposicion}
+			
+	\begin{proposicion}
+		Si $K$ es compacto$\implies K$ es precompacto.
+	\end{proposicion}
+	
+	\begin{teor}\underline{Teorema de Heine Borel}.\\
+		Sea $n\in\N$, $(\R^n,d_2)$ espacio métrico y sea $A\subset \R^n$ compacto $\iff A$ es cerrado y acotado.
+		\begin{proof}
+		\ 
+			\begin{itemize}
+				\item $``\implies$'' Se cumple para todo espacio métrico.
+				\item $``\impliedby$'' Supongamos que $A\subset\R^n$ es cerrado y acotado. Probemos que $A$ es compacto. Por \textit{Bolzano-Weierstrass} basta probar que toda sucesión en $A$ posee una subsucesión convergente a un elemento de $A$.\\
+	Sea $\sucesion{x}{k}=\{(x_1^k,x_2^k,...,x_n^k)\}^\infty_{k=1}$ una sucesión en $A$, como $A$ es acotado, entonces $\sucesion{x}{k}$ es acotado en $\R^n$. Así cada sucesión $\{x_i^k\}_{k=1}^\infty;$\\
+	$1\leq i\leq n,$ es acotada en $\R$. Como $\{x_1^k\}_{k=1}^\infty$ es acotada, $\exists\sigma_1\colon \N\to\N$ estrictamente creciente $\talque \{x_1^{\sigma_1 (k)}\}^\infty_{k=1}$ converge.\\
+	Como $\{x_2^{\sigma_1 (k)}\}_{k=1}^\infty$ es acotada, $\exists\sigma_2\colon \N\to\N$ estrictamente creciente $\talque \{x_2^{\sigma_2 (k)}\}^\infty_{k=1}$ converge. Repitiendo esto $n$-veces , tenemos que  $\exists\sigma_n\colon \N\to\N$ estrictamente creciente $\talque \{x_n^{\sigma_n (k)}\}^\infty_{k=1}$ converge y también $\{x_i^{\sigma_n (k)}\}^\infty_{k=1}$ con $1\leq i\leq n, \implies$ Sea $x_i=\lim_{k\rightarrow\infty} x_i^{\sigma_n(k)}$ y tenemos que         $\{x^{\sigma_n(k)}\}^\infty_{k=1}$ subsucesión que converge a $(x_1, x_2,...,x_n)$\\
+	Como $x^{\sigma_n(k)} \in A,\ \forall k \in \N$ entonces $x^{\sigma_n(k)}\xrightarrow[k\rightarrow\infty]{}(x_1,x_2,...,x_n)$; y ahora, como $A$ es cerrado $(x_1,x_2,...,x_n)\in A$
+			\end{itemize}
+		\end{proof}
+	\end{teor}
+	

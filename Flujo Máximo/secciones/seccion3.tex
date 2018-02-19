@@ -1,0 +1,41 @@
+\section{Representación de una red de flujo como problema de programación lineal}
+
+Aprovechando el tema de \textit{programación lineal} que traté el cuatrimestre anterior para la composición de mi trabajo, me gustaría, antes de comenzar con los algoritmos de resolución de problemas de flujo, plantear un ejemplo en el que convertimos una de estas redes en un problema de programación lineal.\\
+
+En el anterior trabajo comenté un problema de mínimo coste en una red de flujo, similar al problema que estamos tratando. Con un grafo con características similares al introducido en la primera sección, podemos plantear un problema de mínimo coste en el que tenemos prefijadas una oferta del nodo fuente y una demanda del nodo sumidero cuyos valores son idénticos.
+
+En este caso no tratamos de calcular el máximo flujo que podemos llevar hasta el nodo sumidero, si no que el objetivo es minimizar los costes de transportar la prefijada mercancía a través de las aristas disponibles que tienen una capacidad y unos costes por unidad de mercancía transportada conocidos.\\
+
+No indagaremos más sobre este tipo de problemas puesto que ya fueron expuestos en el trabajo anterior, pero las ecuaciones lineales resultantes son similares en ambos problemas. Sin más dilación plantearemos una red de flujo máximo como un programa lineal.\\
+
+Sea un grafo $G=(V,E)$ con capacidades $c(u,v)$ conocidas $\forall u,v\in V, u\neq v$ y denotamos $f(u,v)$ el suministro de mercancía que mandamos del vértice $u$ al $v$.\\
+Recordemos que un programa lineal busca maximizar o minimizar una función objetivo (en nuestro caso maximizar) de acuerdo a unas restricciones. Obtengamos primero nuestra función objetivo:\\
+
+Nuestro cumplido es hacer llegar al vértice sumidero el mayor número de unidades de mercancía posible, es decir, debemos maximizar el flujo entrante en el sumidero, o debido a su equivalencia (vista en la \textit{Sección 1}), maximizar el flujo saliente de la fuente. Esto es:
+\[\max z = |f| = \stackbin[v\in V]{}\sum f(s,v)- \stackbin[v\in V]{}\sum f(v,s)\]
+
+Veamos ahora las restricciones. En primer lugar tenemos que $\forall u,v\in V$:
+\[0\leq f(u,v)\leq c(u,v)\]
+
+Y en segundo lugar, para cada vértice $u\in V$, tenemos:
+\[\stackbin[v\in V]{}\sum f(u,v)- \stackbin[v\in V]{}\sum f(v,u)=0\]
+
+\begin{ejem} Veamos para acabar un ejemplo concreto, representemos el problema de los embalses de la \textit{Sección 1} como un problema de programación lineal.\\
+
+Nuestra función objetivo busca sacar el máximo posible de agua de Buendía, así, tenemos:
+\[\max z = f(s,v_1)+f(s,v_2)\equiv \max z'=f(v_3,t)+f(v_4,t)\]
+
+En cuanto a restricciones tenemos:
+\begin{align*}
+0\leq f(s,v_1)\leq& c(s,v_1)		&  0\leq f(v_2,v_1)\leq& c(v_2,v_1)         &  0\leq f(v_3,t)\leq& c(v_3,t)\\
+0\leq f(s,v_2)\leq& c(s,v_2)        &  0\leq f(v_2,v_4)\leq& c(v_2,v_4)			&  0\leq f(v_4,v_3)\leq& c(v_4,v_3)\\	
+0\leq f(v_1,v_3)\leq& c(v_1,v_3)  	&  0\leq f(v_3,v_2)\leq& c(v_3,v_2)			&  0\leq f(v_4,t)\leq& c(v_4,t)
+\end{align*}
+\begin{align*}
+f(s,v_1)+f(s,v_2)=&f(v_3,t)+f(v_4,t)& f(v_1,v_3)=&f(s,v_1) + f(v_2,v_1)\\
+f(v_2,v_1)+f(v_2,v_4)=&f(s,v_2)+f(v_3,v_2)&f(v_3,v_2)+f(v_3,t)=&f(v_1,v_3)+f(v_4,v_3)
+\end{align*}
+\[f(v_4,v_3)+f(v_4,t)=f(v_2,v_4)\]
+
+Una vez formulado el problema ya estaríamos listos para normalizar el problema a forma estándar y aplicar el algoritmo \textit{Símplex} o cualquier otro método de resolución de problemas de programación lineal. Como hemos indicado anteriormente, todo esto ya fue tratado en las notas presentadas para el cuatrimestre anterior y no entraremos en más detalle.
+\end{ejem}

@@ -1,0 +1,115 @@
+\chapter{Integrales impropias}	
+\section{Integrales impropias}
+\begin{defi} Integrales impropias.\\
+Sea $\function{f}{\R^n}{\R}$ con $f\geq 0$, supongamos que $\forall k\in N,\ f$ es integrable y acotada en $[-k,k]^n$.\\
+Diremos que $f$ es integrable en $\R^n$ si $\exists\limite{}{k\to +\infty}\integral{}{[-k,k]^n}f\ (\in\R)$ y en ese caso, tenemos que $\integral{}{\R^n}f=\limite{}{k\to +\infty}\integral{}{[-k,k]^n}f$.
+\end{defi}
+
+\begin{defi} Sea $\sucesionelement{A_n}{n}$ usa sucesión de conjuntos medibles-Jordan en $\R^n$, diremos que es \textbf{exhaustiva} si $\forall k\in\N\ \exists m_k\in\N\talque[-k,k]\subset A_{m_k}$
+\end{defi}
+
+\begin{proposicion} Sea $\function{f}{\R^n}{\R}$, $f\geq 0$ y $f$ integrable en $[-k,k]^n\ \forall k\in\N$, son equivalentes:
+\begin{enumerate}[i)]
+\item $f$ es integrable en $\R^n$
+\item Para cada sucesión $\sucesionelement{A_n}{n}$ exhaustiva, existe $\limite{}{\ntiende}\integral{}{A_n}f$
+\item $\exists \sucesionelement{A_n}{n}$ exhaustiva de manera que $\exists\ \lim\integral{}{A_n}f$. Además, en este caso, tenemos:
+$\integral{}{\R^n}f=\lim\integral{}{A_n}f$ para cualquier función exhaustiva  $\sucesionelement{A_n}{n}$.
+\end{enumerate}
+\begin{proof}\ 
+\begin{itemize}
+\item $i)\implies ii)$\\
+Dado $k\in\N$, $A_k$ medible-Jordan $\implies A_k$ acotado $\implies\exists R>0\talque A_k\subset B(0,R)\implies\\\implies\integral{}{A_k}f\leq\integral{}{B(0,R)}f\leq\integral{}{\R^n}f$. Por tanto $\integral{}{\R^n}f$ es cota superior de $\sucesionelement{\integral{}{A_k}f}{k}$.\\
+Sea $\sucesionelement{A_n}{n}$ exhaustiva. La sucesión $\sucesionelement{\integral{}{A_n}f}{n}$ es monótona no decreciente (Recordemos $f\geq 0$). Ahora, dado $n\in\N$, $\exists k_0\in\N\talque A_n\subset[-k_0,k_0]^n$.\\ Por tanto: $\integral{}{A_n}f\leq  \integral{}{[-k_0,k_0]^n}f\leq \limite{}{\ntiende}\integral{}{[-k_0,k_0]^n}f=\integral{}{\R^n}f$
+\item $ii)\implies iii)$ Evidente.
+\item $iii)\implies i)$\\
+Supongamos $\sucesionelement{A_n}{n}$ exhaustiva tal que $\exists\limite{}{\ntiende}\integral{}{A_n}f$.\\
+Veamos que $\integral{}{[-k,k]^n}$ es convergente creciente y está acotada superiormente.\\
+$\forall k\in\N\ \exists m_k\in\N\talque[-k,k]^n\subset A_{m_k}$. Por tanto $\integral{}{[-k,k]}f\leq \integral{}{A_{m_k}}\leq \limite{}{\ntiende}\integral{}{A_n}f$
+\end{itemize}
+\end{proof}
+\end{proposicion}
+
+\begin{corolario} \underline{Propiedades elementales de la integral}.
+\begin{enumerate}[1)]
+\item Sean $\function{f,g}{\R^n}{\R},\ f,g\geq 0$:
+\[\integral{}{\R^n}f+g=\integral{}{\R^n}f+\integral{}{\R^n}g\]
+\item Sean $\function{f}{\R^n}{\R},\ f\geq 0$ y $\alpha\geq 0$: 
+\[\integral{}{\R^n}\alpha f=\alpha\integral{}{\R^n}f\]
+\item Sean $\function{f,g}{\R^n}{\R},\ 0\leq f\leq g$:
+\[\integral{}{\R^n}f\leq\integral{}{\R^n}g\]
+\item Sean $A,B\subset\R^n$ con $A\cap B$ medida nula:
+\[\integral{}{A\cup B}f=\integral{}{A}f+\integral{}{B}f\]
+\item Sean $f,g$ continuas en casi todo punto y acotadas
+\begin{itemize}
+\item Si $0\leq f\leq g$, entonces: 
+$g \mathrm{\ es\ integrable\ en\ }\R^n\implies f \mathrm{\ es\ integrable\ en\ }\R^n$
+\item $\integral{}{\R^n}g <+\infty\implies \integral{}{\R^n}f <+\infty$
+\item $\integral{}{\R^n}f \leq \integral{}{\R^n}g$
+\end{itemize} 
+\item Sea $A\subset\R^n$, entonces:
+\[\integral{}{A}f=\integral{}{\R^n}f\chi_A\]
+\end{enumerate}
+\end{corolario}
+
+\begin{defi} Sea $\function{f}{\R^n}{\R}$, $f\geq 0$, $f$ no acotado.\\
+Para cada $M>0$ definimos $\xfunction{f_M}{\R^n}{\R}{x\to\doubleleft{f(x)\mathrm{\ si\ }f(x)\leq M}{0\mathrm{\ si\ }f(x)>M}}$\\
+Es claro que $0\leq f_M$ y $f_M$ es acotada. Supongamos que $f_M$ es integrable en $\R^n\ \forall M>0$ y que $\exists\limite{\integral{}{\R^n}f_M}{M\to\infty}$. Entonces decimos que $f$ es integrable en $\R^n$ y tenemos que\\
+$\integral{}{\R^n}f=\limite{}{M\to\infty}\integral{}{\R^n}f_M$.
+\end{defi}
+
+\begin{defi} Definamos ahora integración pero sin necesidad de que $f$ sea positiva.\\
+Sea $\function{f}{\R^n}{\R}$, llamamos $f^+(x)$ y $f^-(x)$ a las funciones:
+\[f^+(x)=\doubleleft{f(x)\mathrm{\ si\ }f(x)\geq 0}{\ \ \ \ \ 0\mathrm{\ si\ }f(x)< 0}\]
+\[f^-(x)=\doubleleft{-f(x)\mathrm{\ si\ }f(x)\leq 0}{\ \ \ \ \ \ \ 0\mathrm{\ si\ }f(x)> 0}\]
+Entonces $f(x)=f^+(x)-f^-(x)$. Decimos que $f$ es integrable si $f^+$ y $f^-$ lo son, y en este caso tenemos $\integral{}{\R^n}f=\integral{}{\R^n}f^+-\integral{}{\R^n}f^-$
+\end{defi}
+
+\begin{proposicion} $f$ es integrable $\iff f$ es continua en casi todo punto y $|f|$ es integrable.
+\begin{proof}\ 
+\begin{itemize}
+\item $(\implies)$\\
+$f$ integrable $\implies f$ continua en casi todo punto y $f^+,\ f^-$ integrables $\ximplies{\mathrm{por\ prop.\ elem.}}{} f^+ + f^-=|f|$ es integrable.
+\item $(\impliedby)$\\
+$\doubleright{0\leq f^+\leq|f|\ximplies{\mathrm{por\ prop.\ elem.}}{} f^+\mathrm{\ es\ integrable}}{0\leq f^-\leq|f|\ximplies{\mathrm{por\ prop.\ elem.}}{} f^-\mathrm{\ es\ integrable}}\implies f$ es integrable.
+\end{itemize}
+\end{proof}
+\end{proposicion}
+
+
+\begin{observacion} Veamos que se cumple la propiedad de linealidad.\\
+Sean  $\function{f,g}{\R^n}{\R}$ integrables $\implies f+g$ es integrable y $\integral{}{\R^n}f+g=\integral{}{\R^n}f+\integral{}{\R^n}g$
+\begin{proof}\ \\
+Tenemos que $f+g$ es continua en casi todo punto. Además $|f+g|\leq|f|+|g|\implies|f+g|$ integrables$\implies f+g$ integrables.\\
+Ahora veamos que $\integral{}{\R^n}f+g=\integral{}{\R^n}f+\integral{}{\R^n}g$.\\
+$f+g = (f+g)^+-(f+g)^-=f^+-f^-+g^+-g^-\implies (f+g)^++f^-+g^-=(f+g)^-+f^++g^+$\\
+Tenemos ahora que $\integral{}{\R^n}(f+g)^++\integral{}{\R^n}f^-+\integral{}{\R^n}g^-=\integral{}{\R^n}f^++\integral{}{\R^n}g^++\integral{}{\R^n}(f+g)^-\implies\\\implies \integral{}{\R^n}(f+g)^+-\integral{}{\R^n}(f+g)^-=\integral{}{\R^n}f^+-\integral{}{\R^n}f^-+\integral{}{\R^n}g^+-\integral{}{\R^n}g^-\implies\\\implies\integral{}{\R^n}f+g=\integral{}{\R^n}f+\integral{}{\R^n}g$
+\end{proof}
+\end{observacion}
+
+\begin{defi} Sea $A\subset\R^n$ y sean $\sucesionelement{f_n}{n}$ y $f$ funciones reales definidas en $A$, diremos que $\sucesionelement{f_n}{n}$ \underline{converge uniformemente} a $f$ en $A$ si:
+\[\forall\varepsilon>0\ \exists n_\varepsilon\in\N\talque\forall n\geq n_\varepsilon\ |f_n(x)-f(x)|<\varepsilon\ \forall x\in A\]
+Nótese que la definición de convergencia puntual es:
+\[\forall x\in A,\ \forall\varepsilon>0\ \exists n_{\varepsilon,x}\in\N\talque\forall n\geq n_{\varepsilon,x}\ |f_n(x)-f(x)|<\varepsilon\]
+Luego es claro ver que convergencia uniforme $\implies$ convergencia puntual.
+\end{defi}
+
+\begin{proposicion} Si $\{f_n\}\limited f$ uniformemente en $A$ y $f_n$ continua en $A\ \forall n\in\N$, entonces $f$ es continua en $A$.
+\begin{observacion}
+\end{observacion} Como consecuencia de la proposición, $x^n$ no converge uniformemente en $[0,1]$ ya que $x^n$ es continua en $[0,1]\ \forall n\in\N$ pero el límite no lo es.
+\end{proposicion}
+
+\begin{teor} Sea $A\subset\R^n$ medible-Jordan, $\sucesionelement{f_n}{n}$ y $f$ funciones reales definidas en $A$. Supongamos que $\sucesionelement{f_n}{n}$ converge uniformemente a $f$ en $A$ y que $f_n$ es integrable $\forall n\in\N$. Entonces $f$ es integrable y:
+\[\limite{}{\ntiende}\integral{}{A}f_n=\integral{}{A}f\]
+\end{teor}
+
+\begin{teor} Sea $\function{f}{[a,b]\times[c,d]}{\R}$ continua, definimos:\\
+$F(x)=\integral{d}{c}f(x,y)dy$ (es decir $\function{F}{[a,b]}{\R}$).\\
+Entonces $F$ es continua en $[a,b]$.
+\begin{nota} Podemos sustituir $\function{f}{[a,b]\times[c,d]}{\R}$ por $\function{f}{K\times K_0}{\R}$ con $K\in \R^m$ compacto y medible-Jordan y $K_0\in\R^n$ compacto.
+\end{nota}
+\begin{proof} \ \\
+Supongamos que se cumple la hipótesis. ¿$F$ es continua en $[a,b]$?\\
+Sea $\sucesion{x}{n}\subset[a,b]\talque x_n\limited x_0$ comprobemos que $F(x_n)\limited F(x_0)$.\\
+$\limite{F(x_n)}{\ntiende}=\limite{}{}$
+\end{proof}
+\end{teor}

@@ -1,0 +1,97 @@
+\chapter[Extremos cond. y variedades diferenciables]{Extremos condicionados y variedades diferenciables}
+\section{Extremos condicionados}
+
+\begin{defi} Sea $D\subset\R^n$, sea $\function{f}{D}{\R}$ y sea $M\subset D$. Diremos que $p\in M$ es punto de extremo relativo de $f$ condicionado a $M$ si es punto de extremo relativo de $f|_{_M}$; Es decir, $\exists r>0$ tal que, bien $f(p)\leq f(x)\ \forall x\in M\cap B(p,r)$, o bien $f(p)\geq f(x)\ \forall x\in M\cap B(p,r)$.
+\end{defi}
+
+\begin{defi} Sea $U\subset\R^n$ abierto y sea $\function{f}{U}{\R^m}$ de clase $C^1$ en $U$. Diremos que $a\in U$ es punto regular de $f$ si $\rg(J_f(a))$ es máximo.
+\end{defi}
+
+\begin{observacion} Si $n>m$, que $a$ sea punto regular de $f$ se simplifica que $\rg(J_f(a))=m$. Como $J_f(a)=\begin{pmatrix}\gradiente f_1(a)\\\gradiente f_2(a)\\\vdots\\\gradiente f_m(a)
+\end{pmatrix}$ esto es equivalente a que los vectores $\gradiente f_1(a),\gradiente f_2(a),...,\gradiente f_m(a)$ sean linealmente independientes.\\
+En cambio, si $n<m$, como $J_f(a)=\begin{pmatrix}D_1f_1(a)&\cdots&D_nf_1(a)\\\vdots&\ddots&\vdots\\ D_1f_m(a)&\cdots &D_nf_m(a)\end{pmatrix}$, entonces son los vectores columna los que han de ser linealmente independientes.\\
+Diremos que $f$ es regular en $U$ si $f\in C^1(U)\y\rg(J_f(x))$ es máximo $\forall x\in U$.
+\end{observacion}
+
+\section{Variedades diferenciables}
+
+\begin{observacion} Sea $U\in\R^n$ abierto. Si $\function{f}{U}{\R^m}$ es regular en $U\y n>m$ el conjunto $M=\{x\in U\talque F(x)=\overline{0}\}=\stackbin[i=1]{m}\bigcap\{x\in U\talque F_i(x)=0\}$. Cada $\{x\in U\talque F_i(x)=0\}$ es un conjunto de nivel de la función $\function{F_i}{U}{\R}$. Por tanto, si $p\in U\y \gradiente F_i(p)$ es ortogonal a $\{x\in U\talque F_i(x)=0\}$, el hiperplano tangente a este conjunto en $p$ es el que pasa por $p$ y tiene vector ortogonal $\gradiente F_i(p)$. Entonces, el espacio afín tangente a $M$ en $p$ es la intersección de los hiperplanos tangentes anteriores; Es decir, sea $H_i$ el hiperplano tangente a cada conjunto $\{x\in U\talque F_i(x)=0\}$ en $p$, el espacio afín tangente a $M$ en $p$ sería $\stackbin[i=1]{m}\bigcap H_i$.
+\end{observacion}
+
+\begin{defi} Sea $M\subset\R^n$. Diremos que $M$ es una variedad diferenciable o variedad regular de dimensión $k<n$ si se cumple alguna de las siguientes condiciones equivalentes:
+\begin{enumerate}[1)]
+\item $\forall p\in M,\ \exists W\subset\R^n$ entorno abierto de $p\y\exists\function{F}{W}{\R^m}$ con $m=n-k$ regular, tal que $M\cap W=\left\{x\in W\talque F(x)=\overline{0}\right\}$.
+\item $\forall p\in M,\ \exists W\subset\R^n$ entorno abierto de $p=(\overset{a}{\overbrace{p_1,p_2,...p_k}},\overset{b}{\overbrace{p_{k+1},...,p_n}}),\ \exists V\in\R^k$ entorno abierto de $a\y\exists\function{g}{V}{\R^m},\ g\in C^1(V)$ tal que $M\cap W=\{(x,g(x))\talque x\in V\}$ (salvo permutación de variables).
+\item $\forall p\in M,\ \exists W\subset\R^n$ entorno abierto de $p$ tal que $M\cap W$ admite una parametrización regular; Esto es, $\exists G\subset\R^k$ abierto y $\exists\function{\varphi}{G}{\R^n}$ regular tal que $\varphi(G)=M\cap W\y\\
+i\circ\function{\varphi}{G}{M\cap W}$ es homeomorfismo.
+\end{enumerate}
+\begin{nota}El \textit{teorema de la función inversa} y el \textit{teorema de la función implícita} nos dicen que las anteriores condiciones son equivalentes.\end{nota}
+\end{defi}
+
+\begin{ejem} \ 
+\begin{itemize}
+\item Son variedades regulares de dimensión 1 (curvas regulares) las circunferencias, elipses, parábolas y gráficas de $\function{f}{I}{\R}$ con $f\in C^1(I)$ e $I$ intervalo abierto.
+\item La hélice $\varphi(t)=(\cos t,\sin t, t)$.
+\item Son variedades regulares de dimensión 2 (superficies regulares) la esfera unidad, los elipsoides y las gráficas de $\function{f}{U}{\R}$ con $f\in C^1(U)\y U\subset\R^2$ abierto.
+\item $M=\{(x,y,z)\in\R^3\talque z^2=x^2+y^2\}$ (conos con vértice común en $(0,0,0)$) no es una variedad regular, pero $M\setminus\{(0,0,0)\}$ sí lo es.
+\end{itemize}
+\end{ejem}
+
+\begin{proposicion} Sea $\function{F}{U}{\R^m}$ con $U\subset\R^n$ abierto y $n>m$. Si $F$ es regular en $U$ (esto es, $F\in C^1(U)\y\rg(J_f(x))$ es máximo, o sea $m$, $\forall x\in U$), entonces $M=\{x\in U\talque F(x)=\overline{0}\}$ es variedad regular.
+\end{proposicion}
+
+\begin{ejem} Sea $F(x,y,z)=x^2+y^2+z^2-1$.\\
+Tenemos que $F\in C^\infty(\R^3)$. Tenemos además que $J_f(x,y,z)=\begin{pmatrix}2x&2y&2z\end{pmatrix}$ luego\\
+$\rg(J_f(x,y,z))\neq 1$ (máximo) $\iff (x,y,z)=(0,0,0)$. Por lo que tenemos que $F$ es regular en $\R^3\setminus\{(0,0,0)\}$. Por último, por la proposición anterior, tenemos que $M=\{(x,y,z)\talque F(x,y,z)=0\}\subset\R^3\setminus\{(0,0,0)\}$ es una variedad regular de dimensión $3-1=2$.
+\end{ejem}
+
+\begin{proposicion} Veamos un caso particular de la proposición anterior:\\
+Sea $\function{F}{U}{\R^m}$ con $U\subset\R^n abierto\y n>m$ y $F\in C^1(U)$. Sea $M=x\in U\talque F(x)=\overline{0}\}$, entonces, si cada $p\in M$ es punto regular de $F$, tenemos que $M$ es variedad regular de dimensión $n-m$.
+\end{proposicion}
+
+\begin{ejem} Sea $\function{f}{V}{\R^m}$ con $V\subset\R^k$ abierto y $\in C^1(V)$, entonces su gráfica $M=\{(x,f(x,)\talque x\in V\}\subset\R^{k+m}$ es una variedad regular de dimensión $k$.\\
+En efecto, definamos $\xfunction{F}{V\times\R^m}{\R^m}{(x,y)\to(y-f(x))}$\\
+Tenemos que $V\times\R^m$ es abierto en $\R^{k+m}$, $F\in C^1(V\times\R^m)\y\\
+M=\{(x,y)\in V\times\R^m\talque F(x,y)=0\}$. Además si $(x,y)\in V\times\R^m$, tenemos:\\
+$J_f(x,y)=\begin{pmatrix}-D_1f1(x)&-D_2f_1(x)&\cdots&-D_kf_1(x)&1&0&\cdots&0\\
+-D_1f2(x)&-D_2f_2(x)&\cdots&-D_kf_2(x)&0&1&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+-D_1fm(x)&-D_2f_m(x)&\cdots&-D_kf_m(x)&0&0&\cdots&1\\\end{pmatrix}$ y por tanto\\
+$\rg(J_f(x,y))=m\ \forall(x,y)\in V\times\R^m$.
+\end{ejem}
+
+\begin{ejem} Sea $f(x,y)=x^2+y^2\ \forall (x,y)\in\R^2$, tenemos que ``gráfica de $f$''$:=\\
+=\{(x,y,f(x,y))\talque (x,y)\in\R^2\}=\{(x,y,f(x,y))\talque (x,y)\in\R^2\}=\\
+=\{(x,y,z)\in\R^3\talque z=x^2+y^2\}$, que es una paraboloide y es una variedad regular de dimensión 2.
+\end{ejem}
+
+\begin{ejem} Sea $M\subset\R^n$ es una variedad regular de dimensión $k<n\y M=\{x\in U\talque F(x)=0\}$ con $U\subset\R^n$ abierto y $\function{F}{U}{\R^m}$ regular en $U$ (donde $m=n-k$).\\
+Fijado $p\in M$, como $\rg J_f(p)=m$, por el \textit{teorema de la función implícita} la ecuación $F(x)=0$ define a sus variables (que suponemos sin pérdida de generalidad que son las últimas) como función implícita de las $k$ primeras en un entorno de $p=(p_1,p_2,...,p_k,p_{k+1},...,p_{k+m})$; Es decir, $\exists W$ entorno abierto de $p,\ \exists V$ entorno abierto de $a\y\exists! \function{f}{V}{\R^m},\ f\in C^1(V)$ tal que $F(\oversim{x},f(\oversim{x}))=0\ \forall\oversim{x}=(x_1,x_2,...,x_k)\in V\y f(a)=b$.\\
+Si definimos $\xfunction{\Phi}{V}{\R^{k+m=n}}{\oversim{x}\to(\oversim{x},f(\oversim{x}))}$, tenemos que $\Phi$ es parametrización regular de $M\cap W$ pues $\phi(V)=\{(\oversim{x},f(\oversim{x}))\talque\oversim{x}\in V\}=M\cap W$. Por último vemos que $\Phi\in C^1(V),\ \Phi$ es regular en $V\y \function{\Phi}{V}{M\cap W}$ es homeomorfismo.
+\end{ejem}
+
+\begin{observacion} Si $M\subset\R^n$ es variedad regular de dimensión $k<n\implies M\cap G$ es variedad regular de dimensión $k$ si $G$ es abierto de $\R^n$ con $M\cap G\neq\vacio$
+\end{observacion}
+
+\section{Teorema de multiplicación de Lagrange}
+
+\begin{teor} Sea $U\subset\R^n$ abierto, sea $\function{f}{U}{\R}$ de $C^1$ en $U$ y sea $M\in U$ variedad regular de dimensión $k<n$. Si $M=\{x\in U\talque F(x)=\overline{0}\}$ para una cierta función $\function{F}{U}{\R^{n-k}}$ regular en $U$, entonces, una condición necesaria para que un punto $p\in M$ sea punto de extremo relativo condicionado de $f$ en $M$ es que \\
+$\gradiente f(p)\in [\{\gradiente F_1(p),\gradiente F_2(p),...,\gradiente F_m(p)\}]$ (espacio vectorial engendrado por estos vectores); Es decir, $\exists \lambda_1,\lambda_2,...\lambda_m\in\R$ tal que $\gradiente f(p)=\stackbin[i=1]{m}\sum\lambda_i\gradiente F_i(p)$. A estos $\lambda_i$ se les llama \textit{multiplicadores de Lagrange}.
+\end{teor}
+
+\begin{proof}\ \\
+Como $p$ es un punto de extremo relativo condicionado de $f$ (supongamos que $p$ es punto de máximo relativo condicionado)$\y p\in M$ es variedad regular, $\exists W\subset U,\ W$ entorno abierto de $p=(\overset{a}{\overbrace{p_1,p_2,...,p_k}},\overset{b}{\overbrace{p_{k+1},...,p_{k+m}}})=(a,b),\ \exists V$ entorno abierto de $a\y\exists!\function{g}{V}{\R^m}$ con $g\in C^1(V)$ tal que $f(x,y)\leq f(p)\ \forall (x,y)\in W\cap M$, donde $W\cap M=\{(x,g(x))\talque x\in V\}$. Tenemos así que $g(a)=b\y F(x,g(x))=0\ \forall x\in V$.\\
+Así la función $\xfunction{\Phi}{V}{\R^n}{x\to(x,g(x))}$ es una parametrización regular de $M\cap W$. Tenemos\\
+$f(x,y)\leq f(p)\ \forall (x,y)\in M\cap W\iff f(\Phi(x))\leq f(\Phi(a))\ \forall x\in V\iff a$ es un punto de máximo relativo de $f\circ\Phi$ (que es $C^1(U)$), luego $\gradiente f\circ\Phi(a)=0\iff\overline{0}=J_{f\circ\Phi}(a)=\\=J_f(\Phi(a))J_\Phi(a)=\begin{pmatrix}D_1f(p)&D_2f(p),...,D_nf(p)\end{pmatrix}\begin{pmatrix}D_1\Phi_1(a)&\cdots&D_k\Phi_1(a)\\D_1\Phi_2(a)&\cdots&D_k\Phi_2(a)\\\vdots&\ddots&\vdots\\D_1\Phi_n(a)&\cdots&D_k\Phi_n(a)\end{pmatrix}$.\\
+Esto nos dice que $\gradiente f(p)$ es ortogonal a los vectores columna de $J_\phi(a)$ (que son $k-$vectores lienealmente independientes).\\
+Ahora, como $F(x,g(x))=0\ \forall x\in V$ ($V$ entorno abierto de $a$), esto es, $(F\circ\Phi)(x)=0\ \forall x\in V$. Luego, $\overline{0}=J_{F\circ\Phi}(a)=J_F(\Phi(a))J_\Phi(a)=\\
+=\begin{pmatrix}D_1F_1(p)&D_2F_1(p)&\cdots&D_nF_1(p)\\\vdots&\vdots&\ddots&\vdots\\D_1F_m(p)&D_2F_m(p)&\cdots&D_nF_m(p)\end{pmatrix}\begin{pmatrix}D_1\Phi_1(a)&\cdots&D_k\Phi_1(a)\\D_1\Phi_2(a)&\cdots&D_k\Phi_2(a)\\\vdots&\ddots&\vdots\\D_1\Phi_n(a)&\cdots&D_k\Phi_n(a)\end{pmatrix}$\\
+Por tanto los vectores $\gradiente F_1(p),\gradiente F_2(p),...,\gradiente F_m(p)$ son ortogonales a los vectores columnas de la matriz $J_\phi(a)$. Estos últimos vectores son linealmente independientes (pues $\Phi$ es regular) y si llamamos $E$ al subespacio vectorial engendrado por ellos, tenemos que $\gradiente f(p),\gradiente F_1(p),...,\gradiente F_m(p)\in E^\perp$. Como dim$(E^\perp)=n-k=m$ y los vectores\\$\gradiente F_1(p),...,\gradiente F_m(p)\in E^\perp$ son linealmente independientes (pues $p$ es punto regular de $F$), tenemos que $\gradiente f(p)\in [\{\gradiente F_1(p),...,\gradiente F_m(p)\}]=E^\perp$.
+\end{proof}
+
+\begin{nota} A los puntos $p\in M$ tales que $\exists\lambda_1,...,\lambda_m\in\R$ con $\gradiente f(p)=\stackbin[i=1]{m}\sum\lambda_i\gradiente F_i(p)$ se les llama puntos críticos condicionados de $f$ en $M$.\\
+
+Si $p$ es punto crítico condicionado de $f$ en $M$, las condiciones suficientes para determinar si es punto de máximo (o mínimo) relativo condicionado nos las da el estudio de la matriz \textit{hessiana} de $f\circ \Phi$ en $p$ (donde $\Phi$ es parametrización regular de $M$ en un entorno de $p$).\\
+
+Si $f$ es continua en $K$ compacto ($K\subset\R^n,\ \function{f}{K}{\R}$), sabemos que $f$ alcanza el máximo y el mínimo en $K$. Supongamos que $f\in C^1(U)$ con $U\subset\R^n$ abierto y $K\subset U$, entonces los puntos de extremo absoluto de $f$ en $K$ se encuentran entre los puntos críticos de $f$ en $\mathring{K}$ y los puntos de extremo condicionados de $f$ en Fr$(K)$.
+\end{nota}

@@ -1,0 +1,29 @@
+\section{Algoritmos push–relabel y  relabel-to-front}
+En esta última sección vamos a ver, sin profundizar, unos algoritmos con mejores costes que los vistos anteriormente.
+El algoritmo \textit{push–relabel} trabaja en $\mathcal{O}(V^2E)$ mejorando el $\mathcal{O}(VE^2)$ del algoritmo \textit{Edmonds-Karp} (recordemos que en general el cardinal de $V$ es mucho menor que el cardinal de $E$). Veremos también el algoritmo \textit{relabel-to-front}, variación de \textit{push–relabel} con mejor coste: $\mathcal{O}(V^3)$.
+\subsection{Algoritmo push–relabel}
+En este algoritmo no son válidas algunas de las definiciones dadas en la \textit{Sección 1}. Para empezar, sustituimos la función de flujo por la siguiente.
+
+\begin{defi} Definimos la función \textbf{preflujo} como $\function{f}{V\times V}{\R}$ que cumple:
+\begin{itemize}
+\item $\forall u\in V\setminus\{s\}$ tenemos que $\stackbin[v\in V]{}\sum f(v,u)-\stackbin[v\in V]{}\sum f(u,v) \geq 0$.
+\end{itemize}
+
+Definimos como \textbf{exceso de flujo} al valor $e(u)=\stackbin[v\in V]{}\sum f(v,u)-\stackbin[v\in V]{}\sum f(u,v)$. Decimos que un vértice $u\in V\setminus\{s,t\}$ está \textbf{desbordado} si $e(u)>0$.
+\end{defi}
+
+\begin{defi} Sea un preflujo $f$ sobre una red de flujo $G(V,E)$, definimos \textbf{función de peso} o \textbf{función de distancia} como $\function{h}{V}{\N}$ que cumple:
+\begin{itemize}
+\item $h(s) = \card(V)$.
+\item $h(t) = 0$.
+\item $h(u)\leq h(v) + 1$ para toda arista residual $(u,v)\in E_f$. Luego si $h(u) > h(v) +1\implies\\\implies (u,v)\notin E_f$.
+\end{itemize}
+\end{defi}
+
+No entraremos más en detalle acerca de este algoritmo, procederemos a explicar la intuición del mismo.
+
+El algoritmo trata el problema vértice a vértice trabajando con sus vecinos en lugar de con todo el grafo. El objetivo es llevar la mayor cantidad posible de flujo de un vértice a sus vecinos, de ahí que pueda producirse el desbordamiento de flujo en cada iteración. Siempre llevamos flujo de vértices con ``pesos'' más altos a ``pesos'' más bajos (``cuesta abajo''), es decir, según el valor de $h$ en dos determinados vértices llevamos flujo de uno a otro o no. A esta operación se le denomina \textbf{empuje} (\textit{push}). Cuando no tenemos vértices con pesos más bajos a los que llevar flujo entra en juego la operación de \textbf{reetiquetado} (\textit{relabel}), consistente en aumentar el peso del vértice en el que nos encontramos, y comenzamos de nuevo nuestra operación de empuje.
+
+\subsection{Algoritmo relabel-to-front}
+
+Este algoritmo es una variante de \textit{push–relabel}. En este caso, en lugar de un recorrido vértice a vértice, poseemos una lista enlazada con los vértices de la red ordenados por su admisión de flujo. El método recorre la lista y realiza la operación de empuje sobre los nodos con desbordamiento. Si un nodo es reetiquetado, se mueve al principio de la lista y comenzamos a recorrer de nuevo la lista desde el principio.

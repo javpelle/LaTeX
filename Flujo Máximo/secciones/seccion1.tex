@@ -1,0 +1,55 @@
+\section{Introducción}
+Cuando hablamos del flujo máximo de una red de flujo, estamos tratando el campo que busca la optimización de la afluencia entre vértices de un grafo, de manera que uno o varios nodos denominados sumideros reciba la mayor cantidad de dicha afluencia siempre de acuerdo a unas restricciones de capacidad entre los nodos del grafo. Es decir, limitando la capacidad de transporte de las aristas.\\
+
+En definitiva, nos son dados unos vértices conectados o no por aristas a las que queremos asignar valores de flujo maximizando la recepción de ``mercancía'' de los vértices o nodos sumideros desde unos vértices iniciales a los que denominaremos fuentes.
+
+\begin{defi} A continuación, definiremos una red de flujo, pues no es equivalente a un grafo cualquiera, sino que tiene unos requisitos muy concretos.
+\begin{enumerate}[1)]
+\item Una red de flujo es un \textbf{grafo dirigido} $G = (V,E)$ que cumple que para cada arista $(u,v)\in E$, su capacidad es mayor o igual que cero ($c(u,v) \geq 0$). Denotamos dicha propiedad como de \textbf{no negatividad}. Además, si $(u,v)\in E$ tenemos que $(v,u)\notin E$. Cabe destacar que normalizamos $c(u,v) = 0,\ \forall (u,v)\notin E$.
+\item Definimos dos nodos fundamentales, el nodo \textbf{fuente} ($s$) y el nodo \textbf{sumidero} (t). Entre estos dos vértices existe al menos un camino formado por el resto de nodos de $V$; es más, para cada par de vértices de $V$ existe al menos un camino que los conecta: tenemos que el grafo $G$ es \textbf{conexo}. Por ser $G$ conexo obtenemos el resultado $\card(E)\geq \card(V)-1$, puesto que necesitamos al menos $n - 1$ aristas para unir todos los vértices de un grafo de $n$ componentes.\\  
+El nodo fuente $s$ solo tiene aristas salientes, por lo que si $(u,v)\in E \implies v\neq s$, mientras que el nodo sumidero $t$ solo tiene aristas entrantes, así que si $(u,v)\in E \implies u\neq t$.
+\item Definimos la \textbf{función de flujo} $\function{f}{V\times V}{\R}$ sobre el grafo $G$ que cumple:
+\begin{itemize}
+\item Para todo $u, v\in V$, se cumple que $0\leq f(u,v)\leq c(u,v)$. A esta propiedad la denominamos \textbf{restricción de capacidad}.
+\item Si una arista $(u,v)\notin E$, entonces su función de flujo es $f(u,v)=0$.
+\item Para todo $u\in V\setminus\{s,t\}$, tenemos que $\stackbin[v\in V]{}\sum f(v,u) = \stackbin[v\in V]{}\sum f(u,v)$; es decir, el flujo entrante en un nodo distinto de la fuente y el sumidero es el mismo que el flujo saliente. A esta propiedad la denominamos \textbf{conservación de flujo}.
+\item Además, denotamos el valor $|f|= \stackbin[v\in V]{}\sum f(s,v)- \stackbin[v\in V]{}\sum f(v,s)$. $|f|$ es la diferencia entre el flujo saliente y el entrante de la fuente ($|\cdot|$ no denota ni cardinalidad ni valor absoluto). Aunque, en general, no tenemos aristas dirigidas hacia la fuente $\left(\stackbin[v\in V]{}\sum f(v,s)= 0\right)$, lo incluimos porque en ocasiones podemos tener redes residuales en las que el flujo dirigido a la fuente puede ser significante. Es importante destacar que $|f|= \stackbin[v\in V]{}\sum f(v,t)- \stackbin[v\in V]{}\sum f(t,v)$. Este resultado es evidente, puesto que tenemos que los vértices intermedios (distintos de $s\y t$) tienen mismo flujo saliente que entrante, por lo tanto el flujo saliente de la fuente debe ser el mismo que el entrante en el sumidero.
+\end{itemize}
+\end{enumerate}
+\end{defi}
+
+\begin{ejem} Veamos a continuación un ejemplo de red de flujo.\\
+El grafo representado en la \textbf{Figura 1.1} se identifica con un problema de flujo máximo, donde cada arista dirigida contempla dos números. El primero de ellos se identifica con la función de flujo en $(u,v)$, es decir, $f(u,v)$; mientras que el segundo con la capacidad, $c(u,v)$.
+
+Podemos ver que se cumplen las propiedades de \textit{restricción de capacidad} y de \textit{conservación de flujo}.
+\begin{figura}\ \begin{center}\input{figuras/figura1.1.tex}\end{center}\end{figura}
+
+En particular, $0\leq f(u,v)\leq c(u,v)\ \forall (u,v)\in E$, y además, analizando\\
+$\{v_1,v_2,v_3,v_4\}=V\setminus \{s,t\}$ tenemos:
+\begin{itemize}
+\item En $v_1$ tenemos la arista saliente $(v_1,v_3)$ y las entrantes $(s,v_1)\y(v_2,v_1)$ que cumplen $f(v_1,v_3)=12 = f(s,v_1)+f(v_2,v_1)$.
+\item En $v_2$ tenemos las aristas salientes $(v_2,v_1)\y(v_2,v_4)$ y las entrantes $(s,v_2)\y(v_3,v_2)$ que cumplen
+$f(v_2,v_1)+f(v_2,v_4)=12=f(s,v_2)+f(v_3,v_2)$.
+\item En $v_3$ tenemos las aristas salientes $(v_3,t)\y(v_3,v_2)$ y las entrantes $(v_1,v_3)\y(v_4,v_3)$ que cumplen
+$f(v_3,t)+f(v_3,v_2)=19=f(v_1,v_3)+f(v_4,v_3)$.
+\item En $v_4$ tenemos las aristas salientes $(v_4,v_3)\y(v_4,t)$ y la entrante $(v_2,v_4)$ que cumplen
+$f(v_4,v_3)+f(v_4,t)=11=f(v_2,v_4)$.
+\end{itemize}
+Por último señalamos que $|f| = 19$.
+\end{ejem}
+
+Para finalizar esta introducción plantearemos un problema basado en la \textbf{Figura 1.1}.\\
+
+\begin{ejem} Los regantes murcianos, aquejados de su continua sequía, no tienen con qué regar sus preciados latifundios y campos de golf en medio del árido desierto. Para resolver este problema deciden robar ingentes cantidades de agua a la humilde población castellano-manchega. El embalse de Buendía, situado entre Cuenca y Guadalajara y de gran capacidad aunque muy mermado por los constantes saqueos murcianos, parece un lugar ideal del que abastecerse. Para hacer llegar el agua a las calurosas tierras murcianas se dispone de diversos embalses y pantanos conectados por trasvases cuyos caudales diarios en cierta unidad son conocidos. Además tenemos las siguientes conexiones:
+\begin{itemize}
+\item Buendía está conectado a los embalses de Entrepeñas y Beleña.
+\item A su vez, Entrepeñas puede mandar agua exclusivamente al pantano de Alarcón.
+\item Beleña puede enviar agua a Entrepeñas y al embalse de la Fuensanta.
+\item Alarcón tiene trasvases hacia Beleña y hasta el destino final: Valdeinfierno (Murcia).
+\item Por último, el embalse de la Fuensanta envía agua a Alarcón y a Valdeinfierno.
+\end{itemize}
+En la \textbf{Figura 1.2} están representados los embalses y pantanos, los trasvases y los caudales de los mismos. En las siguientes secciones contemplaremos algoritmos que maximizan la solución a estos problemas, es decir, nos permitirán calcular cuál es el caudal máximo diario que puede llegar a Murcia. Adelantamos que la solución máxima a este problema (que no es complicado calcular ``a ojo'') es:\\
+$f(s,v_1)=12,\ f(s,v_2) = 11,\ f(v_1, v_3) = 12,\ f(v_2,v_1) = 0,\ f(v_2,v_4) = 11,\ f(v_3,v_2)=0,\\
+f(v_3,t)=19,f(v_4,v_3)=7\y f(v_4,t)=4$. Por lo que podemos llevar a Murcia un máximo de 23 unidades de agua diarias.
+\begin{figura}\ \begin{center}\input{figuras/figura1.2.tex}\end{center}\end{figura}
+\end{ejem}

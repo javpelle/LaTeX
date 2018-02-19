@@ -1,0 +1,16 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}
+\contentsline {section}{\numberline {2}Modelaci\IeC {\'o}n de problemas de flujo}{5}
+\contentsline {subsection}{\numberline {2.1}Modelaci\IeC {\'o}n de redes con aristas antiparalelas}{5}
+\contentsline {subsection}{\numberline {2.2}Modelaci\IeC {\'o}n de redes con m\IeC {\'u}ltiples fuentes y sumideros}{6}
+\contentsline {section}{\numberline {3}Representaci\IeC {\'o}n de una red de flujo como problema de programaci\IeC {\'o}n lineal}{7}
+\contentsline {section}{\numberline {4}El m\IeC {\'e}todo Ford-Fulkerson}{9}
+\contentsline {subsection}{\numberline {4.1}Red residual y funci\IeC {\'o}n de aumento de flujo}{9}
+\contentsline {subsection}{\numberline {4.2}Cadenas de aumento y cortes}{10}
+\contentsline {subsection}{\numberline {4.3}Teorema del flujo m\IeC {\'a}ximo y corte m\IeC {\'\i }nimo}{14}
+\contentsline {subsection}{\numberline {4.4}Implementaci\IeC {\'o}n en pseudoc\IeC {\'o}digo del m\IeC {\'e}todo Ford-Fulkerson y complejidad}{15}
+\contentsline {section}{\numberline {5}Algoritmo de Edmonds-Karp}{16}
+\contentsline {section}{\numberline {6}Algoritmos push\IeC {\textendash }relabel y relabel-to-front}{17}
+\contentsline {subsection}{\numberline {6.1}Algoritmo push\IeC {\textendash }relabel}{17}
+\contentsline {subsection}{\numberline {6.2}Algoritmo relabel-to-front}{18}
+\contentsline {section}{\numberline {7}Bibliograf\IeC {\'\i }a}{18}

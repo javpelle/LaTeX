@@ -1,0 +1,6 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Sistemas lineales de primer orden}{1}
+\contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n. Propiedades de estructura}{1}
+\contentsline {section}{\numberline {1.2}Ecuaciones lineales escalares}{2}
+\contentsline {section}{\numberline {1.3}Teorema de unicidad}{4}
+\contentsline {section}{\numberline {1.4}Variaci\IeC {\'o}n de coeficientes}{9}

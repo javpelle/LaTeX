@@ -1,0 +1,2 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Curvas parametrizadas y longitud de un arco de curva}{1}

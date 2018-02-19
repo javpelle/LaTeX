@@ -1,0 +1,157 @@
+\documentclass[11pt, oneside]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+%--------Codigos para la caligrafia, tipos de letras%---------------
+\usepackage[T1]{fontenc}
+%\usepackage[bitstream-charter]{mathdesign} 
+%\usepackage{textcomp} %Paquete para algunos caracteres especiales
+
+\usepackage{afterpage}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{enumerate}
+\usepackage{stackrel}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{pgfplots}
+\usepackage[toc,page]{appendix}
+\usepackage{graphicx} % graficos
+
+%\renewenvironment{proof}{{\bfseries \ \\\\Demostración}}{\qed} %Demostración en negrita
+
+\newtheorem{teor}{Teorema} % Estilo de texto cursivo
+
+\theoremstyle{definition} % Cambio del estilo de los teoremas a normal
+\newtheorem{proposicion}{\textbf{Proposici\'on}}
+\newtheorem{defi}{\textbf{Definición}}
+\newtheorem{corolario}{Corolario}
+\newtheorem{figura}{Figura}
+\newtheorem*{lema}{Lema}
+\newtheorem*{ejem}{\underline{Ejemplo}}
+\newtheorem*{nota}{Nota}
+\newtheorem*{observacion}{Observación}
+
+\newcommand{\talque}{\mathrm{\ _\shortparallel\ }}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cgot}{\mathcal{C}}
+\newcommand{\dom}{\mathrm{Dom\ }}
+\newcommand{\gradiente}{\bigtriangledown}
+\newcommand{\nimplies}{\centernot\implies}
+\newcommand{\nimpliedby}{\centernot\impliedby}
+\newcommand{\nlongrightarrow}{\centernot\longrightarrow}
+\newcommand{\nsubset}{\centernot\subset}
+\newcommand{\oversim}[1]{\stackbin{_\sim}{#1}}
+\newcommand{\sucesion}[2]{\left\{#1_{#2}\right\}^\infty_{#2 = 1}}
+\newcommand{\sucesionelement}[2]{\left\{#1\right\}^\infty_{#2 = 1}}
+\newcommand{\doubleright}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\	\end{array} 	\right\} }
+\newcommand{\doubleleft}[2]{ \left\{\begin{array}{ll}	#1 \\	#2 \\	 \end{array}	\right. }
+\newcommand{\doubleleftright}[2]{ \left\{\begin{array}{ll}	& #1 \\	& #2 \\	 \end{array}	\right\}}
+\newcommand{\double}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\	 \end{array}	\right. }	
+\newcommand{\tripleright}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} 	\right\} }
+\newcommand{\triple}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} 	\right. }
+\newcommand{\ximplies}[2]{\stackbin[#2]{#1}\implies}
+\newcommand{\xiff}[2]{\stackbin[#2]{#1}\iff}
+\newcommand{\ximpliedby}[2]{\stackbin[#2]{#1}\impliedby}
+\newcommand{\dotproduct}[2]{<#1,#2>}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\function}[3]{#1\colon #2\longrightarrow #3}
+\newcommand{\xfunction}[4]{\stackbin[#4]{}{#1\colon #2\longrightarrow #3}}
+\newcommand{\limite}[2]{\stackbin[#2]{\ }\lim\ #1}
+\newcommand{\limited}{\stackbin{n\rightarrow\infty}\longrightarrow}
+\newcommand{\xtiende}{x\rightarrow x_0}
+\newcommand{\ntiende}{n\rightarrow\infty}
+\newcommand{\ttiende}{t\rightarrow 0}
+\newcommand{\htiende}{h\rightarrow 0}
+\newcommand{\vacio}{\emptyset}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+
+
+
+\title{C\'alculo Integral}
+
+
+\author{Javier Pellejero Ortega}
+
+\begin{document}
+
+%----------------------------------
+%Inicio portada
+	\begin{titlepage}
+\begin{center}
+\vspace*{+0.75in}
+\textbf{\textsc{\begin{Huge}Matemática discreta\end{Huge}}}
+
+\vspace*{+0.15in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{../imagenes/complu}\\\ \\\ \\
+\textsc{\textbf{\begin{LARGE}Universidad Complutense de Madrid\end{LARGE}}}\\\ \\\ \\\ \\
+\textsc{\begin{Large}Facultad de Informática\end{Large}}\\\ \\
+\textsc{\begin{large}Doble Grado en Matemáticas e Ingeniería Informática\end{large}}
+\end{center}
+\end{figure}
+
+\vspace*{0.35in}
+
+\textsc{\textbf{\begin{large} Javier Pellejero \end{large}}\\}
+Curso 2014-2015
+\end{center}
+\end{titlepage}
+% Fin portada
+%-------------------------------------------------------
+
+\blankpage
+
+\pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
+	\chapter*{}
+\begin{flushright}
+\textit{Aquí va la dedicatoria y/o quote}
+\end{flushright}
+
+	\chapter*{Prefacio}
+	Aquí va el prefacio.
+	
+\mainmatter % Empieza a numerar en números arábigos 
+
+	\tableofcontents
+	
+	\chapter{Introducción a la matemática discreta y a la lógica matemática}
+	\section{Introducción a la lógica Matemática}
+	La lógica nos permite representar ideas de manera formal, mediante una sintaxis, que describe la idea y una semántica, que define el significado de la sintaxis.
+	La lógica formal se usa entre otras cosas para:
+	\begin{itemize}
+	\item Formalizar propiedades del mundo.
+	\item Interpretar; es decir, asociar a enunciados un significado.
+	\item Deducción formal: demostrar que una cierta propiedad es verdadera a partir de unas propiedades anteriores
+	\end{itemize}
+	Veamos a continuación las aplicaciones de la lógica matemática a la informática:
+	\begin{itemize}
+	\item Especificación y verificación de programas.
+	\item Derivación de programas.
+	\item Reducción automática.
+	\item Lógica como paradigma de programación: PROGRAMACIÓN LÓGICA.
+	\item Inteligencia artificial.
+	\end{itemize}
+	Formalizaremos oraciones declarativas (verdaderas o falsas), como por ejemplo \textit{el 3 es primo}, o \textit{todos los números racionales son mayores que 7}.\\
+	Existen también oraciones no declarativas que no son ni verdaderas ni falsas, como por ejemplo \textit{¿llueve?}.
+	\section{Lógica proposicional}
+	Representamos un cierto enunciado representado por un símbolo de porposición $(p,q,r,...)$ que puede evaluarse a dos posibles valores (V o F).\\
+	Símbolos de proposición:\\
+	$\underset{\mathrm{prop.}}p\ |\ \underset{\mathrm{verdad}}T\ |\ \underset{\mathrm{falso}}\perp$
+		
+	
+\end{document}

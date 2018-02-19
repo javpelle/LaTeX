@@ -1,0 +1,30 @@
+\section{Algoritmo de Edmonds-Karp}
+
+En esta sección hablaremos del \textbf{algoritmo de \textit{Edmonds-Karp}} que es una implementación del método \textit{Ford-Fulkerson}. Como acabamos de ver, la complejidad de la implementación anterior depende de $|f|$ y, aunque es esperado que las cadenas de aumento aumenten en varias unidades en cada iteración, es un coste muy caro para flujos máximos muy altos.\\
+
+Por eso surge la necesidad de encontrar una implementación del método que no dependa del tamaño de nuestro máximo, y es aquí donde entra en juego el algoritmo de \textit{Edmonds-Karp}. La implementación de este algoritmo es básicamente como la anterior, sólo que la búsqueda de caminos la realizaremos concretamente con una \textit{búsqueda en anchura} en lugar de una \textit{en profundidad} o  cualquier otra.\\
+
+Esta búsqueda nos arroja el camino \textbf{más corto} de $s$ a $t$ de la red residual $G_f$. Denotaremos por $\delta_f(u,v)$ como la distancia del camino más corto de $u$ a $v$, por lo que la búsqueda en anchura nos proporciona un camino entre $s$ y $t$ con $\delta_f(s,t)$ mínimo.
+
+\begin{proposicion} Sea una red de flujo $G=(V,E)$ y aplicamos \textit{Edmonds-Karp} sobre ella, entonces, para todo vértice $v\in V\setminus\{s,t\}$, el camino más corto de distancia $\delta_f(s,v)$ en la red residual $G_f$ es monótonamente creciente. Es decir, si $\delta_{f'}(s,v)$ es la distancia mínima una vez aplicado el aumento de flujo, entonces $\delta_f(s,v)\leq \delta_{f'}(s,v)$.\\
+
+La proposición parece intuitiva, puesto que las únicas aristas modificadas de la red residual son las del camino más corto, cuya arista con capacidad $c_f(u,v)$ mínima desaparecerá y aparecerán tal vez otras pero en sentido contrario al camino (las que nos sirven para decrementar el flujo de una arista). No desarrollaremos una demostración formal, esta puede consultarse en \textit{Cormen, T., Leiserson, C., Rivest, R. and Stein, C. (2009). Introduction to algorithms}, capítulo 26, página 728.
+\end{proposicion}
+
+Comentemos ahora una proposición más importante, con ella obtendremos que el coste del algoritmo \textit{Edmonds-Karp} está en $\mathcal{O}(VE^2)$.
+
+\begin{proposicion} Sea una red de flujo $G=(V,E)$ y aplicamos \textit{Edmonds-Karp} sobre ella, entonces, el número total de aumentos de flujo está en $\mathcal{O}(VE)$. Por tanto, como el coste de la búsqueda en anchura está en $\mathcal{O}(E)$, el algoritmo \textit{Edmonds-Karp} tiene orden $\mathcal{O}(VE^2)$.
+
+\begin{proof}\ 
+
+Decimos que $(u,v)$ es una \textbf{arista crítica} de $G_f$ en un camino de aumento $p$ si $c_f(p)=c_f(u,v)$. Por cada aumento tenemos al menos una arista crítica que desaparece tras el aumento. Si dicha arista no pudiera reaparecer, entonces el número de aumentos estaría en $\mathcal{O}(E)$, pero, como sabemos, sí que pueden reaparecer siempre que otro camino incluya la arista $(v,u)$. Planteemos esta situación.\\
+
+Sea $(u,v),\ u\neq t$, una arista crítica por primera vez, tenemos que antes del aumento se cumple $\delta_f(s,v)= \delta_f(s,u) + 1$. Tras el aumento de flujo, $(u,v)$ reaparecerá si el flujo en dicha arista decrece, es decir, si $(v,u)$ aparece en un camino de aumento. Sea $f'$ el flujo cuando esto ocurre.\\
+
+Tenemos ahora que $\delta_{f'}(s,u)= \delta_{f'}(s,v) + 1$ y por la \textbf{Proposición 5.1} $\delta_f(s,v) \leq \delta_{f'}(s,v)$. Esto implica que $\delta_{f'}(s,u)= \delta_{f'}(s,v) + 1 \geq \delta_f(s,v) + 1 =\delta_f(s,u) +2$.\\
+
+Esto es que entre desaparición y desaparición (entre que $(u,v)$ es crítica, reaparece y vuelve a ser crítica), la distancia entre $s\y u$ ha aumentado al menos 2. Hemos tomado $u\neq t$, luego al principio, la distancia entre $s\y u$ era al menos cero, mientras que la distancia máxima entre $s$ y un vértice distinto de $t$ es a lo sumo $\card(V) - 2$. Por lo tanto, tras ser crítica una primera vez, puede llegar a serlo $(\card(V) - 2)/2= \card(V)/2 - 1$ veces más, es decir, un total de $\card(V)/2$ veces en total.\\
+
+Puesto que el cardinal de las aristas en una red residual es a lo sumo 2 veces el cardinal de las aristas en la red de flujo ($\card(E_f)\leq 2\cdot\card(E)$), hemos probado que el número de aumentos está en $\mathcal{O}(VE)$ y por tanto \textit{Edmonds-Karp} tiene orden $\mathcal{O}(VE^2)$.
+\end{proof}
+\end{proposicion}

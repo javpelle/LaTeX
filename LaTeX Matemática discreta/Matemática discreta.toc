@@ -1,0 +1,4 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n a la matem\IeC {\'a}tica discreta y a la l\IeC {\'o}gica matem\IeC {\'a}tica}{2}
+\contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n a la l\IeC {\'o}gica Matem\IeC {\'a}tica}{2}
+\contentsline {section}{\numberline {1.2}L\IeC {\'o}gica proposicional}{3}

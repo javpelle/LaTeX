@@ -1,0 +1,46 @@
+\section{Ejemplos introductorios}
+\subsection{Problema de programación lineal de dos incógnitas (en $\R^2$)}
+\begin{ejem} Veamos a continuación un ejemplo de problema de programación lineal.\\
+
+Una empresa fabrica dos tipos de productos: A y B. Los productos A y B generan unos beneficios de 100 y 600 euros respectivamente. La empresa no puede fabricar más de 4 productos diarios y además sólo recibe material suficiente para fabricar a lo sumo 2 productos A y 3 productos B al día. Veamos cuál es el beneficio máximo de la empresa a diario.\\
+
+Planteemos el problema. Tenemos:\\
+Función objetivo:
+\[\mathrm{m\acute{a}x}\ z = 100x_1 + 600x_2\]
+Restricciones:
+\[x_1\leq 2\]
+\[x_2\leq 3\]
+\[x_1+x_2\leq 4\]
+\[x_1,x_2\geq 0\]
+No es difícil darse cuenta que cada restricción define una inecuación lineal en el plano generado por $\R^2$ que a su vez designa una parte del plano que satisface cada inecuación. Luego la región factible de este problema, si la hay, será la intersección de las partes del plano designadas por cada inecuación, como podemos observar en la \textit{figura 2.1}.
+\begin{figura}\ \begin{center} \input{figuras/figura1.tex}\end{center} \end{figura}
+Además, supongamos un valor $c$ fijo tal que $z(x_1,x_2)=c \iff 100x_1+600x_2=c\iff\\
+\iff x_2=\dfrac{c-100x_1}{600}$, luego para cada valor $c$ que puede tomar la función $z$ tenemos otra ecuación lineal que define una recta de nivel. En dicha recta, cada par de puntos $x_1,x_2$ de la misma genera un mismo valor $c$ para nuestra función objetivo. Por lo tanto podemos trazar rectas paralelas para distintos valores de $c$ tal y como se muestra en la \textit{figura 2.2} para intuir cual es el punto donde encontramos la solución óptima (máximo) de nuestra función.
+\newpage
+\begin{figura}\ \begin{center}\input{figuras/figura2.tex}\end{center}\end{figura}
+Luego nuestra solución óptima es producir un producto A y tres productos B.
+\end{ejem}
+
+Como hemos podido observar en el ejemplo anterior, la solución óptima ha sido alcanzada en un vértice del polígono que constituye la región factible. Esto se cumplirá, en general, siempre y cuando exista una solución, lo que denominamos como problema factible, y la región factible sea acotada. Esto es extendible a $n$ variables, en $\R^3$ la solución óptima se correspondería con un vértice del poliedro que constituye la región factible y en $\R^n$ con el politopo $n$-dimensional correspondiente.\\
+
+Y es en esto en lo que consiste el método \textit{Símplex} que comentaremos más adelante, ideado por George Dantzig en 1947. Adelantaremos brevemente explicando que este algoritmo empieza en un vértice de la región factible, en el ejemplo anterior, por ejemplo el $(0,0)$ y continua estudiando los vértices vecinos hasta encontrar uno cuyos vecinos no sean una solución mejor que él. Ese vértice se corresponde con la solución óptima. En la \textit{figura 2.3} podemos ver un esquema iterativo de como actuaría el método \textit{Símplex} en el ejemplo anterior.
+\begin{figura}\ \begin{center} \input{figuras/figura3.tex}\end{center} \end{figura}
+
+\subsection{Problema de programación lineal de tres incógnitas (en $\R^3$)}
+\begin{ejem} Veamos un segundo ejemplo. Imaginemos que la empresa del ejemplo anterior fabrica un nuevo producto C que les genera un beneficio de 1300\euro\ por unidad vendida. Las restricciones anteriores se mantienen: el producto A se limita a 2 unidades diarias, el B a 3, de nuevo sólo podemos fabricar 4 productos diarios y además queremos añadir la restricción $x_2+3x_3\leq 6$. Luego el planteamiento del problema sería el siguiente.\\
+Función objetivo:
+\[\mathrm{m\acute{a}x}\ z = 100x_1 + 600x_2+1300x_3\]
+Restricciones:
+\[x_1\leq 2\]
+\[x_2\leq 3\]
+\[x_1+x_2+x_3\leq 4\]
+\[x_2+3x_3\leq 6\]
+\[x_1,x_2,x_3\geq 0\]
+
+Análogamente al ejercicio anterior, donde cada restricción representaba una recta, tenemos que ahora las restricciones representan un plano y la región factible generada es, como hemos comentado antes, un poliedro, como se muestra en la \textit{figura 2.4}. Así, para $n$ variables, cada restricción representa un hiperplano en $\R^n$ que a su vez generan un politopo $n$-dimensional correspondiente a la región factible.
+
+De igual modo, podemos asignar un valor $c$ de manera que el plano $z(x_1,x_2,x_3)=c$ se corresponde con los puntos $(x_1,x_2,x_3)$ cuyo beneficio es $c$. De nuevo, podríamos trazar distintos planos paralelos para distintos valores de $c$ para intuir cuál es la solución óptima.
+
+Para finalizar, comentamos que para este problema tiene como solución óptima los valores $x_1=0,x_2=3,x_3=1$.
+\begin{figura}\ \begin{center} \input{figuras/figura4.tex}\end{center} \end{figura}
+\end{ejem}

@@ -1,0 +1,208 @@
+\chapter{Teoremas de la función inversa e implícita}
+\section{Teorema de la función inversa}
+
+\begin{teor} Teorema de la función inversa.\\
+	Sea $U\subset\R^n$ abierto, sea $\function{f}{U}{\R^n}$, $f\in C^1(U)$ y sea $a\in U$. Si $\det(J_f(a))\neq 0$, entonces $\exists V$ abierto $\talque a\in V\subset U$ tal que:
+	\begin{enumerate}[1)]
+	\item $f|_{_V}$ es inyectiva y $W:=f(V)$ es un abierto.
+	\item La función $\function{g=(f|_{_V})^{-1}}{W}{V}$ es $C^1$ en $W$.
+	\end{enumerate}
+	Además, si $f\in C^k(U)$, entonces $g\in C^k(W)$.
+	\end{teor}
+	
+	\begin{observacion} Antes de proseguir con la demostración, veamos los siguientes comentarios al respecto.
+	\begin{enumerate}[1)]
+	\item $f\in C^1$ con $\det(J_f(x))\neq 0\ \forall x\in U\nimplies f$ inyectiva en $U$ si $n\geq 2$.
+	\begin{ejem} Sea $f(x,y)=(e^x\cos y,e^x\sen y),\function{f}{\R^2}{\R^2},\ f\in C^\infty(\R^2)$.\\
+	$J_f(x,y)=\begin{pmatrix}e^x\cos y&-e^x\sen y\\e^x\sen y&e^x\cos y\end{pmatrix}\implies\det(J_f(x,y))=e^{2x}>0\ \forall(x,y)\in\R^2$.\\
+	Pero $f$ no es inyectiva pues $f(0,0)=f(0,2\pi)=(1,0)$.
+	\end{ejem}
+	\item Por la \textit{regla de la cadena}, como $(g\circ f)(x)=x\ \forall x\in V\y f$ es diferenciable en $a$ y $g$ es diferenciable en $f(a)$, tenemos que:\\
+	$\mathrm{id}=d(g\circ f)(a)=dg(f(a))\circ df(a)\implies dg(f(a))=(df(a))^{-1}\y J_g(f(a))=(J_f(a))^{-1}$.
+	\item Es necesario que $f$ sea $C^1$, no es suficiente con que sea sólo diferenciable.
+	\begin{ejem} En $\R$ hay funciones con derivada positiva en un punto que no son inyectivas en ningún entorno de ese punto.\\
+	En $f(x)=\doubleleft{\frac{x}{2}+x^2\sen\frac{1}{x},\ \ \ \mathrm{si\ }x\neq 0}{0,\ \ \ \mathrm{si\ }x= 0}$ es derivable en $x=0\y f'(0)=\frac{1}{2}$, pero $\nexists r>0\talque f$ sea inyectiva en $(-r,r)$.
+	\end{ejem}
+	\end{enumerate}
+	\end{observacion}
+	
+	\begin{proof} Demostración del \textit{teorema de la función inversa}.
+	Lo haremos en 4 pasos, dividiéndolo en las siguientes proposiciones.
+	\begin{enumerate}[1)]
+	\item $\exists V$ entorno abierto de $a$ tal que $f|_{_V}$ es inyectiva y $\det(J_f(x))\neq 0\ \forall x\in V$.
+	\item $W:=f(V)$ es abierto.
+	\item $\function{g:=(f|_{_V})^{-1}}{W}{V}$ es diferenciable en $W$.
+	\item $g\in C^k(W)$ siempre que $f\in C^k(U)$.
+	\end{enumerate}
+	\begin{proposicioni} Sea $U\subset\R^n$ abierto,\\
+	sea $\function{f}{U}{\R^n},\ f\in C^1(U)$ y sea $a\in U\talque \det (J_f(a))\neq 0$. Entonces $\exists V\subset U$ entorno abierto de $a$ tal que $f|_{_V}$ es inyectiva y $\det(J_f(x))\neq 0\ \forall x\in V$.
+	\begin{proof}\ \\
+	La aplicación $\xfunction{\Phi}{U}{\R}{x\to\det(J_f(x))}$ es una función continua en $U$. Como $\Phi(a)\neq 0,\ \exists r_0>0\talque \Phi(x)\neq 0\\
+	\forall x\in B(a,r_0)$.\\
+	$f\in C^1(U)\implies f$ es diferenciable en $U\y \function{df}{U}{\mathfrak{L}(\R^n,\R^n)}$ es continua.\\
+	Como $\det(J_f(a))\neq 0\implies \function{df(a)}{\R^n}{\R^n}$ es invertible. Llamemos $L=df(a)$.\\
+	Consideremos la función $\varphi(x)=f(x)-f(a)-L(x-a)\ \forall x\in U$. Tenemos que $\varphi(x)=\\
+	=f(x)-f(a)-L(x)+L(a)=f(x)-L(x)+\cte\ \forall x\in U$.\\
+	Como $\varphi\in C^1(U)\implies d\varphi(x)=df(x)-(dL)(x)=df(x)-L\ \forall x\in U$. En particular $d\varphi(a)=df(a)-L=L-L=0$. Tenemos ahora:\\
+	$\doubleright{\varphi(x)=f(x)-f(a)-L(x-a)}{\varphi(y)=f(y)-f(a)-L(y-a)}\implies\varphi(x)-\varphi(y)=f(x)-f(y)-L(x-y)\implies\\
+	\implies f(x)-f(y)=\varphi(x)-\varphi(y)+L(x-a)$.\\
+	Como $d\varphi$ es continua en $a$, para $\varepsilon_0=\dfrac{1}{2\norm{L-1}}>0,\ \exists r>0$ (con $r<r_0$) tal que\\
+	$\norm{d\varphi(x)-d\varphi(a)}=\norm{d\varphi(x)-0}=\norm{d\varphi(x)}<\varepsilon_0\ \forall x\in B(a,r)$.\\
+	Así, como $B(a,r)$ es conexo, $\forall x,y\in B(a,r)$ por el \textit{teorema de los incrementos finitos} tenemos $\norm{\varphi(x)-\varphi(y)}\leq \left(\underset{z\in[x,y]}\sup\norm{d\varphi(z)}\right)\norm{x-y}\leq \varepsilon_0\norm{x-y}$.\\
+	Veamos además que $\norm{h}=\norm{L^{-1}(L(h))}\leq\norm{L^{-1}}\norm{L(h)}\ \forall h\in \R^n$.\\
+	Ahora, si $x,y\in B(a,r)$ tenemos $\norm{f(x)-f(y)}=\norm{\varphi(x)-\varphi(y)-L(x-a)}\geq\\
+	\norm{2(x-y)}-\norm{\varphi(x)-\varphi(y)}\geq\dfrac{1}{\norm{L^{-1}}}\norm{x-y}-\varepsilon_0\norm{x-y}=\dfrac{1}{2\norm{L^{-1}}}\norm{x-y}>0\implies\implies f$ inyectiva en $B(a,r)\implies f$ inyectiva en $V$.
+	\end{proof}
+	\end{proposicioni}\ \\
+	\begin{proposicioni} Sea $V\subset\R^n$ abierto,\\
+	sea $\function{f}{V}{\R^n},\ f\in C^1(V)$, inyectiva en $V$ y con $\det(J_f(x))\neq 0\ \forall x\in V$, entonces $f$ es abierto, (esto es $f(G)$ abierto $\forall G\in V$, $G$ abierto).
+	\begin{proof}\ \\
+	Sea $G\subset V,\ G$ abierto, queremos probar que $f(G)$ es abierto.\\
+	Sea $y_0\in f(G)$ tenemos que demostrar que $\exists r>0 \talque B(y_0,r)\subset f(G)$. Como $y_0\in f(G)\implies\implies\exists x_0\in G\talque f(x_0)=y_0$. $x_0\in G\y G$ abierto$\implies\exists r_0>0\talque B(x_0,r)\subset G$.\\
+	Tomemos ahora $r'\in(0,r_0)$, entonces $\overline{B}(x_0,r')\subset B(x_0,r_0)\subset G$.\\
+	La función $\varphi(x)=\norm{f(x)-y_0}$ es continua $\forall x\in G$, y sea $S_{x_0,r'}=\{x\in\R^n\talque\norm{x-x_0}=r'\}$ es un compacto, luego $\exists x_1\in S_{x_0,r'}\talque\norm{f(x_1)-y_0}=\varphi(x_1)=\underset{x\in S_{x_0,r'}}\min \varphi(x)=\\=\underset{x\in S_{x_0,r'}}\min\norm{f(x)-y_0}$.\\
+	$\doubleright{x_0\neq x_1}{f\ \mathrm{inyectiva}}\implies f(x_0)\neq f(x_1)\implies\varphi(x_1)>0$. Tomemos ahora $r=\dfrac{\varphi(x_1)}{2}>0$, comprobemos que $B(y_0,r)\subset f(G)$.\\
+	Sea $y\in B(y_0,r)\implies\norm{y-y_0}<r$. Definimos $\Phi(x)=\norm{f(x)-y}\ \forall x\in\overline{B}(x_0,r')$, entonces $\Phi$ es continua y $\overline{B}x_0,r'$ es compacto, luego $\Phi$ alcanza el mínimo en un punto $c\in\overline{B}(a,r')$. Veamos que $c\notin Fr(\overline{B}(x_0,r'))=S_{x_0,r'}$:\\
+	Si $\norm{x-x_0}=r'$ entonces $\Phi(x)=\norm{f(x)-y}=\norm{f(x)-y_0+y_0-y}\geq\\
+	\geq\norm{f(x)-y_0}-\norm{y_0-y}>\varphi(x_1)-\norm{y_0-y}>\varphi(x_1)-r=\dfrac{\varphi(x_1)}{2}=r>\norm{y-y_0}=\\=\norm{y-f(x_0)}\geq\norm{y-f(c)}=\Phi(c)$.\\
+	Luego $c\in\mathring{\overline{B}}(x_0,r')=B(x_0,r')$. Ahora:\\
+	$\doubleright{\Phi>\geq 0}{\Phi(c)\leq\Phi(x)\ \forall x\in\overline{B}(x_0,r')}\implies \Phi^2(c)\leq\Phi^2(x)\ \forall x\in\overline{B}(x_0,r')$.\\
+	Como $\Phi^2$ tiene un mínimo relativo en el punto $c$ perteneciente al interior de $\overline{B}(x_0,r')\y\Phi^2$ es diferenciable en $c$, tenemos que $\gradiente\Phi^2(c)=\overline{0}\in\R^n$.\\
+	Como $\Phi^2(x)=\norm{f(x)-y}^2=\stackbin[i=1]{n}\sum(f_i(x)-y_i)^2\implies \overline{0}=(0,0,...,0)=\gradiente\Phi^2(c)=\\
+	=(D_1\Phi^2(c),D_2\Phi^2(c),...,D_n\Phi^2(c))=\\
+	=\left(\stackbin[i=1]{n}\sum2(f_i(c)-y_i)D_1f_i(c),...,\stackbin[i=1]{n}\sum2(f_i(c)-y_i)D_nf_i(c)\right)=\stackbin[i=1]{n}\sum2(f_i(c)-y_i)\gradiente f_i(c)$.\\
+	Tenemos así una combinación lineal de vectores $\gradiente f_i(c)$ (cuyas coordenadas son las filas de la matriz) y como $\det(J_f(c))\neq 0$, esos vectores son lienalmente independientes. Como esa combinación lineal es $\overline{0}$, sus coeficientes han de ser todos $0$, es decir,\\
+	$2(f_i(c)-y_i)=0\ \forall 1\leq i\leq n$. Con lo cual $f(c)=(f_1(c),f_2(c),...,f_n(c))=y=(y_1,y_2,...,y_n)$. Por tanto $y\in f(B(x_0,r'))\subset f(G)$.
+	\end{proof}
+	\end{proposicioni}
+	
+	\begin{proposicioni} Sean $V,W\subset\R^n$ abiertos, sea $\function{f}{V}{W}$ biyectiva con inversa $\function{g}{W}{V}$ continua en $W$. Si $f$ es diferenciable en $x_0\in V\y\det(J_f(x_0))\neq 0$ entonces $g$ es diferenciable en $f(x_0)$.
+	\end{proposicioni}
+	\begin{proof}\ \\
+	$f$ es diferenciable en $x_0$ y $\det(J_f(x_0)\neq 0\implies L:=df(x_0)$ es invertible; queremos probar que $L^{-1}=dg(f(x_0))$ o equivalentemente, que $\dfrac{g(f(x_0)+k)-g(f(x_0))-L^{-1}(k)}{\norm{k}}\overset{k\to 0}\longrightarrow 0$.\\
+	Sabemos por hipótesis que $\dfrac{f(a+h)-f(a)-L(h)}{\norm{h}}\overset{\htiende}\longrightarrow0$. Definamos:\\
+	$\varphi(h):=\doubleleft{\dfrac{f(a+h)-f(a)-L(h)}{\norm{h}},\ \mathrm{si\ }h\neq0\ (a+h\in V)}{0,\ \mathrm{si\ }h=0}$\\
+	Tenemos que $\varphi$ es continua en 0. $\forall k\neq0\talque f(x_0)+k\in W$ llamamos\\
+	$h(k)=\boxed{g(f(x_0)+k)-x_0}$\textbf{(*)}($=g(f(x_0)+k)-g(f(x_0))$\ ). Como $f$ es inyectiva y por tanto $g$, tenemos que si $k\neq0\implies h(k)\neq 0$. Además, como $g$ es continua en $f(x_0)$,\\
+	$\limite{h(k)}{\ktiende}=\limite{}{\ktiende}(g(f(x_0)+k)-g(f(x_0)))=0$, y por la continuidad de $\varphi$ en $0$, tenemos $\limite{}{\ktiende}\varphi(h(k))=\varphi(0)=0$.\\
+	Por \textbf{(*)}, $h(k)+x_0=g(f(x_0)+k)\implies f(h(k)+x_0)=f(g(f(x_0+k))=f(x_0)+k\implies\\
+	\implies\boxed{k=f(x_0+h(k))-f(x_0)}$\textbf{(**)}.\\
+	Así, si $k\neq 0\talque f(x_0)+k\in W$, tenemos:\\
+$	\dfrac{g(f(x_0)+k)-g(f(x_0))-L^{-1}(k)}{\norm{k}}=\dfrac{h(k)-L^{-1}(k)}{\norm{k}}\overset{\textbf{(**)}}=\dfrac{h(k)-L^{-1}(f(x_0+h(k))-f(x_0))}{\norm{k}}=\\
+=\dfrac{h(k)-L^{-1}(\ \norm{h(k)}\varphi(h(k))+L(h(k))\ )}{\norm{k}}=\dfrac{h(k)-\norm{h(k)}L^{-1}(\varphi(h(k)))-L^{-1}(L(h(k)))}{\norm{k}}=\\
+=\dfrac{\norm{h(k)}}{\norm{k}}L^{-1}(\varphi(h(k)))$. Como $\limite{}{\ktiende}L^{-1}(\varphi(h(k)))=L^{-1}(\varphi(0))=L^{-1}(0)=0$, sólo nos queda probar que $\dfrac{\norm{h(k)}}{\norm{k}}$ está acotado en un entorno de $k=0$.\\
+Como $\norm{k}=\norm{f(x_0+h(k))-f(x_0)}=\norm{\norm{h(k)}\varphi(h(k))+L(h(k))}=\\
+=\norm{h(k)}\norm{\varphi(h(k))+L\left(\dfrac{h(k)}{\norm{h(k)}}\right)}\geq\norm{h(k)}\left(\norm{L\left(\dfrac{h(k)}{\norm{h(k)}}\right)}-\norm{\varphi(h(k))}\right)\implies\\
+\implies\dfrac{\norm{h(k)}}{\norm{k}}\leq\dfrac{1}{\norm{L\left(\dfrac{h(k)}{\norm{h(k)}}\right)}-\norm{\varphi(h(k))}}$. Como $L$ es invertible y continua:\\
+$\underset{u\in S_{\R^n}}\min\norm{L(u)}=\norm{L(u_0)}=\alpha>0$, y como $\limite{\varphi(h(k))}{\ktiende}=0$, para $\varepsilon_0=\dfrac{\alpha}{2}>0,\\
+\exists\delta>0\talque \norm{\varphi(h(k))}<\varepsilon_0=\dfrac{\alpha}{2}\ \forall k\in B(0,\delta)$. Luego $\dfrac{\norm{h(k)}}{\norm{k}}\leq\dfrac{1}{L\left(\dfrac{h(k)}{\norm{h(k)}}\right)-\norm{\varphi(h(k))}}\leq\\
+\leq\dfrac{1}{\alpha-\dfrac{\alpha}{2}}=\dfrac{2}{\alpha}\ \forall k\in B(0,\delta)\setminus\{0\}\implies \dfrac{\norm{h(k)}}{\norm{k}}$ está acotado en un entorno de $k=0\implies\\
+\implies \limite{}{\ktiende}\dfrac{g(f(x_0)+k)-g(f(x_0))-L^{-1}(k)}{\norm{k}}=0\implies g$ es diferenciable en $f(x-0)$.
+	\end{proof}
+	
+	\begin{proposicioni} Sean $V\y W\subset\R^n$ abiertos, sea $\function{f}{V}{W}$ biyectiva, diferenciable $V$, con $\det(J_f(x))\neq0\ \forall x\in V\y$con\\
+	$\function{g:=f^{-1}}{W}{V}$ continua en $W$. Si $k\in \N\y f\in C^k(V)$, entonces $g\in C^k(W)$.
+	\end{proposicioni}
+	\begin{proof}\ \\
+	Por la \textit{proposición 3} $g$ es diferenciable en $W$ y por la \textit{regla de la cadena}, $dg(f(x))=(df(x))^{-1}\\
+	\forall x\in V$ (pues $\id_V=(f\circ g)$). O escrito de otra forma, $dg(y)=(df(g(y))^{-1}\ \forall y\in W$ con lo cual $J_g(y)=(J_f(g(y)))^{-1}$.\\
+	Podemos identificar cada elemento de la matriz $n\times n$ con un elemento de $\R^{n^2}$. El conjunto $\mathcal{U}=\left\{(a_{ij})_{i,j=1}^n\talque \det\left((a_{ij})_{i,j=i}^n\right)\neq0\right\}\subset\R^{n^2}$ es un abierto de $\R^{n^2}$, pues la aplicación $\xfunction{\det}{\R^{n^2}}{\R}{(a_{ij})_{i,j=1}^n\to\\det\left((a_{ij})_{i,j=i}^n\right)}$ es un polinomio, por lo tanto continuo, $\mathcal{U}=\det^{-1}((-\infty,0)\cup(0,+\infty))$ y $((-\infty,0)\cup(0,+\infty))$ es un abierto de $\R$, por tanto $\mathcal{U}$ es abierto.\\
+	La aplicación $\xfunction{\phi}{\mathcal{U}}{\mathcal{U}}{A=(a_{ij})^n_{i,j=1}\to A^{-1}}$ es $C^\infty$ en $\mathcal{U}$, pues cada componente es un cociente de polinomios cuyo denominador no se anula nunca.\\
+	Llamemos $J_f$ a la función $\xfunction{J_f}{V}{\R^{n^2}}{x\to J_f(x)}$ y para cada $1\leq i,j\leq n$ llamemos $\xfunction{\Pi_{ij}}{\R^{n^2}}{\R}{(a_{kl})_{k,l=1}^n\to a_{ij}}$. Tenemos que $\Pi_{ij}\in C^\infty(\R^{n^2})$.\\
+	$\forall 1\leq i,j\leq n$ tenemos que $D_jg_i$ es $D_jg_i\colon\underset{y}W\stackbin[\longrightarrow]{g}\longrightarrow\underset{g(y)}V\stackbin[\longrightarrow]{J_f}\longrightarrow\underset{J_f(g(y))}{\mathcal{U}}\stackbin[\longrightarrow]{\Phi}\longrightarrow\underset{(J_f(g(y)))^{-1}}{\mathcal{U}}\stackbin[\longrightarrow]{\Pi_{ij}}\longrightarrow\underset{\Pi_{ij}((J_f(g(y)))^{-1})}\R$ y $\Pi_{ij}\left((J_f(g(y)))^{-1}\right)=\Pi_{ij}(J_g(y))=D_jg_i(y)$, o sea:\\
+	$D_jg_i=\Pi_{ij}\circ\Phi\circ J_f\circ g$. Ahora si $f\in C^1(V)$ entonces $J_f$ es continua  y por tanto (por ser $g$ continua y $\Phi,\Pi_{ij}$ son $C^\infty$) tenemos que $D_jg_i$ es continua en $W$.\\
+	$D_jg_i$ continua en $W\ \forall i,j\in\{1,2,...,n\}\iff g\in C^1(W)$.\\
+	Ahora si $f\in C^2(V)\implies \doubleleft{f\in C^1(V)\implies g\in C^1(W)}{J_f\in C^1(V)}$\\
+	$g,J_f,\Phi\y\Pi_{ij}$ son $C^1$, luego $D_jg_i$ es $C^1(W)\y $ si $D_jg_i\C^1(W)\ \forall i,j\in\{1,2,...,n\}\implies$\\
+	$\implies g\in C^2(W)$ y por inducción sobre $k$ tenemos que si $f\in C^k(V)\implies g\in C^k(W)$.
+	\end{proof}
+	
+	\textbf{Demostramos ahora el \textit{teorema de la función inversa.}}\\
+	Por la \textit{proposición 1}, $\exists	V$ entorno abierto de $a$, $V\subset U\talque f|_{_V}$ es inyectiva y $J_f(x_0)\neq 0\\\forall x\in V$. Por la \textit{proposición 2}, sea $W:=f(V)$ abierto y $f|_{_V}$ es abierto por lo que $\function{g:=(f\_{_V})^{-1}}{W}{V}$ es continua. Por la \textit{proposición 3} $g$ es diferenciable en $W$ y por la \textit{proposición 4}, como $f\in C^1(U)$, tenemos que $g\in C^1(W)$ y además si $f\in C^k(U)\implies\\\implies g\in C^k(W)$.
+	\end{proof}
+	
+	\begin{observacion} De las \textit{proposiciones 1} y \textit{2} se deduce fácilmente lo siguiente:\\
+	Sea $U\subset \R^n$ abierto, sea $\function{f}{U}{\R^n},\ f\in C^1(U)$ con $\det(J_f(x))\neq 0\ \forall x\in U$. Entonces $f$ es abierto (\textit{Teorema de la aplicación abierta)}.
+	\end{observacion}
+	
+	\begin{defi} Un difeomorfismo entre dos abiertos $U\y W$ de $\R^n$ es una aplicación biyectiva $\function{f}{V}{W}$ tal que $f\y f^{-1}$ son diferenciables y, además, si $f\y f^{-1}$ son de clase $k$, diremos que $f$ (ó $f^{-1}$) es un $C^k$-difeomorfismo entre $V\y W$.\\
+	El \textit{teorema de la función inversa} nos dice que si $\function{f}{V}{W}$ es una aplicación biyectiva entre dos abiertos $V\y W\subset\R^n$, entonces la condición necesaria y suficiente para que $f$ sea $C^1-$difeomorfismo es que $\det(J_f(x))\neq0\ \forall x\in V$.\\
+	A los difeomorfismos se les llama a veces \textit{cambios de variable} o \textit{aplicaciones regulares}.\\
+	Diremos que $f$ es un difeomorfismo local en $a$ si existe un entorno abierto $V$ de $a$ tal que $f|_{_V}$ es difeomorfismo sobre su imagen.
+	\begin{ejem} Ejemplo de difeomorfismo:
+	\[\xfunction{f}{(0,+\infty)\times(0,2\pi)}{\R^2\setminus\{(x,0)\talque x\geq0\}}{\ \ \ \ \ \ \ \ \ \ \ (\rho,\theta)\ \longrightarrow\ (\rho\cos\theta,\rho\sen\theta)}\]
+	\end{ejem}
+	\end{defi}
+	
+	\section{Teorema de la función implícita}
+	
+	\begin{teor} Teorema de la función implícita en $\R^2$.\\
+Sea $U\subseteq \R^2$ abierto y sea $\function{F}{U}{\R}$ de clase $C^1$ en $U$ y sea $(x_0,y_0)\in U\talque F(x_0,y_0)=0$. Si $\dfrac{\partial F}{\partial y}(x_0,y_0)\neq 0$ entonces existe un entrono abierto $V$ de $(x_0,y_0)$, existe un entorno abierto $A\subseteq\R$ de $x_0$ y existe una única función $\function{f}{A}{\R}$ tal que $F(x,f(x))=0\ \forall x\in A$ $(\y \{(x,y)\in V\talque F(x,y)=0\}=\{(x,f(x))\talque x\in A\})$. Además, $f$ es $C^1$ en $A$. Más aún, si $F\in C^k(U)$, $f\in C^k(A)$.
+\end{teor}
+
+\begin{ejem} La ecuación $x^2+y^2=1$ define a $y$ como función implícita de $x$ en un entorno de $(0,1)$.\\
+Sea $F(x,y)=x^2+y^2-1,\ F\in C^\infty(\R^2)$. Tenemos $x^2+y^2=1\iff F(x,y)=0$.\\
+Así, $(0,1)$ es solución, pues $F(0,1)=0^2+1^2-1=0\y \dfrac{\partial F}{\partial y}(0,1)=2y|_{_{(0,1)}}=2\neq 0$. Luego $\exists V$ entorno abierto de $(0,1)$, $\exists I\subset\R$ intervalo abierto que contiene a $0$ y $\exists\function{f}{I}{\R},\ C^\infty$ en $I\talque$ $\{(x,y)\in V\talque F(x,y)=0\}=\{(x,f(x))\talque x\in I\}$.
+\end{ejem}
+
+\begin{defi} Sea $U\subset\R^{n+m}$ abierto y sea $\function{F}{U}{\R^m}$, diremos que la ecuación $F(x,y)=0$ con $x=(x_1,x_2,...,x_n)\y y=(y_1,y_2,...,y_m)$, define a la variable $y$ como función implícita de la variable $x$ en un entorno de solución $(a,b)$ (o sea, $F(a,b)=0$) si existe un entorno abierto $V\subset\R^{n+m}$ de $(a,b)$, existe un entorno abierto $A\subset\R^n$ de $x_0$ y existe una función $\function{f}{A}{\R^m}$ tal que $\{(x,y)\in V\talque F(x,y)=0\}=\{(x,f(x))\talque x\in A\}$. En particular $f(a)=b$.
+\end{defi}
+
+\begin{teor}Teorema de la función implícita.\\
+Sea $U\subset\R^{n+m}$ abierto, sea $\function{F}{U}{\R^m}$ de clase $C^1$ en $U$ y sea $(a,b)=\\=(a_1,a_2,...,a_n,b_1,b_2,...,b_m)\in U$ tal que $F(a,b)=0$. Si $\det\left(\left(\dfrac{\partial F_i}{\partial y_j}\right)_{1\leq i,j\leq m}(a,b)\right)\neq 0$. Entonces la ecuación $F(x,y)=0$ (con $x=(x_1,...,x_n)\y y=(y_1,...,y_m)$) define a la variable $y$ como la función implícita de la variable $x$ en un entorno de $(a,b)$, es decir, existe\\
+$V\subset\R^{n+m}$ entorno abierto de $(a,b)$, existe $A\subset\R^n$ entorno abierto de $a$ y existe \\
+$\function{f}{A}{\R^m}$ tal que $\{(x,y)\in V\talque F(x,y)=0\}=\{(x,f(x))\talque x\in A\}$. Además, $f$ es $C^1$ en $A$. Más aún, si $F\in C^k(U)$, entonces $f\in C^k(A)$.
+\end{teor}
+
+\begin{proof}\ \\
+Definamos $\xfunction{\Phi}{U}{\R^{n+m}}{(x,y)\to(x,F(x,y))=(x_1,...,x_n,F_1(x,y),...,F_m(x,y))}$. Como $F\in C^1(U)$ tenemos que\\
+$\Phi\in C^1(U)$ y $\det(J_\Phi(x,y))=$
+\[\begin{split}
+=&\left|\begin{array}{c|c}
+\begin{array}{cccc}
+1&0&\cdots&0\\ 0&1&\ldots&0\\ \vdots&\vdots&\ddots&\vdots\\ 0&0&\cdots&1\\
+\hline
+D_1F_1&D_2F_1&\ldots&D_nF_1\\ D_1F_2&D_2F_2&\ldots&D_nF_n\\ \vdots&\vdots&\ddots&\vdots\\ D_1F_m&D_2F_m&\ldots&D_nF_m
+\end{array} & \begin{array}{cccc}
+0&0&\cdots&0\\ 0&0&\cdots&0\\ \vdots&\vdots&\ddots&\vdots\\ 0&0&\cdots&0\\
+\hline
+D_{n+1}F_1&D_{n+2}F_1&\ldots&D_{n+m}F_1\\ D_{n+1}F_2&D_{n+2}F_2&\ldots&D_{n+m}F_2\\
+\vdots&\vdots&\ddots&\vdots\\ D_{n+1}F_m&D_{n+2}F_m&\ldots&D_{n+m}F_m
+\end{array} 
+\end{array}\right|
+\end{split}
+=\]
+$=\deter{D_{n+1}F_1&D_{n+2}F_1&\ldots&D_{n+m}F_1\\ D_{n+1}F_2&D_{n+2}F_2&\ldots&D_{n+m}F_2\\
+\vdots&\vdots&\ddots&\vdots\\ D_{n+1}F_m&D_{n+2}F_m&\ldots&D_{n+m}F_m}=\det\left(\left(\dfrac{\partial F_i}{\partial y_j}\right)_{1\leq i,j\leq m}(a,b)\right)\neq 0$.\\
+Así, por el \textit{teorema de la función inversa} $\exists V$ entorno abierto de $(a,b)$ tal que $W=\Phi(V)$ es abierto de $\R^{n+m}\y\function{\Phi|_{_V}}{V}{W}$ es $C^1$ difeomorfismo.\\
+Sea $A=\{x\in\R^n\talque(x,0)\in W\}$ abierto de $\R^n$ pues $A=h^{-1}(W)$ con $h(x)=(x,0)$.\\
+$A$ es abierto y $a\in A$ (pues $(a,0)=(a,F(a,b))=\Phi(a,b)\in W$).\\
+Sea $\function{g=\left(\Phi|_{_V}\right)^{-1}}{W}{V}$ con $g=(g_1,g_2,...,g_{n+m})$ definimos\\
+$f(x)=(g_{n+1}(x,0),g_{n+2}(x,0),...,g_{n+m}(x,0))\ \forall x\in A$. Como $g\in C^1(W),\ h\in C^\infty(\R^n)\y\\
+f(x)=(g_{n+1}(x,0),...,g_{n+m}(x,0))$ tenemos que $f\in C^1(A)$. Más aún, si $F$ es $C^k(U)$ entonces $g$ también lo es y por lo tanto $f\in C^k(A)$.\\
+Probemos ahora que $\{(x,y)\in V\talque f(x,y)=0\}=\{(x,F(x))\talque x\in A\}$.
+\begin{itemize}
+\item Probemos $\{(x,y)\in V\talque F(x,y)=0\}\subset\{(x,f(x))\talque x\in A\}$\\
+Si $(x,y)\in V\y F(x,y)=0\implies\doubleleftright{\Phi(x,y)\in W}{\Phi(x,y)=(x,F(x,y))=(x,0)}\implies\\ \implies (x,0)\in W\implies x\in A$.\\
+Por otro lado, si $(x,y)\in V,\ (x,y)=g(\Phi(x,y))=g(x,F(x,y))=g(x,0)=\\=(g_1(x,0),...,g_n(x,0),g_{n+1}(x,0),...,g_{n+m}(x,0))=\\=(x_1,x_2,...,x_n,f_1(x),f_2(x),...,f_m(x))=(x,f(x))$. Luego $(x,y)=(x,f(x))$ con $x\in A$.
+\item Probemos $\{(x,y)\in V\talque F(x,y)=0\}\supset\{(x,F(x))\talque x\in A\}$\\
+Si $x\in A$, probemos que $(x,f(x))\in V\y F(x,f(x))=0$.\\
+$x\in A\iff(x,0)\in W\implies g(x,0)\in V\y g(x,0)=(x,f(x))\in V$. Para acabar, $(x,0)\in W\implies(x,0)=\Phi(g(x,0))=\Phi(x,f(x))=(x,F(x,f(x)))\implies\\\implies F(x,f(x))=0$.
+\end{itemize}
+\end{proof}
+
+\begin{observacion} El hecho de que $\{(x,y)\in V\talque F(x,y)=0\}=\{(x,f(x))\talque x\in A\}$ nos dice:
+\begin{enumerate}[1)]
+\item Para cada $x\in A\ \exists!y\talque (x,y)\in V\y F(x,y)=0$. Ese $y$ es justo al que llamamos $f(x)$.
+\item Como $(a,b)\in V\y F(a,b)=0$ entonces $b=f(a)$.
+\item $F(x,f(x))=0\ \forall x\in A$.
+\end{enumerate}
+Esto nos dice que la función $h(x)=F(x,f(x))$ es idénticamente nula en $A$ (entorno de $a$), con lo cual, sus derivadas parciales de todas sus componentes valen $0$ en $a$. Esto nos permite calcular las derivadas parciales de los componentes de $f$ en $a$.
+\end{observacion}
+
+\begin{ejem} Sea $z^3+x(y-1)=1$. ¿Define $z$ como función implícita de $x$ e $y$ en un entorno de $(0,1,1)$?\\
+Sea $F(x,y,z)=z^3+x(y-1)-1$,\ $F\in C^\infty(\R^3),\ \function{F}{\R^3}{\R}$.\\
+Tenemos que $F(0,1,1)=0\y\dfrac{\partial F}{\partial z}=3z^2|_{_{(0,1,1)}}=3\neq 0$.\\
+Luego por el \textit{teorema de la función implícita}, $\exists V$ entorno abierto de $(0,1,1)$, $\exists A\subset\R^2$ entorno abierto de $(0,1)\y\exists\function{f}{A}{\R}$ tal que $f\in C^\infty(A)$. Tenemos además que $F(x,y,f(x,y))=\ =0\ \forall (x,y)\in A,\ \{(x,y,z)\in V\talque F(x,y,z)=0\}=\{(x,y,f(x,y)\talque(x,y)\in A\}\y f(0,1)=1$.\\
+$F(x,y,f(x,y))=0\ \forall(x,y)\in A$.
+\end{ejem}

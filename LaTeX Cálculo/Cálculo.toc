@@ -1,0 +1,57 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Espacios m\IeC {\'e}tricos}{3}
+\contentsline {section}{\numberline {1.1}Espacios m\IeC {\'e}tricos}{3}
+\contentsline {section}{\numberline {1.2}Espacios normados}{4}
+\contentsline {section}{\numberline {1.3}Espacios vectoriales}{5}
+\contentsline {chapter}{\numberline {2}Topolog\IeC {\'\i }a de Espacios m\IeC {\'e}tricos}{7}
+\contentsline {section}{\numberline {2.1}Conjuntos abiertos y cerrados}{7}
+\contentsline {section}{\numberline {2.2}Topolog\IeC {\'\i }a b\IeC {\'a}sica}{8}
+\contentsline {chapter}{\numberline {3}Congruencia en Espacios m\IeC {\'e}tricos}{11}
+\contentsline {section}{\numberline {3.1}Sucesiones, sucesiones de Cauchy y espacios m\IeC {\'e}tricos completos}{11}
+\contentsline {section}{\numberline {3.2}Compacidad de conjuntos}{13}
+\contentsline {chapter}{\numberline {4}Conjuntos conexos en espacios m\IeC {\'e}tricos}{17}
+\contentsline {section}{\numberline {4.1}Conjuntos conexos}{17}
+\contentsline {section}{\numberline {4.2}Intervalos, segmentos, convexidad y poligonales}{20}
+\contentsline {chapter}{\numberline {5}L\IeC {\'\i }mites y continuidad}{24}
+\contentsline {section}{\numberline {5.1}L\IeC {\'\i }mites}{24}
+\contentsline {section}{\numberline {5.2}Continuidad}{26}
+\contentsline {section}{\numberline {5.3}Homeomorfismos, continuidad uniforme y funciones lipschitzianas}{30}
+\contentsline {section}{\numberline {5.4}Funciones contractivas. Teorema del punto fijo}{33}
+\contentsline {chapter}{\numberline {6}Transformaciones diferenciables}{34}
+\contentsline {section}{\numberline {6.1}Derivadas direccionales}{34}
+\contentsline {section}{\numberline {6.2}Derivabilidad y diferenciabilidad}{35}
+\contentsline {section}{\numberline {6.3}Diferenciabilidad en funciones de $\mathbb {R}^n$ en $\mathbb {R}^m$}{41}
+\contentsline {section}{\numberline {6.4}Propiedades de la diferenciabilidad de funciones de $\mathbb {R}^n$ en $\mathbb {R}^m$}{42}
+\contentsline {section}{\numberline {6.5}Derivabilidad en funciones de $\mathbb {R}$ en $\mathbb {R}^n$}{45}
+\contentsline {section}{\numberline {6.6}Teorema del valor medio. Teorema de los incrementos finitos}{46}
+\contentsline {section}{\numberline {6.7}Derivadas parciales de orden superior}{48}
+\contentsline {section}{\numberline {6.8}Teorema de Taylor}{50}
+\contentsline {chapter}{\numberline {7}Extremos relativos}{53}
+\contentsline {section}{\numberline {7.1}Extremos relativos}{53}
+\contentsline {chapter}{\numberline {8}Teoremas de la funci\IeC {\'o}n inversa e impl\IeC {\'\i }cita}{57}
+\contentsline {section}{\numberline {8.1}Teorema de la funci\IeC {\'o}n inversa}{57}
+\contentsline {section}{\numberline {8.2}Teorema de la funci\IeC {\'o}n impl\IeC {\'\i }cita}{62}
+\contentsline {chapter}{\numberline {9}Extremos cond. y variedades diferenciables}{65}
+\contentsline {section}{\numberline {9.1}Extremos condicionados}{65}
+\contentsline {section}{\numberline {9.2}Variedades diferenciables}{65}
+\contentsline {section}{\numberline {9.3}Teorema de multiplicaci\IeC {\'o}n de Lagrange}{67}
+\contentsline {chapter}{\numberline {10}Funciones integrables de varias variables}{70}
+\contentsline {section}{\numberline {10.1}Particiones. La integral de Riemann en $\mathbb {R}^n$}{70}
+\contentsline {section}{\numberline {10.2}Condici\IeC {\'o}n de Riemann. Teorema de Darboux}{73}
+\contentsline {section}{\numberline {10.3}Medibilidad de conjuntos}{76}
+\contentsline {chapter}{\numberline {11}Teorema de Lebesgue}{79}
+\contentsline {section}{\numberline {11.1}Teorema de Lebesgue y aplicaciones de medibilidad}{79}
+\contentsline {section}{\numberline {11.2}Integrabilidad en conjuntos distintos de rect\IeC {\'a}ngulos}{80}
+\contentsline {section}{\numberline {11.3}Propiedades de las integrales}{81}
+\contentsline {chapter}{\numberline {12}Teorema de Fubini}{84}
+\contentsline {section}{\numberline {12.1}Teorema de Fubini}{84}
+\contentsline {chapter}{\numberline {13}Teorema del cambio de variables}{89}
+\contentsline {section}{\numberline {13.1}Teorema del cambio de variables}{89}
+\contentsline {section}{\numberline {13.2}Coordenadas polares}{89}
+\contentsline {section}{\numberline {13.3}Coordenadas esf\IeC {\'e}ricas}{90}
+\contentsline {section}{\numberline {13.4}Coordenadas cil\IeC {\'\i }ndricas}{90}
+\contentsline {chapter}{\numberline {14}Integrales impropias}{91}
+\contentsline {section}{\numberline {14.1}Integrales impropias}{91}
+\contentsline {chapter}{\numberline {A}C\IeC {\'a}lculo de l\IeC {\'\i }mites}{95}
+\contentsline {chapter}{\numberline {B}Repaso de aplicaciones lineales}{97}
+\contentsline {chapter}{\numberline {C}Repaso de formas cuadr\IeC {\'a}ticas}{98}

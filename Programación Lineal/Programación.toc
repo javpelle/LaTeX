@@ -1,0 +1,15 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}
+\contentsline {section}{\numberline {2}Ejemplos introductorios}{2}
+\contentsline {subsection}{\numberline {2.1}Problema de programaci\IeC {\'o}n lineal de dos inc\IeC {\'o}gnitas (en $\mathbb {R}^2$)}{2}
+\contentsline {subsection}{\numberline {2.2}Problema de programaci\IeC {\'o}n lineal de tres inc\IeC {\'o}gnitas (en $\mathbb {R}^3$)}{5}
+\contentsline {section}{\numberline {3}Formulaci\IeC {\'o}n de problemas como programas lineales}{6}
+\contentsline {subsection}{\numberline {3.1}Problema de la dieta}{6}
+\contentsline {subsection}{\numberline {3.2}Problema del transporte}{7}
+\contentsline {subsection}{\numberline {3.3}Problema de flujo de m\IeC {\'\i }nimo coste en una red}{8}
+\contentsline {subsection}{\numberline {3.4}Problema de la mochila}{10}
+\contentsline {section}{\numberline {4}Algoritmo del \textit {S\IeC {\'\i }mplex}}{12}
+\contentsline {subsection}{\numberline {4.1}\IeC {\textquestiondown }C\IeC {\'o}mo funciona el \textit {S\IeC {\'\i }mplex}?}{13}
+\contentsline {subsection}{\numberline {4.2}Explicaci\IeC {\'o}n e implementaci\IeC {\'o}n del algoritmo}{14}
+\contentsline {subsection}{\numberline {4.3}Complejidad}{17}
+\contentsline {section}{\numberline {5}Bibliograf\IeC {\'\i }a}{19}

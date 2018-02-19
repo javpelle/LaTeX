@@ -1,0 +1,41 @@
+\chapter{Teorema del cambio de variables}
+\section{Teorema del cambio de variables}
+\begin{teor} Teorema del cambio de variable.\\
+Sean $A$, $B\subset\R^n$, abiertos y medibles-Jordan, y sea $\xfunction{g}{B}{A}{\ \ \ s\longrightarrow x}$ $C^1$-difeomorfismo. Entonces:
+\[\integral{}{A}f(x)dx=\integral{}{B}f(g(s))|\det g'(s)|ds\]
+Además $\exists m,M>0\talque m\leq|\det g'(s)|\leq M\ \forall s\in B$
+\begin{nota} $g$ es $C^1$-difeormorfismo$\iff\det(g'(s)\neq 0)\ \forall s\in B$.\end{nota}
+\end{teor}
+
+\section{Coordenadas polares}
+
+\begin{proposicion} Una aplicación del \textit{Teorema del cambio de variables} es la evaluación de integrales por medio de las coordenadas polares. Tomamos la función que pasa de coordenadas polares a rectangulares como $g(r,\theta)=(r\sen\theta,r\cos\theta)$ definida en $\{(r\theta)\talque r>0, 0<\theta<2\pi\}$. El determinante jacobiano viene dado por:
+\[J_g(r,\theta)=\left|\begin{matrix}\cos\theta & -r\cos\theta \\ \sen\theta & r\cos\theta\end{matrix}\right|=r\cos^2\theta + r\sen^2\theta=r\]
+\end{proposicion}
+
+\begin{ejem} Sea $B=\{(x,y)\in\R^2\talque 1\leq x^2+y^2\leq 2\}$, calcula $\integral{}{B}\dfrac{1}{(x^2+y^2)^3}$.\\
+Tenemos que $B$ es la imagen de $A=\{(r,\theta)\talque 0<\theta<2\pi, 1<r<2\}$ bajo la transformación de coordenadas polares. Entonces tenemos:
+\[\integral{}{B}\dfrac{1}{(x^2+y^2)^3}=\integral{}{A}\dfrac{1}{r^3}|J_g|drd\theta=\integral{}{A}\dfrac{1}{r^3}rdrd\theta=\integral{}{A}\dfrac{1}{r^2}drd\theta=\integral{2\pi}{0}\integral{2}{1}\dfrac{1}{r^2}drd\theta=\dfrac{1}{2}\integral{2\pi}{0}d\theta=\pi\]
+\end{ejem}
+
+\section{Coordenadas esféricas} 
+\begin{proposicion} Otra aplicación del \textit{Teorema del cambio de variables} es la aplicación de coordenadas esféricas. Sea $g(r,\varphi,\theta)=(r\sen\varphi\cos\theta,r\sen\varphi\sen\theta, r\cos\varphi)$ definida en $\{(r,\varphi,\theta)\talque r>0, 0<\theta<2\pi, 0<\varphi<\pi\}$ con determinante jacobiano:
+\[J_g(r,\varphi,\theta)=\left|\begin{matrix}\sen\varphi\cos\theta & r\cos\varphi\cos\theta & -r\sen\varphi\sen\theta \\ \sen\varphi\sen\theta & r\cos\varphi\sen\theta & r\sen\varphi\cos\theta\\ \cos\varphi & -r\sen\varphi & 0\end{matrix}\right|=r^2\sen\varphi\]
+\end{proposicion}
+
+\begin{ejem} Integra la función $f(x,y,z)=x^2+y^2+z^2$ sobre el conjunto\\
+$B=\{(x,y,z)\talque x^2+y^2+z^2<1\}$.\\
+Tenemos que $B$ es la imagen de $A=\{(r,\varphi,\theta)\talque 0<r<1, 0<\theta<2\pi,0<\varphi<\pi\}$. Por tanto:
+\[\integral{}{B}(x^2+y^2+z^2)dxdydz=\integral{}{A}r^2|J_g|drd\varphi d\theta=\integral{}{A}r^2r^2\sen\varphi drd\varphi d\theta=\]\[=\integral{2\pi}{0}\integral{\pi}{0}\integral{1}{0}r^4\sen\varphi drd\varphi d\theta=\integral{2\pi}{0}\integral{\pi}{0}\dfrac{\sen\varphi}{5}d\varphi d\theta=\dfrac{2}{5}\integral{2\pi}{0}d\theta=\dfrac{4}{5}\pi\]
+\end{ejem}
+
+\section{Coordenadas cilíndricas} 
+\begin{proposicion} Por último veamos la aplicación de las coordenadas cilíndricas. La transformación adecuada es$g(r,\theta,z)=(r\cos\theta,r\sen\theta, z)$ definida en $\{(r,\theta,z)\talque r>0, 0<\theta<2\pi\}$ con determinante jacobiano:
+\[J_g(r,\theta,z)=\left|\begin{matrix}\cos\theta & -r sen\theta & 0 \\ \sen\theta & r\cos\theta & 0\\ 0 & 0 & 1\end{matrix}\right|=r\]
+\end{proposicion}
+
+\begin{ejem} Integra la función $f(x,y,z)=z\e^{-x^2-y^2}$ sobre la región\\
+$R=\{(x,y,z)\talque x^2+y^2\leq1,0\leq z\leq1\}$.\\
+Tenemos que $R$ es la imagen de $A=\{(r,\theta,z)\talque 0<r<1, 0<\theta<2\pi,0<z<1\}$. Por tanto:
+\[\integral{}{R}z\e^{-x^2-y^2}dxdydz=\integral{}{A}z\e^{-r^2}|J_g|drd\theta dz=\integral{1}{0}\integral{2\pi}{0}\integral{1}{0}z\e^{-r^2}rdrd\theta dz=\]\[=-\dfrac{1}{2}\integral{1}{0}\integral{2\pi}{0}z(e^{-1}-1)d\theta dz=-\pi(e^{-1}-1)\integral{1}{0}zdz=\dfrac{\pi}{2}(1-e^{-1})\]
+\end{ejem}

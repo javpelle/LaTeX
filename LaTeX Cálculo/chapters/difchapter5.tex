@@ -1,0 +1,290 @@
+	\chapter{Límites y continuidad}
+	\section{Límites}	
+	
+	\begin{defi}Sea $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$\\ Sea $x_0\in D'$ (punto de acumulación) y sea $L\in M$, diremos que $L$ es \underline{límite de $f$ en $x_0$} si:
+	\begin{center}
+	$\forall\varepsilon >0\ \exists\delta>0\talque$ si $x\in D\cap(B(x_0,\delta)\setminus\{x_0\})$ entonces $f(x)\in B(L,\varepsilon)$\\
+	$\iff$\\
+	$\forall\varepsilon >0\ \exists\delta>0\talque$ si $x\in D$ y $0<d(x,x_0)<\delta$ entonces $d'(f(x),L)<\varepsilon$\\
+	$\iff$\\
+	$\forall\varepsilon >0\ \exists\delta>0\talque f(D\cap(B(x_0,\delta)\setminus\{x_0\}))\subset B(L,\varepsilon)$\\
+	\end{center}	
+	Lo denotamos como $L=\limite{f(x)}{\xtiende}$	
+	\end{defi}
+	
+	\begin{proposicion} Si el existe el límite de $f$ en $x_0$ este es único.
+	\begin{proof}\ \\
+	Sean $L'$ y $L''$ límites de $f$ cuando tiende a $x_0$ , entonces $\forall \varepsilon>0\ \exists \delta',\delta''>0\talque$ si $x\in D$\\
+	 y $0<d(x,x_0)<\delta'$ entonces $d'(f(x),L')<\varepsilon$ y $x\in D$ y $0<d(x,x_0)<\delta''$ entonces $d'(f(x),L'')<\varepsilon$\\
+	 Tomemos ahora $\delta = \inf(\{\delta',\delta''\})$ Entonces $0<d(x,x_0)<\delta\implies d'(f(x),L')<\varepsilon$ y $d'(f(x),L'')<\varepsilon\implies L'=L''$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{proposicion} En las condiciones anteriores:\\
+	\[L=\limite{f(x)}{\xtiende}\iff \forall \sucesion{x}{n}\subset D\setminus\{x_0\}\mathrm{\ convergente\ a\ }x_0\mathrm{\ se\ tiene\ que\ }\sucesionelement{f(x_n)}{n}\mathrm{\ converge\ a\ } L\]	
+	\begin{ejem} No existe $\limite{\dfrac{1}{x}}{x\rightarrow 0}$\\
+	Para probarlo basta con tener una sucesión $\sucesion{x}{n}$ convergente a 0  y que $\dfrac{1}{\sucesion{x}{n}}$ diverja.\\
+	Entonces, sea $\sucesionelement{\dfrac{(-1)^n}{n}}{n}$ sucesión en $\R\setminus\{0\}$ que converge a 0.\\ Tenemos que $\sucesionelement{f\left(\dfrac{(-1)^n}{n}\right)}{n}=\sucesionelement{\dfrac{n}{(-1)^n}}{n} = \{-1,2,-3,4,-5,6...\}$ que diverge.
+	\end{ejem}	
+	\end{proposicion}
+	
+	\begin{proposicion}Si existen dos sucesiones $\sucesion{x}{n}$ y $\sucesion{y}{n}\subset D\setminus\{x_0\}$ convergentes a $x_0$ tales que $\limite{f(x_n)}{\ntiende}\neq\limite{f(y_n)}{\ntiende}\implies$ no existe el límite de $f$ en $x_0$.
+	\end{proposicion}
+	
+	\begin{corolario} En consecuencia.\\
+		Si $(M',d')=(\R,\norm{\cdot})$ tenemos lo siguiente:\\
+		Sean $\function{f,g}{D}{\R}$ y $x_0\in D'$. Si $\exists\limite{f(x)=L_1}{\xtiende}$ y $\exists\limite{g(x)=L_2}{\xtiende}\implies$ Existe el límite en $x_0$ de $f+g,\ f-g,\ f\cdot g$ y $\alpha f,\ \alpha\in\R$ y si además $L_2\neq 0$ también existe el límite en $x_0$ de $\dfrac{f}{g}$. Además:\\
+		\begin{itemize}
+		\item $\limite{(f+g)(x)=L_1+L_2}{\xtiende}$
+		\item $\limite{(f-g)(x)=L_1-L_2}{\xtiende}$
+		\item $\limite{(f\cdot g)(x)=L_1\cdot L_2}{\xtiende}$
+		\item $\limite{(\alpha f)(x)=\alpha L_1}{\xtiende}$
+		\item Si $L_2\neq 0,\ \limite{\dfrac{f}{g}(x)=\dfrac{L_1}{L_2}}{\xtiende}$
+		\end{itemize}
+	\end{corolario}
+	
+	\begin{proposicion} Sea $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$\\ Sea $x_0\in D'$ (punto de acumulación) y sea $L\in M$. Sea $B\subset D$ y $x_0\in B'$ (punto de acumulación), entonces:\\
+	\[\limite{f(x)}{\xtiende}=L\implies \limite{(f|_{_B})(x)}{\xtiende}=L\]
+	\end{proposicion}
+	
+	\begin{ejem}\ \\
+	\[\function{f}{D}{\R},\ (x,y)=\dfrac{xy}{x^2+y^2}\ \forall(x,y)\in D=\R^2\setminus\{(0,0)\}\]
+	¿$\exists\limite{f(x,y)}{(x,y)\rightarrow(0,0)}?$
+	\[\mathrm{Sea\ } B=\{(x,\lambda x)\talque x\in\R\}\ \mathrm{veamos\ entonces\ el\ }\limite{f|_{_B}(x,y)}{(x,y)\rightarrow(0,0)}\]
+	\[\stackbin[y=\lambda x]{}{\limite{f(x,y)}{(x,y)\rightarrow(0,0)}}=\limite{f|_{_B}(x,\lambda x)}{x\rightarrow 0}=\limite{\dfrac{x(\lambda x)}{x^2+(\lambda x)^2}}{x\rightarrow 0}=\limite{\dfrac{\lambda x^2}{x^2(\lambda + 1)}}{x\rightarrow 0}=\dfrac{\lambda}{1+\lambda^2}\]
+	Como el límite depende de $\lambda$, deducimos que no existe el límite.
+	\end{ejem}
+	
+	\section{Continuidad}
+	
+	\begin{defi}Sean $(M,d)$ y $(M',d')$ espacios métricos, $D\subset M$ y $\function{f}{D}{M'}$\\
+	Sea $x_0\in D$ Diremos que $f$ es continua en $x_0$ si:\\
+	\[\doubleright{\mathrm{Bien\ } x_0\in \ais(D)}{x_0\in D'\mathrm{\ y\ } \limite{f(x)=f(x_0)}{\xtiende}}\]
+	\begin{center}	$\iff$	\end{center}
+	\[\forall\varepsilon>0\ \exists\delta>0\talque\mathrm{\ si\ } x\in D\cap B(x_0,\delta)\mathrm{\ entonces\ } f(x)\in B(f(x_0),\varepsilon) \]
+	\begin{center}	$\iff$	\end{center}
+	\[\forall\varepsilon\ \exists\delta>0\talque f(B(x_0,\delta)\cap D)\subset B(f(x_0),\varepsilon)\]
+	\begin{center}	$\iff$	\end{center}
+	\[\mathrm{Para\ cada\ sucesion\ }\sucesion{x}{n}\subset D\mathrm{\ convergente\ a\ }x_0\implies\sucesionelement{f(x_n)}{n}\mathrm{\ converge\ a\ }f(x_0)\]
+	Decimos que $f$ es continua en $A\subset D$ si $f$ es continua en $a$, $\forall a\in A$
+	\end{defi}
+	
+	\begin{proposicion} Sean $(M,d)$ y $(M',d')$ espacios métricos, $D\subset M$ y sea $\function{f}{D}{M'}$ una función, son equivalentes:
+	\begin{enumerate}[1)]
+	\item $f$ continua en $D$
+	\item $f$ transforma sucesiones convergentes en $D$ en sucesiones convergentes; es decir, sea $\sucesion{x}{n}\subset D$ convergente en $x_0\in D$ se tiene que $\sucesionelement{f(x_n)}{n}$ converge.
+	\item $\forall U$ abierto en $M'$ se tiene que $f^{-1}(U)$ es abierto relativo de $D$
+	\item $f^{-1}(H)$ es cerrado relativo en $D$, $\forall H$ cerrado en $M'$
+	\end{enumerate}
+	\begin{observacion} En el caso particular $(M',d')=(\R^m,d_2)$\\
+		Sea $\stackbin[x\rightarrow f(x)=\left(f_1(x),f_2(x),...,f_m(x)\right)]{}{\function{f}{D}{\R^m}}$ y el hecho de que $\sucesion{x}{n}$ convergente a $x\in\R^m\iff x_{n_i}\xrightarrow[n\rightarrow\infty]{}x_i,\ \forall 1\leq i\leq m$ tenemos que $f$ es continua en $D\iff f_1,f_2,...,f_m$ son continuas en $D$.
+	\end{observacion}
+	\end{proposicion}
+	
+	\begin{proposicion} Funciones con valores en $\R$.\\	
+	Sea ($M,d)$ espacio métrico, sea $D\subset M$, sean $\function{f,g}{D}{\R}$ y sea $x_0\in D$. Si $f$ y $g$ son continuas en $x_0$, entonces $f+g,\ f-g,\ f\cdot g,$ y $\alpha f,$ con $ \alpha\in\R,$ son continuas en $x_0$. Además si $g(x_0)\neq 0$, entonces $\dfrac{f}{g}$ también es continua en $x_0$
+	\end{proposicion}
+	
+	\begin{proposicion} Composición de funciones continuas.\\
+	Sean $(M,d),\ (M',d'),\ (M'',d'')$ espacios métricos, sea $D\subset M$ y $B\subset M'$ y sean $\function{f}{D}{M'}$ y $\function{g}{B}{M''}$ tales que $f(D)\subset B$.\\
+	Sea $x_0\in D$, si $f$ es continua en $x_0$ y $g$ es continua en $f(x_0)$ entonces $g\circ f$ es continua en $x_0$
+	\end{proposicion}
+	
+	\begin{proposicion} Sean $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$ continua en $D$
+	\begin{enumerate}[a)]
+	\item Si $A\subset D$ es compacto, entonces $f(A)$ es compacto.
+	\item Si $A\subset D$ es conexo, entonces $f(A)$ es conexo.
+	\begin{proof}\ 
+	\begin{enumerate}[a)]
+	\item Supongamos $A$ compacto, probemos que $f(A)$ es compacto. Sea $\{U_i:i\in\Gamma\}$ un recubrimiento por abiertos de $f(A)$. Como $f$ es continua en $D$ y $\forall i\in\Gamma,\ U_i$ es abierto en $M'$, tenemos que $f^{-1}(U_i)$ es abierto relativo en $D$.\\
+	Por tanto $\exists G_i$ abierto en $M\talque f^{-1}(U_i)=G_i\cap D$\\
+	Como $f(A)\subset \bigcup_{i\in\Gamma} U_i\implies A\subset f^{-1}(f(A))\subset f^{-1}(\bigcup_{i\in\Gamma} U_i)=\bigcup_{i\in\Gamma}f^{-1}(U_i)$\\
+	Tenemos así que $\{G_i:i\in\Gamma\}$ es un recubrimiento por abiertos de $A$. Por ser $A$ compacto, podemos extraer un subrecubrimiento finito, es decir, $\exists\sigma\in\Gamma$ tal que $A\subset \bigcup_{i\in\sigma}G_i\implies A=A\cap D\subset(\bigcup_{i\in\sigma}G_i)\cap D=\bigcup_{i\in\sigma}(G_i\cap D)=\\
+	=\bigcup_{i\in\sigma}(f^{-1}(U_i))=f^{-1}\left(\bigcup_{i\in\sigma}U_i\right)\implies f(A)\subset f(f^{-1}(\bigcup_{i\in\sigma}U_i))=\bigcup_{i\in\sigma} U_i$\\
+	Como $\{U_i:i\in\sigma\}$ es subrecubrimiento finito de $f(A)\implies f(A)$ es compacto.
+	\item Si $f(A)$ no es conexo, probemos que $A$ tampoco lo es.\\
+	Si $f(A)$ no es conexo $\exists U,V$ abiertos en $M'$ tal que  $\left\{ \begin{array}{ll}
+		U\cap f(A)\neq\emptyset \\
+		V\cap f(A)\neq\emptyset\\
+		U\cap V\cap(A) = \emptyset\\
+		(U\cap f(A))\cup(V\cap f(A))=f(A) \\
+		 	\end{array} \right.$
+		Como $f$ es continua:\\
+		$U$ abierto$\implies f^{-1}(U)$ es abierto relativo de $D\implies \exists G_1$ abierto en $M\talque G_1\cap D= f^{-1}(U)$ \\\\
+		$V$ abierto$\implies f^{-1}(V)$ es abierto relativo de $D\implies \exists G_2$ abierto en $M\talque G_2\cap D= f^{-1}(V)$\\
+		Entonces:\\
+		$U\cap f(A)\neq\emptyset\implies\exists y\in U\cap f(A)\implies\exists x\in A\talque y=f(x)\in U\cap f(A)\implies\\ \implies x\in f^{-1}(U) \cap A\implies f^{-1}(U)\cap A\neq\vacio\implies G_1\cap A\neq\vacio$\\
+		Análogamente tenemos que como $V\cap f(A)\neq\vacio$ entonces $f^{-1}(V)\cap A\neq\vacio\implies G_2\cap A\neq\vacio$\\
+		Ahora tenemos que $(U\cap f(A))\cup(V\cap f(A))=f(A)\implies f^{-1}(U\cap f(A))\cup f^{-1}(V\cap f(A))=f(f^{-1}(A))\implies A\subset f(f^{-1}(A))=f^{-1}(U\cap f(A))\cup f^{-1}(V\cap f(A))\subset f^{-1}(U)\cup f^{-1}(V)\subset G_1\cup G_2\implies A\subset G_1\cup G_2\implies A=(G_1\cup G_2)\cap A= (G_1\cap A)\cup(G_2\cap A)$\\
+		Por último veamos que $(G_1\cap A)\cap(G_2 \cap A)=\vacio$. En efecto:\\
+		Como $U\cap V\cap f(A)=\vacio\implies f^{-1}(U\cap V\cap f(A))=\vacio \implies f^{-1}(U\cap V\cap f(A))=\\=f^{-1}(U)\cap f^{-1}(V)\cap f^{-1}(f(A))=(G_1\cap D)\cap(G_2\cap D)\cap f^{-1}(f(A))\supset\\ \supset (G_1\cap A)\cap(G_2\cap A)\cap f^{-1}(f(A))= (G_1\cap A)\cap(G_2\cap A)=\vacio$.\\
+		Con esto hemos demostrado que si $f(A)$ no es conexo $\implies A$ no es conexo. Por tanto, $A$ conexo $\implies f(A)$ conexo.
+	\end{enumerate}
+	\end{proof}
+	\end{enumerate}
+	\end{proposicion}
+	
+	\begin{teor} Teorema del Máximo y del Mínimo\\
+	Sea $(M,d)$ espacio métrico, sea $D\subset M$ y sea $\function{f}{D}{\R}$ continua en $D$. Si $K\subset D$ es compacto, entonces $f$ alcanza su máximo y su mínimo en $K$, esto es $\exists x_1,x_2\in K$ tal que $f(x_1)\leq f(x)\leq f(x_2)\ \forall x\in K$.
+	\begin{proof}\ \\
+	$f$ es continua en $K$ puesto que $f$ es continua en $D$ y $K\subset D$\\
+	Como $f$ es continua en $K$ y $K$ es compacto $\implies f(K)$ es compacto en $\R\implies f(K)$ es cerrado y acotado.
+	$\doubleright{K\neq\vacio\implies f(K)\neq\vacio}{f(K)\mathrm{\ acotado\ en\ }\R}\implies f(K)$ posee supremo e ínfimo $\implies\\ \implies$ por ser $f(K)$ cerrado, el supremo y el ínfimo pertencen a $f(K)\implies\exists x_1,x_2\in K\talque f(x_1)=\stackbin[x\in K]{}\min(f(x))\leq f(x)\leq \stackbin[x\in K]{}\max(f(x))=f(x_2),\ \forall x\in K$
+	\end{proof}
+	\begin{observacion} Si $K$ no es compacto ó $f$ no es continua en todo $K$, el resultado, en general, no es cierto.\\
+	Ejemplo: $f(x)=\dfrac{1}{x}$ en $(0,1)\rightarrow$ continua pero no compacto, no alcanza ni mínimo ni máximo.\\
+	Ejemplo: $f(x)=\doubleleft{x^2\mathrm{\ si\ }x\in[0,1)}{0\mathrm{\ si\ }x=1}\rightarrow$ compacto pero discontinua en $x=1$, alcanza mínimo pero no máximo.
+	\end{observacion}
+	\end{teor}
+	
+	\begin{teor} Teorema de los valores intermedios\\
+	Sea $(M,d)$ espacio métrico, sea $D\subset M$ y sea $\function{f}{D}{\R}$ continua en $D$.\\
+	Sea $A\subset D$ conexo y $f(a)<f(b)$ para un par de puntos $a,b\in A$, entonces $\forall\alpha\in\R\talque f(a)<\alpha<f(b)$ tenemos que $\exists x\in A\talque f(x)=\alpha$
+	\begin{proof}\ \\
+	$f$ es continua en $A$, ya que $D$ es continua y $A\subset D$\\
+	Como $A$ es conexo y $f$ es continua en $A\implies f(A)$ es conexo $\ximplies{f(A)\subset\R}{}f(A)$ es un intervalo de $\R$.\\
+	$\tripleright{f(a)\in f(A)}{f(b)\in f(A)}{f(A)\mathrm{\ es\ un\ intervalo}}\implies[f(a),f(b)]\subset f(A)\ximplies{\alpha\in(f(a),f(b))\subset[f(a),f(b)]\subset f(A)}{}\alpha\in f(A)\implies\implies\exists x\in A\talque f(x)=\alpha$\\\\\\\\
+	\end{proof}
+	\begin{nota} Si el conjunto no es conexo, el resultado en general no es cierto.\\\\
+	Sea $A=[1,4]\cup [6,10]$, sea $f(x)=x$ y sean $f(a)=3$ y $f(b)=7$, $\nexists x\in A\talque f(x)=5$\\
+	\begin{figura} \ \\
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (11,0) node[anchor=north west] {$x$};
+		\draw[thick] (0,0) -- (0,11) node[anchor=south east] {$f(x)=x$};
+		\foreach \x in {0,1,2,3,4,5,6,7,8,9,10}
+   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+    \foreach \y in {0,1,2,3,4,5,6,7,8,9,10}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+		\draw (0,0) -- (4,4);
+		\draw (6,6) -- (10,10);
+		\draw [dashed](0,5) -- (5,5);
+		\draw [dashed](5,0) -- (5,5);
+		\draw (6,6) -- (10,10);
+		\fill (3,3) circle (2pt)node[anchor=west] {$f(a)$};
+		\fill (7,7) circle (2pt)node[anchor=west] {$f(b)$};
+		\fill (5,5) circle (2pt)node[anchor=west] {$\alpha$};
+		\fill (9,10.5) node[anchor=west] {$f(x)=x$};
+	\end{tikzpicture}
+	\end{figura}
+	\end{nota}
+	\end{teor}
+	
+	\begin{observacion} ``Tener límite en un punto'' y ``ser continua en un punto'' son propiedades locales de una función. Es decir, si $f$ y $g$ coinciden en $B(x_0,r)\setminus\{x_0\}$, entonces\\ $\exists\limite{f(x)}{\xtiende}=L\iff\exists\limite{g(x)}{\xtiende}=L$ y equivalentemente, $f$ es continua en $x_0\iff g$ es continua en $x_0$.\\
+	\end{observacion}
+	
+	\section{Homeomorfismos, continuidad uniforme y funciones lipschitzianas}
+	
+	\begin{defi} Sean $(M,d)$ y $(M',d')$ espacios métricos. Diremos que $\function{f}{M}{M'}$ es un \underline{homeomorfismo} si es biyectiva, continua, con inversa $f^{-1}$ también continua.\\
+	Diremos que dos espacios métricos son homeomorfos si existe un homeomorfismo entre ellos.
+	\end{defi}
+	
+	\begin{observacion}\ \\
+	\begin{enumerate}
+	\item $f$ es homeomorfismo $\iff f^{-1}$ es homeomorfismo.
+	\item Sea $\function{f}{(M,d)}{(M',d')}$ homeomorfismo, sea $A\subset M$ entonces:\\\\
+	$A$ es $\left\{\begin{array}{ll}\mathrm{abierto}\\\mathrm{cerrado}\\\mathrm{compacto}\\\mathrm{conexo}\end{array}\right.\iff f(A)$ es $\left\{\begin{array}{ll}\mathrm{abierto}\\\mathrm{cerrado}\\\mathrm{compacto}\\\mathrm{conexo}\end{array}\right.$ Y además, sea $B\subset M':$
+	\\\\\\ $B$ es $\left\{\begin{array}{ll}\mathrm{abierto}\\\mathrm{cerrado}\\\mathrm{compacto}\\\mathrm{conexo}\end{array}\right.\iff f^{-1}(B)$ es $\left\{\begin{array}{ll}\mathrm{abierto}\\\mathrm{cerrado}\\\mathrm{compacto}\\\mathrm{conexo}\end{array}\right.$
+	\end{enumerate}
+	\end{observacion}
+	
+	\begin{ejem}\ \\
+	\begin{enumerate}[1)]
+	\item$\R$ y $(0,1)$ son homeomorfos pues $\exists\varphi\colon\stackbin[t\rightarrow(\frac{\pi}{2}+\arctan t)\frac{1}{\pi}]{}{\R\rightarrow(0,1)}$
+	\item $(0,1)$ y $(a,b)\subset\R$ son homeomorfos.
+	\item $(0,1)$ y $[0,1]$ \underline{NO} son homeomorfos pues $[0,1]$ es compacto y $(0,1)$ no lo es.
+	\item $\R$ y $\R^2$ no son homeomorfos, ya que sea una aplicación $\function{\varphi}{\R}{\R^2}$, entonces\\ $\varphi(0)=x\in\R^2$. Sea $A=\R\setminus\{0\}$ no conexo.\\
+	$\varphi(A)=\varphi(\R\setminus\{0\})\stackbin{\mathrm{biyectiva}}{=}\R^2\setminus\{\varphi(0)\}$ que es conexo, por lo que no son homeomorfos.
+	\item $\R^n$ y $\R^m$ son homeomorfos $\iff n=m$\\
+	Supongamos $m>n$ y veamos que no son homeomorfos. Sea $A\subset\R^n$ un hiperplano (dimensión $n-1$) y sea $B=\R^n\setminus A,\ B$ no es conexo.\\
+	Sea $\function{\varphi}{\R^n}{\R^m}$ entonces $\varphi(B)=\varphi(\R^n\setminus A) \stackbin{\mathrm{biyectiva}}{=}\R^m\setminus\{\varphi(A)\}$ que es conexo, y por tanto no son homeomorfos. 
+	\end{enumerate}
+	\end{ejem}
+	\ \\
+	\begin{defi} Continuidad Uniforme.\\
+	Sean $(M,d)$ y $(M',d')$ espacios métricos, sea $A\subset M$ y sea $\function{f}{A}{M'}$. Diremos que $f$ es uniformemente continua en $A$ si $\forall\varepsilon>0,\ \exists\delta\talque$ si $x,y\in A$ y $d(x,y)<\delta\ $ entonces\\ $d'(f(x),f(y))<\varepsilon$
+	\begin{proposicion}Si $f$ es uniformemente continua en $A\ximplies{\nimpliedby}{} f$ es continua en $A$.
+	\begin{proof}\ \\
+	Sea $x_0\in A$ tenemos que $\forall\varepsilon>0\ \exists\delta >0\talque$ si $d(x_0,y)<\delta$, con $y\in A$, $\implies d'(f(x_0),f(y))<\varepsilon$. Luego $\forall y\in B(x_0,\delta)\subset (B(x_0,\delta)\cap A)\implies f(y)\in B(f(x_0),\varepsilon)\implies f$ continua en $A$.	
+	\end{proof}
+	\end{proposicion}
+	\begin{observacion}\  
+	\begin{center}
+	$f$ no es uniformemente continua en $A$\\
+	$\iff$\\
+	$\exists \varepsilon_0\talque \forall\delta >0\ \exists x_\delta,y_\delta$ con $d(x_\delta,y_\delta)<\delta$ y $d'(f(x_\delta),f(y_\delta))\geq\varepsilon_0$\\$\iff$\\
+	$\exists \varepsilon_0>0$ y $\exists\sucesion{x}{n},\sucesion{y}{n}\subset A\talque d(x_n,y_n)\limited 0$ y $d'(f(x_n),f(y_n)\geq\varepsilon_0$\\$\iff$\\
+	$\exists\sucesion{x}{n},\sucesion{y}{n}\subset A\talque d(x_n,y_n)\limited 0$ pero $d'(f(x_n),f(y_n))\stackbin{n\rightarrow\infty}{\nlongrightarrow} 0$
+	\end{center}
+	\begin{ejem} $f(x)=\dfrac{1}{x}$ no es uniformemente continua en $(0,+\infty)$.\\
+	Sean $x_n=\dfrac{1}{n}$ e $y_n=\dfrac{1}{n+1}$, tenemos que $d(x_n,y_n)\limited 0$, pues $\limite{}{n\rightarrow\infty}\left|\dfrac{1}{n}-\dfrac{1}{n+1}\right|=\\=\limite{}{n\rightarrow\infty}\left|\dfrac{1}{n^2+n}\right|=0$\\
+	Además tenemos que $d'(f(x_n),f(y_n))=-1$ puesto que $\limite{}{n\rightarrow\infty}\left|f\left(\dfrac{1}{n}\right)-f\left(\dfrac{1}{n+1}\right)\right|=\\=\limite{}{n\rightarrow\infty}\left|n-(n+1)\right|=-1.$ Por tanto $f(x)$ no es uniformemente continua.
+	\end{ejem}
+	\end{observacion}
+	\end{defi}
+	
+	\begin{proposicion} Sean $(M,d)$ y $(M',d')$ espacio métricos, sea $A\subset M$ compacto y sea $\function{f}{A}{M'}$ continua en $A$. Entonces $f$ es uniformemente continua en $A$
+	\begin{proof}\ \\
+Sea $\varepsilon>0$ y $x\in A$. Como $f$ es continua en $x$, entonces $\exists\delta_x>0\talque f(B(x,\delta_x))\subset B(f(x),\dfrac{\varepsilon}{2})$. Como $A\subset \stackbin[x\in A]{}\bigcup B\left(x,\dfrac{\delta_x}{2}\right)\implies A$ es compacto $\exists m\in\N\talque x_1,x_2,...,x_m\in A\subset\\\subset\stackbin[i=1]{m}\bigcup B\left(x_i,\dfrac{\delta_{x_i}}{2}\right)$ y sea $\delta=\min\left\{\dfrac{\delta_{x_i}}{2}:1\leq i\leq m\right\}>0$.\\
+Si $x,y\in A\talque d(x,y)<\delta$, veamos que $\exists i\in \{1,...,m\}\talque x,y\in B(x_i,\delta_{x_i}).$ Como $x\in A\implies\\\implies \exists i\talque x\in B(x_i,\frac{\delta_{x_i}}{2})\implies d(y,x_i)\leq d(x,y)+d(x,x_i)<\delta+\dfrac{\delta{x_i}}{2}\leq\delta_{x_i}.$\\
+	Entonces: $d'(f(x),f(y))\leq d'(f(x),f(x_i))+d'(f(x_i),f(y))\leq \dfrac{\varepsilon}{2} + \dfrac{\varepsilon}{2}=\varepsilon$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{defi} Sean $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$. Diremos que $f$ es \underline{lipschitziana} en $D$ si $\exists\Cgot>0\talque d'(f(x),f(y))\leq\Cgot d(x,y) \ \forall x,y\in D$
+	\begin{nota} Si $f$ es lipschitziana, denominamos a $\Cgot$ como \underline{constante de Lipschitz}.
+	\end{nota}
+	\end{defi}
+	
+	\begin{proposicion} En las condiciones anteriores, $f$ lipschitziana en $D\implies f$ uniformemente continua en $D$.
+	\begin{proof}\ \\
+	Supongamos $\Cgot>0\talque d'(f(x),f(y))\leq \Cgot d(x,y)\ \forall x,y\in D$.\\
+	Dado $\varepsilon >0,\ \exists\delta=\dfrac{\varepsilon}{\Cgot}>0\talque$ si $x,y\in D$ con $d(x,y)<\delta$, entonces $d'(f(x),f(y))\leq\Cgot d(x,y)<\\<\Cgot\cdot\delta=\Cgot\cdot\dfrac{\varepsilon}{\Cgot}=\varepsilon.$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{proposicion} Propiedades de las funciones uniformemente continuas.\\
+	Sean $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$.
+	\begin{enumerate} [1)]
+	\item Si $f$ es uniformemente continua en $D$, entonces $f$ transforma sucesiones de Cauchy en sucesiones de Cauchy.
+		\begin{proof}\ \\
+		Sea $\sucesion{x}{n}\subset D$ una sucesión de Cauchy, veamos que $\sucesionelement{f(x_n)}{n}$ es de Cauchy. Dado $\varepsilon>0$, como $f$ es uniformemente continua en $D$, $\exists\delta>0\talque$ si $x,y\in D$ y $d(x,y)\leq\delta$ entonces $d'(f(x),f(y))<\varepsilon$\\
+		Ahora, como $\sucesion{x}{n}$ es de Cauchy, para $\varepsilon'=\delta>0,\ \exists N\in\N\talque d(x_p,x_q)<\varepsilon'(=\\=\delta),\ \forall p,q \geq N.$ Así, si $p>q\geq N$, como $d(x_p,x_q)<\delta\implies d'(f(x_p),f(x_q))<\varepsilon$. Esto nos dice que que $\sucesionelement{f(x_n)}{n}$ es de Cauchy.
+		\end{proof}\ \\
+	\item Si $f$ es uniformemente continua en $D$ y $(M',d')$ es completo, entonces $\exists \function{\oversim{f}}{\overline{D}}{M'}$ tal que $\oversim{f}|_{_D}\equiv f$ y además $\oversim{f}$ es uniformemente continua en $\overline{D}$.
+	\begin{proof}\ \\
+	Sea $x\in \overline{D}\setminus D$ como $x\in \overline{D}$, $\exists\sucesion{x}{n}\subset D\talque x_n\stackbin{\ntiende}\longrightarrow x$. Como $\sucesion{x}{n}$ converge, es de Cauchy.\\
+	Por la propiedad 1, $\sucesionelement{f(x_n)}{n}$ es sucesión de Cauchy en $(M',d')$ completo, entonces $\exists L=\limite{f(x_n)}{\ntiende}$. Definamos $\oversim{f}(x)=L$. Veamos que $L$ no depende de $\sucesion{x}{n}$ covergente a $x$.\\
+	En efecto: Si $\sucesion{y}{n}$ es otra sucesion en $D$ convergente a $x$, entonces $0\leq d(x_n,y_n)\leq d(x_n,x)+ d(y_n,x)\stackbin{\ntiende}\longrightarrow 0$. Luego $d(x_n,y_n)\stackbin{\ntiende}\longrightarrow 0$. Como $f$ es uniformemente continua en $D$, tenemos que $d'(f(x_n),f(y_n))\stackbin{\ntiende}\longrightarrow 0,$ por tanto, $0\leq d'(f(y_n),L)\leq d'(f(y_n),f(x_n))+d'(f(x_n),L)$ deducimos que $d'(f(y_n),L)\stackbin{\ntiende}\longrightarrow 0$.\\
+	Luego $\oversim{f}$ está bien definida. Veamos ahora que $\oversim{f}$ está bien definida en $D$.\\ Sea $\sucesion{x}{n}$ y $\sucesion{y}{n} \subset D\talque d(x_n,y_n)\limited 0$. Probemos que $d'(\oversim{f}(x_n),\oversim{f}(y_n))\limited 0$.\\
+	Como $x_n$ e $y_n\in \overline{D}$ y por definición de $\oversim{f}(x_n)$ y $\oversim{f}(y_n)\ \exists a_n,\ b_n\in D$ tal que:\\
+	$\double{d(a_n,x_n)<\frac{1}{n},\ d'(f(a_n),\oversim{f}(x_n))<\frac{1}{n}}{d(b_n,y_n)<\frac{1}{n},\ d'(f(b_n),\oversim{f}(y_n))<\frac{1}{n}}$\\
+	Así tenemos  que $\sucesion{x}{n}$ y $\sucesion{y}{n}$ son sucesiones en $D$ y $d(a_n,b_n)\limited 0$ (pues $d(a_n,b_n)\leq\ \leq d(a_n,x_n)+d(x_n,y_n)+d(y_n,b_n)$). Por ser $f$ uniformemente continua en $D$ tenemos que $d'(f(a_n),f(b_n))\limited 0$. Con lo cual $d'(\oversim{f}(x_n),\oversim{f}(y_n))\limited 0$ ya que $\forall n\in\N\\
+	0\leq d'(\oversim{f}(x_n),\oversim{f}(y_n))\leq d'(\oversim{f}(x_n),f(a_n))+d'(f(a_n),f(b_n))+d'(f(b_n),\oversim{f}(y_n))\leq\\\leq\frac{1}{n}+d'(f(a_n),f(b_n))+\frac{1}{n}$.
+	\end{proof}
+	\end{enumerate}
+	\end{proposicion}
+	
+	\section{Funciones contractivas. Teorema del punto fijo}
+	
+	\begin{defi} Sea $(M,d)$ y $(M',d')$ espacios métricos, sea $D\subset M$ y sea $\function{f}{D}{M'}$. Diremos que $f$ es \underline{contractiva} en $D$ si $f$ es lipschitziana en $D$ con constante de Lipschitz menor que 1. Es decir, si $\exists\Cgot\in(0,1)\talque d'(f(x),f(y))\leq \Cgot\cdot d(x,y)\ \forall x,y\in D$.
+	\end{defi}
+	
+	\begin{teor} Teorema del punto fijo.\\
+	Sea $(M,d)$ espacio métrico completo y sea $\function{f}{M}{M}$ contractiva en $M$, entonces existe un único \underline{punto fijo}; Es decir, $\exists!x_0\in M\talque f(x_0)=x_0$.
+	\begin{proof}\ \\
+	Como $f$ es contractiva, $\exists \Cgot\in(0,1)\talque d(f(x),f(y))\leq \Cgot\cdot d(x,y)\ \forall x,y\in M$.\\
+	Sea $x_1\in M$ y consideremos la sucesión $\sucesion{y}{n} =(f(x_1),f(f(x_1)),f(f(f(x_1))),...)$
+	\\ Veamos que $\sucesion{y}{n}$ es sucesión de Cauchy.\\
+	$d(y_2,y_1)=d(f(f(x_1)),f(x_1))\leq \Cgot d(f(x_1),x_1)=\Cgot\alpha$.\\
+	Si $\alpha=0$, entonces $x_1$ es punto fijo.\\
+	Si $\alpha>0$, entonces $d(y_3,y_2)=d(f(f(f(x_1))),f(f(x_1))\leq \Cgot d(f(f(x_1)),f(x_1))\leq\Cgot^2\alpha$.\\
+	por inducción se prueba que $d(y_{n+1},y_n)\leq \Cgot^n\alpha\ \forall n\in\N$.\\
+	Así, si $p>q$, entonces $d(y_p,y_q)\leq d(y_q,y_{q+1})+d(y_{q+1},y_{q+2})+...+d(y_{p-1},y_p)\leq\\\leq \Cgot^q\alpha+\Cgot^{q+1}\alpha+...+\Cgot^{p-1}\alpha=\alpha\Cgot^q(1+\Cgot+\Cgot^2+...+\Cgot^{p-q})\leq\alpha\Cgot^{q}\left(\stackbin[n=0]{\infty}\sum\Cgot^n\right)\stackbin{0<\Cgot<1}{=}\alpha\Cgot^q\dfrac{1}{1-\Cgot}$\\
+	Así, dado $\varepsilon >0$, como $\Cgot^n\limited 0$, (pues $0<\Cgot<1$). Sea $\varepsilon'=\dfrac{(1-\Cgot)\varepsilon}{\alpha},\ \exists N\in\N\talque\\ \Cgot^n<\varepsilon'\ \forall n\geq N$. Ahora si $p>q\geq N$, se tiene $d(y_p,y_q)\leq \alpha\cdot\Cgot^q\dfrac{1}{1-\Cgot}\leq\dfrac{\alpha\cdot\varepsilon'}{1-\Cgot}=\varepsilon$\\
+	Como $(M,d)$ es completo, $\exists x_0\in M\talque x_0=\limite{y_n}{n\rightarrow\infty}$ y tenemos $f(x_0)=f(\limite{y_n}{n\rightarrow\infty}\stackbin{f\mathrm{\ continua}}=\\
+	=\limite{f(y_n)}{n\rightarrow\infty}=\limite{y_{n+1}}{n\rightarrow\infty}=x_0$.\\
+	Y este es el único punto fijo, ya que si $y_0\neq x_0$ fuera punto fijo.\\
+	$0<d(x_0,y_0)=d(f(x_0),f(y_0))\leq\Cgot\cdot d(x_0,y_0)<d(x_0,y_0)$ y esto es absurdo.
+	\end{proof}
+	\end{teor}
+	

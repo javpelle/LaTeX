@@ -1,0 +1,102 @@
+%---------------------------------------
+	%Aquí empiezan los apéndices
+	\appendix\chapter{Cálculo de límites} \label{App:AppendixA}
+	
+	Veamos las siguientes propiedades y consejos para calcular límites.
+	\begin{enumerate}[1)]
+	\item Uso de las propiedades algebraicas y de composición de funciones continuas.
+	\begin{ejem} $\limite{}{(x,y)\to(0,0)}\dfrac{2\sen x\tan y}{xy}=\limite{}{(x,y)\to(0,0)}\dfrac{2\sen x}{x}\dfrac{\tan y}{y}$, tenemos ahora que:\\
+	$\doubleleft{\limite{}{(x,y)\to(0,0)}\dfrac{2\sen x}{x}\overset{\mathrm{L'H\hat{o}pital}}=\limite{}{(x,y)\to(0,0)}\dfrac{2\cos x}{1}=2}{\limite{}{(x,y)\to(0,0)}\dfrac{\tan y}{y}\overset{\mathrm{L'H\hat{o}pital}}=\limite{}{(x,y)\to(0,0)}\dfrac{1}{\cos^2y}=\dfrac{1}{1}=1}$\\
+	Luego $\limite{}{(x,y)\to(0,0)}\dfrac{2\sen x}{x}\dfrac{\tan y}{y}=2\cdot1=2$
+	\end{ejem}
+	\item Uso de la siguiente igualdad: $\limite{}{(x,y)\to(a,b)}f(x,y)=\limite{}{(h,k)\to(0,0)}f(a+h,b+k)$.
+	\item $\limite{}{(x,y)\to(a,b)}f(x,y)=L\iff \limite{}{(x,y)\to(a,b)}(f(x,y)-L)=0\iff \limite{}{(x,y)\to(a,b)}|f(x,y)-L|=0$.
+	\item Calcular los límites a través de rectas.
+	\begin{ejem} Calculemos $\limite{}{(x,y)\to(0,0)}\dfrac{xy}{x^2+y^2}$.\\
+	Sea $y=\lambda x$, tenemos que $\limite{}{(x,y)\to(0,0)}f(x,y)=\limite{}{x\to 0}f(x,\lambda x)=\limite{}{x\to 0}\dfrac{x(\lambda x)}{x^2+(\lambda x)^2}=\\
+	=\limite{}{x\to 0}\dfrac{\lambda x^2}{x^2(1+\lambda^2)}=\dfrac{\lambda}{1+\lambda^2}$. Por tanto, como el límite depende de $\lambda\implies$ no existe el límite.
+	\end{ejem}
+	\item Hallando los límites iterados.
+	\newpage
+	\begin{ejem} Calculemos $\limite{}{(x,y)\to(0,0)}\dfrac{x-y}{x+y}$.\\
+	$\doubleright{\limite{}{y\to 0}\left(\limite{}{x\to0}\dfrac{x-y}{x+y}\right)=\limite{}{x\to 0}\dfrac{x}{x}=1}{\limite{}{x\to 0}\left(\limite{}{y\to0}\dfrac{x-y}{x+y}\right)=\limite{}{y\to 0}\dfrac{-y}{y}=-1}\implies 1\neq -1\implies\nexists\limite{}{(x,y)\to(0,0)}\dfrac{x-y}{x+y}$.
+	\end{ejem}
+	\item Uso del \textit{criterio de compresión}:\\
+	Si $g(x,y)\leq f(x,y)\leq h(x,y)\ \forall(x,y)\in B((a,b),r)\setminus\{(a,b)\}$ para un cierto $r$, entonces, si $\limite{}{(x,y)\to(a,b)}g(x,y)=\limite{}{(x,y)\to(a,b)}h(x,y)=L\implies\exists\limite{}{(x,y)\to(a,b)}f(x,y)=L$.
+	\begin{ejem} Calculemos $\limite{}{(x,y)\to(0,0)}\dfrac{(x+y)\sen y}{y(x^2+2)}$.\\
+	$0\leq\left|\dfrac{(x+y)\sen y}{y(x^2+2)}\right|\leq \left|\dfrac{\sen y}{y}\right|\left|\dfrac{x+y}{x^2+2}\right|\leq 1\left|\dfrac{x+y}{x^2+2}\right|\leq \dfrac{1}{2}|x+y|\leq\dfrac{1}{2}(|x|+|y|)$. Como $\limite{}{(x,y)\to(0,0)}\dfrac{1}{2}(|x|+|y|)=0\ximplies{\mathrm{C.\ compresi\acute{o}n}}{}\exists \limite{}{(x,y)\to(0,0)}\dfrac{(x+y)\sen y}{y(x^2+2)}=0$.
+	\end{ejem}
+	\item Cuando el límite es del tipo $(x,y)\to(0,0)$, podemos hacer uso del cambio de variable a polares.
+	\begin{ejem} Calculemos $\limite{}{(x,y)\to(0,0)}\dfrac{xy}{\sqrt{x^2+y^2}}$.\\
+	$\limite{}{r\to0^+}f(r\cos\theta,r\sin\theta)=\limite{}{r\to0^+}\dfrac{(r\cos\theta)(r\sin\theta)}{\sqrt{r^2\cos^2\theta+r^2\sin^2\theta}}=\limite{}{r\to0^+}\dfrac{r^2\cos\theta\sin\theta}{r}=\limite{}{r\to0^+}r\cos\theta\sin\theta=\\
+	=0$. Veamos que la convergencia es uniforme en $\theta\in[0,2\pi]$:\\
+	$0\leq |f(r\cos\theta,r\sin\theta)|=r|\cos\theta\sin\theta|\leq r$. Así, dado $\varepsilon>0,\ \exists\delta=\varepsilon>0$ tal que si $0<r<\delta$ entonces $|f(r\cos\theta,r\sin\theta)|\leq r<\delta=\varepsilon\ \forall\theta\in[0,2\pi]$.
+	\end{ejem}
+	\begin{nota}Si el límite no es uniforme en $\theta$, el límite de partida puede no existir.\end{nota}
+	\end{enumerate}
+	
+	
+	\chapter{Repaso de aplicaciones lineales} \label{App:AppendixB}	
+	
+	\begin{proposicion} Si $E$ y $F$ son espacios normados y $\function{L}{E}{F}$ es una aplicación lineal, entonces son equivalentes:
+	\begin{enumerate}[a)]
+	\item $L$ es continua en $E$
+	\item $L$ es continua en $0$.
+	\item $\exists M>0	\talque \norm{L(x)}_F\leq M\norm{x}_E\ \forall x\in E$
+	\item $L(B_E)$ es acotado en $F$ (donde $B_E$ es la bola de centro el origen y radio $1$).
+	\end{enumerate}
+	\end{proposicion}
+	
+	\begin{observacion}
+	En el cojunto $\mathfrak{L}(E,F)$ de aplicaciones lineales y continuas podemos definir una norma de la siguiente manera. Si $L\in\mathfrak{L}(E,F)$, se define $\norm{L}=\stackbin[\norm{x}_E\leq 1]{}\sup\norm{L(x)}_F$\\
+	Se comprueba que $\stackbin[\norm{x}_E\leq 1]{}\sup\norm{L(x)}_F=\stackbin[\norm{x}_E]{}\sup\norm{L(x)}_F=\inf\{M>0\colon \norm{L(x)}_F\leq M\norm{x}_E\\ \forall x\in E\}$. Como consecuencia de lo anterior, si $E$ es de dimensión finita, toda aplicación lineal $\function{L}{E}{F}$ es continua.
+	\end{observacion}
+	
+	\begin{observacion} Si $\function{L}{\R^n}{\R}$ y para cada $1\leq i \leq n$ llamamos $\alpha_i=L(e_i)$ tenemos que $\norm{L(e)}=\norm{\alpha_1,\alpha_2,...,\alpha_n}_2=\sqrt{\alpha_1^2+\alpha_2^2+...+\alpha_n^2}$\\	
+	Toda aplicación lineal $\function{L}{\R^n}{\R^m}$ tiene una matriz asociada $A_{L\ m\times n}$ donde\\ $L(h)=L(h_1,h_2,...,h_n)=(u_1,u_2,...,u_n)$ si solo si $A_L\begin{pmatrix}
+  h_1 \\ \vdots \\ h_n  \end{pmatrix}=\begin{pmatrix}  u_1 \\ \vdots \\ u_n  \end{pmatrix}$.\\
+  Sea $L=(L_1,L_2,...,L_n)\talque \function{L_i}{\R^n}{\R}$, $A_L=\stackbin[1\leq j\leq n]{}{\stackbin[1\leq i\leq n]{}{(a_{ij})}}$ donde $a_{ij}=L_i(e_j)$.\\
+  Ahora, sea $\R^n\xrightarrow{L}\R^m\xrightarrow{S}\R^k$ si $L$ y $S$ son lineales, entonces: $A_{S\circ L}=A_S\cdot A_L$
+	\end{observacion}
+	
+	\chapter{Repaso de formas cuadráticas} \label{App:AppendixC}
+
+\begin{defi} Dada una matriz $n\times n$, $A=(\alpha_{ij})^n_{i,j=1}$, se llama forma cuadrática asociada a la matriz $A$ a la aplicación $\xfunction{Q_A}{\R^n}{\R}{\ \ \ \ h\ \longrightarrow\ hAh^t}$. Es decir $Q_A(h)=\stackbin[i,j=1]{n}\sum h_ih_j\alpha_{ij}$.
+\end{defi}
+
+\begin{defi} Sea $Q$ una forma cuadrática, la denominamos:
+\begin{itemize}
+\item Semidefinida positiva si $Q(h)\geq 0\ \forall h\in\R^n\setminus\{0\}$.
+\item Semidefinida negativa si $Q(h)\leq 0\ \forall h\in\R^n\setminus\{0\}$.
+\item Definida positiva si $Q(h)> 0\ \forall h\in\R^n\setminus\{0\}$.
+\item Definida negativa si $Q(h)< 0\ \forall h\in\R^n\setminus\{0\}$.
+\item Indefinida si $\exists h,\oversim{h}\in\R^n\talque Q(h)<0<Q(\oversim{h})$.
+\end{itemize}
+\end{defi}
+
+\begin{proposicion}
+Sea $A$ una matriz simétrica y sea $Q_A$ la forma cuadrática asociada a $A$, se tiene que:
+\begin{itemize}
+\item $Q_A$ es semidefinida positiva $\iff$ sus autovalores son $\geq 0$.
+\item $Q_A$ es semidefinida negativa $\iff$ sus autovalores son $\leq 0$.
+\item $Q_A$ es definida positiva $\iff$ sus autovalores son $> 0$.
+\item $Q_A$ es definida negativa $\iff$ sus autovalores son $< 0$.
+\end{itemize}
+\end{proposicion}
+
+\begin{proposicion} Criterio de \textit{Sylvester}.\\
+Sea $Q$ la matriz cuadrática asociada a la matriz simétrica $A=(a_{ij})^n_{i,j=1}$ y sea $A_k=\\
+=\det\begin{pmatrix}a_{11}&\ldots&a_{1k}\\\vdots&\ddots&\vdots\\a_{k1}&\ldots&a_{kk}\end{pmatrix}$ con $k\in \{1,2,...,n\}$. Entonces:
+\begin{enumerate}[i)]
+\item $Q$ es definida positiva $\iff A_k>0\ \forall k\in \{1,2,...,n\}$.
+\item $Q$ es definida negativa $\iff (-1)^kA_k>0\ \forall k\in \{1,2,...,n\}$.
+\item $Q$ es semidefinida positiva $\iff A_k\geq 0\ \forall k\in \{1,2,...,n\}$.
+\item $Q$ es semidefinida negativa $\iff (-1)^kA_k\geq 0\ \forall k\in \{1,2,...,n\}$.
+\item Si $\exists k_0\talque A_{k_0}<0 \implies Q$ es indefinida.
+\end{enumerate}
+\end{proposicion}
+
+\begin{observacion} Sea $Q(x)=\stackbin[i,j=1]{n}\sum x_ix_ja_{ij}\ \forall x\in\R^n$:\\
+Si $Q(x)>0\implies Q(tx)=t^2(Q(x))>0\ \forall t\in\R\setminus \{0\}$.\\
+Si $Q(x)<0\implies Q(tx)=t^2(Q(x))<0\ \forall t\in\R\setminus \{0\}$.
+\end{observacion}

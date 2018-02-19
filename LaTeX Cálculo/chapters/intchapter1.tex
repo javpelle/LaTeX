@@ -1,0 +1,253 @@
+	\chapter{Funciones integrables de varias variables}
+	\section{Particiones. La integral de Riemann en $\R^n$}	
+	
+	\begin{defi} Definimos un rectángulo $R$ en $\R^n$ como el producto de $n$ intervalos acotados y cerrados de $\R$. Es decir:\\
+	\[R=[a_1,b_1]\times [a_2,b_2]\times\ ...\ \times[a_n,b_n]\subset \R^n\] 
+	\end{defi}
+	
+	\begin{defi} Definimos el volumen de un rectángulo $R$ como:\\
+	\[v(R)=\prod_{i=1}^n(b_i-a_i)\] 
+	\end{defi}	
+	
+	\begin{defi} Sea $R\subset \R^n$ un rectángulo, definimos una \underline{partición $P$} de $R$ como el conjunto finito de subrectángulos de la forma:\\
+	para todo intervalo $[a_i,b_i]$ tomamos una partición (de $\R$) \\
+	$p_i=\{x_j^i\}_{j=0}^{m_i}$ donde $a_i=x^i_0<x^i_1<\ ...\ <x^i_{m_i}=b_i$ y por tanto:
+	\[P=\{[x^1_{j_1-1},x^1_{j_1}]\times[x^2_{j_2-1},x^2_{j_2}]\times\ ...\ \times[x^n_{j_n-1},x^n_{j_n}]:1\leq j_i\leq m_i\ \mathrm{y}\ 1\leq i\leq n\}\]\\
+	Al conjunto de todas las particiones de $R$ lo denotamos $\pi(R)$
+	\end{defi}
+	
+	\begin{defi} Sea $R\subset \R^n$ rectángulo, sea $P$ una partición de $R$ y sea  $\function{f}{R}{\R}$ acotada definimos:
+	\begin{enumerate}[I)]
+	\item la suma inferior de $f$ respecto de $P$ como:
+	\[s(f,P):=\sum_{S\in P} v(S)\cdot\inf\{f(x):x\in S\}  \]
+	\item la suma superior de $f$ respecto de $P$ como:
+	\[S(f,P):=\sum_{S\in P} v(S)\cdot\sup\{f(x):x\in S\}  \]
+	\end{enumerate}
+	\end{defi}
+	
+	\begin{proposicion} Sea $R\subset \R^n$ rectángulo, sea $P$ una partición de $R$ y sea  $\function{f}{R}{\R}$ acotada tenemos:
+	\[s(f,P)\leq S(f,P)\ \forall P\in R\]
+	\end{proposicion}
+	
+	\begin{defi} Sea $R\subset \R^n$ rectángulo, y $P,Q\in\pi(R)$ tal que:
+	 \begin{center}
+	 $P =\{p_i\}\  i\in\{1,...,n\} $ donde $p_i$ es una partición en $\R$  \\
+	 $Q =\{q_i\}\ i\in\{1,...,n\} $ donde $q_i$ es una partición en $\R$  \\
+	 \end{center}
+	 entonces diremos que $Q$ es es más fina que $P$ $(P \leq Q)\iff p_i \leq q_i\ \forall 1\leq i\leq n$ \\ 
+	 (En $\R$ , $p_i \leq q_i \implies p_i \subset q_i$)
+	\end{defi}
+	
+	
+	\begin{proposicion}
+	Sea $R\subset \R^n$ rectángulo, y $P,Q\in\pi(R)$ tal que P $\leq$ Q entonces:
+	\begin{enumerate}[a)]
+	\item $s(f,P) \leq s(f,Q)$
+		\begin{proof}\ \\
+		$s(f,P)=\underset{S_P\in P}\sum v(S_P)\inf\{f(x):x\in S_P\}=\underset{S_P\in P}\sum\left(\underset{S_Q\in Q}{\underset{S_Q\subset S_P}\sum} v(S_Q)\inf\{f(x):x\in S_P\}\right)\leq\\\leq \underset{S_P\in P}\sum\left(\underset{S_Q\in Q}{\underset{S_Q\subset S_P}\sum} v(S_Q)\inf\{f(x):x\in S_Q\}\right)=\underset{S_Q\in Q}\sum v(S_Q)\inf\{f(x):x\in S_Q\}=s(f,Q)$
+		\end{proof}
+	\item $S(f,Q) \leq S(f,P)$
+		\begin{proof}\ \\
+	$s(f,Q)=\underset{S_Q\in Q}\sum v(S_Q)\sup\{f(x):x\in S_Q\}=\underset{S_P\in P}\sum\left(\underset{S_Q\in Q}{\underset{S_Q\subset S_P}\sum} v(S_Q)\sup\{f(x):x\in S_Q\}\right)\leq\\\leq \underset{S_P\in P}\sum\left(\underset{S_Q\in Q}{\underset{S_Q\subset S_P}\sum} v(S_Q)\sup\{f(x):x\in S_P\}\right)=\underset{S_P\in P}\sum v(S_P)\sup\{f(x):x\in S_P\}=s(f,P)$
+		\end{proof}
+	\end{enumerate}
+	\end{proposicion}
+	
+	\begin{proposicion} Sea $R\subset \R^n$ rectángulo, y $P,Q\in\pi(R)$, entonces: 
+	\[s(f,P)\leq S(f,Q)\]
+	\begin{proof}\ \\
+	Tomemos $P'\in\pi(R)$ tal que $P \leq P'$ y $ Q \leq P'$, tenemos:\\
+	$s(f,Q) \overset{\mathrm{prop.\ 2}}\leq s(f,P') \leq S(f,P') \overset{\mathrm{prop.\ 2}}\leq S(f,P) \implies s(f,Q) \leq S(f,P)$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{defi}\ 
+	\begin{enumerate}[I)]
+	\item Definimos la integral	inferior de $f$ en $R$ como:
+	\[\lowint{}{R}f=\sup\{s(f,P):P\in\pi(R)\}\]
+	\item Definimos la integral	superior de $f$ en $R$ como:
+	\[\upint{}{R}f=\inf\{S(f,P):P\in\pi(R)\}\]
+	\end{enumerate}
+	\end{defi}
+	
+	\begin{observacion} Supongamos que $f(x)\leq M \ \forall x\in R$ entonces,\\
+	\[s(f,P)\leq \lowint{}{R} f\leq \upint{}{R} f\leq M\cdot v(R)\ \forall P\in\pi(R)\]
+	Análogamente, si $m\leq f(x)\ \forall x\in R$ entonces:\\
+	\[m\cdot v(R)\leq \lowint{}{R}f\leq\upint{}{R}f\leq S(f,P)\ \forall P\in\pi(R)\]
+	\end{observacion}
+	
+	\begin{defi} Diremos que $f$ es integrable si $\lowint{}{R}f=\upint{}{R}f$, y en ese caso tenemos:\\
+	\[\integral{}{R}f=\lowint{}{R}f=\upint{}{R}f\]
+	\end{defi}
+	
+	\begin{ejem} \ 
+	\begin{enumerate}[a)]
+	\item Las constantes son integrables: $\integral{}{R}c=c\cdot v(R)$
+	\item $\xfunction{f}{[0,1]}{\R}{x\to\doubleleft{1\ \mathrm{si\ }x\in\Q}{0\ \mathrm{si\ }x\notin \Q}}$\\
+	$f$ no es integrable ya que $\doubleleft{s(f,P)=0}{S(f,P)=1}\ \forall P\in \pi([0,1])\implies \upint{}{[0,1]}f\neq\lowint{}{[0,1]}f$
+	\end{enumerate}
+	\end{ejem}
+	
+	\begin{observacion}\ 
+	\begin{enumerate}[1)]
+	\item $f$ es integrable $\iff\upint{}{R}f\leq \lowint{}{R}f$
+	\item $f$ no es integrable $\iff \lowint{}{R}f < \upint{}{R}f$
+	\item $f$ es integrable $\implies \exists!\alpha\in R\talque s(f,P)\leq\alpha\leq S(f,P)\ \forall P\in\pi(R)$ 
+	\end{enumerate}
+	\end{observacion}
+	
+\section{Condición de Riemann. Teorema de Darboux}	
+	
+	\begin{teor} Condición de Riemann\ \\
+	Sea $\function{f}{R}{\R}$ acotada, $f$ es integrable $\iff\ \forall\varepsilon\ \exists P_\varepsilon\in \pi(R)$ tal que $S(f,P_\varepsilon)-s(f,P_\varepsilon)<\varepsilon$
+	\begin{proof}\ 
+	\begin{itemize}
+		\item $(\implies)$\\
+		Probemos que si $f$ es integrable, entonces cumple la \textit{condición de Riemann}.\\
+		Fijado un $\varepsilon >0$, por la definición de integrabilidad, sabemos que existen dos particiones $P_1$ y $P_2$ tales que:
+		\[S(f,P_1)-\integral{}{R} f < \dfrac{\varepsilon}{2}\ \ \mathrm{y}\ \ \integral{}{R}f -s(f,P_2) <\dfrac{\varepsilon}{2}\]
+		Tomemos ahora una partición $P$, tal que $P_1\leq P$ y $P_2\leq P$. Tenemos:
+		\[S(f,P)-\integral{}{R} f < \dfrac{\varepsilon}{2}\ \ \mathrm{y}\ \ \integral{}{R}f -s(f,P) <\dfrac{\varepsilon}{2}\]
+		Ahora, sumando las desigualdades anteriores nos queda:
+		\[S(f,P)-s(f,P) <\varepsilon\]
+		\item $(\impliedby)$\\
+		Tenemos que $0\leq\upint{}{R}f-\lowint{}{R}f\leq S(f,P_\varepsilon)-s(f,P_\varepsilon)<\varepsilon\ (\forall\varepsilon >0)\implies\\\implies \upint{}{R}f-\lowint{}{R}f<\varepsilon\ \forall\varepsilon>0\implies \upint{}{R}f-\lowint{}{R}f=0\implies \upint{}{R}f=\lowint{}{R}f=\integral{}{R}f\implies\\\implies f$ integrable.
+	\end{itemize}
+	\end{proof}
+	\end{teor}
+	
+	\begin{corolario} Sea $\function{f}{R}{\R}$ acotada, $f$ es integrable si sólo si $\exists\sucesion{P}{n}\subset \pi(R)$ sucesión tal que $\limite{}{\ntiende} S(f,P_n)-s(f,P_n)=0$.\\
+	Probemos que, en este caso, $\sucesionelement{S(f,P_n)}{n}$ y $\sucesionelement{s(f,P_n)}{n}$ son sucesiones convergentes y $\limite{S(f,P_n)}{\ntiende}=\limite{s(f,P_n)}{\ntiende}=\integral{}{R}f$.
+	\begin{proof}\ \\
+	$0\leq S(f,P_n) -\integral{}{R}f\leq S(f,P_n)-s(f,P_n)\limited 0\implies S(f,P_n) -\integral{}{R}f\limited 0\implies \boxed{S(f,P_n) \limited\integral{}{R}f}\implies \boxed{s(f,P_n) \limited\integral{}{R}f} $
+	\end{proof}
+	\end{corolario}
+	
+	\begin{ejem} Sea $\xfunction{f}{[0,1]}{\R}{\ \ x\ \longrightarrow\ x}$\\
+	Tomemos $Pn=\{0=\dfrac{0}{n}<\dfrac{1}{n}<\dfrac{2}{n}<\ ...\ < \dfrac{n}{n}=1\}$. Tenemos:\\
+$S(f,P_n	)=\stackbin[i=1]{n}\sum \left|\dfrac{i}{n}-\dfrac{i-1}{n}\right|\sup\left\{f(x):x\in\left[\dfrac{i}{n}-\dfrac{i-1}{n}\right]\right\}=\stackbin[i=1]{n}\sum \dfrac{1}{n}\dfrac{i}{n}=\dfrac{1}{n^2}\stackbin[i=1]{n}\sum i=\dfrac{1}{n^2}\dfrac{n(n+1)}{2}=\\=\dfrac{n+1}{2n}\limited \dfrac{1}{2}$\\\\
+$s(f,P_n)=\stackbin[i=1]{n}\sum\dfrac{1}{n}\cdot\dfrac{i-1}{n}=\dfrac{1}{n^2}\stackbin[i=1]{n}\sum i-1=\dfrac{1}{n^2}\dfrac{(n-1)n}{2}=\dfrac{n-1}{2n}\limited\dfrac{1}{2}$\\
+Nota: $\stackbin[i=1]{n}\sum i = \dfrac{n(n+1)}{2}$
+	\end{ejem}
+	
+	\begin{teor} Teorema de Darboux.\\
+	Sea $\function{f}{R}{\R}$ acotada, entonces $f$ es integrable si solo si $\exists I\in\R$ de modo que $\forall\varepsilon>0\ \exists\delta>0$ tal que si $P\in\pi(R)$ y $|P|<\delta\ (|P|\delta\equiv\ \forall S\in P$ sus lados tienen longitud menor que $\delta)$, y para cualesquiera $x_S\in S\ \forall S\in P$ se cumple que $|I-S(f,P,\{x_S\})|<\varepsilon$ donde $S(f,P,\{x_S\})=\underset{S\in P}\sum v(S)f(x_S)$. Además $I=\integral{}{R}f$. Llamamos a esta condición, condición de Darboux (D).
+	\begin{proof}\ 
+	\begin{itemize} 
+		\item $(\implies)$\\
+		Por ser $f$ integrable tenemos que $\forall\varepsilon\ \exists P_1,P_2 \in \pi(R)$ tal que $\integral{}{R}f-s(f,P_1)<\dfrac{\varepsilon}{2}$ y $S(f,P_2)-\integral{}{R}f<\dfrac{\varepsilon}{2}$. Sea ahora $P'\in\pi(R)$ más fina que $P_1$ y $P_2$ tenemos:\\
+			$\integral{}{R}f-s(f,P')<\dfrac{\varepsilon}{2}$ y $S(f,P')-\integral{}{R}f<\dfrac{\varepsilon}{2}$.\\
+	Ahora, por ser $f$ acotada, $\exists M\talque |f(x)|\leq M\ \forall x\in R$. Por la \textit{proposición 4}, demostrada a continuación tenemos que para un $\varepsilon'=\dfrac{\varepsilon}{2M},\ \exists \delta >0 \talque \forall P\in R(\pi)$ con $|P|<\delta$ la suma de los volúmenes de los subrectángulos de $P$ que no están contenidos en ningún subrectángulo de $P'$ es menor que $\varepsilon'$.\\
+		Sean $S^k$ el conjunto de los subrectángulos de $P$ contenidos en algún otro de $P'$ y $S^n$ los subrectángulos de $P$ que no están contenidos en ninguno otro de $P'$. Entonces, para cualquier $x_S\in S\subset P$, tenemos:\\
+		$\underset{S\subset P}\sum f(x_S)v(S) = \underset{S\in S^k}\sum f(x_S)v(S) + \underset{S\in S^n}\sum f(x_S)v(S)\leq S(f,P')+M\varepsilon'\leq \integral{}{R}f+\varepsilon$\\
+		Análogamente $\underset{S\subset P}\sum f(x_S)v(S)\geq s(f,P)-M\varepsilon' \geq \integral{}{R}f-\varepsilon$.\\
+		Por tanto tenemos $\doubleright{\underset{S\subset P}\sum f(x_i)v(S_i')-\integral{}{R}f\leq \varepsilon}{\underset{S\subset P}\sum f(x_i)v(S_i')-\integral{}{R}f\geq -\varepsilon}\implies \left|\stackbin[i=1]{n}\sum f(x_i)v(S_i')-\integral{}{R}f\right|\leq \varepsilon$.\\
+	Donde $I=\integral{}{R}f$.		
+		\item $(\impliedby)$\\
+		Supongamos que se cumple la \textit{condición de Darboux}. Veamos que $f$ cumple la condición de Riemann. Dado $\varepsilon>0$, como $f$ cumple dicha condición para todo $\varepsilon$, entonces lo cumple para $\dfrac{\varepsilon}{2}>0$.\\
+		Podemos tomar $P\in\pi(R)$ que cumpla la \textit{condición de Darboux}, con $|P|<\delta,\ P = P\varepsilon$ buscada.\\
+		$I-\dfrac{\varepsilon}{2} < \underset{S\in P}\sum f(x_S)v(S)<I+\dfrac{\varepsilon}{2}\ \forall x_S\in S\ \forall S\in P$\\
+		Tomando supremos ($f(x_S) \to \sup\{f(x):x\in S\}$):\\
+		$S(f,P)=\underset{S\in P}\sum \sup\{f(x):x\in S\}v(s)< I+\dfrac{\varepsilon}{2}$\\
+		Análogamente tomamos ínfimos ($f(x_S) \to \inf\{f(x):x\in S$):\\
+		$I-\dfrac{\varepsilon}{2} < \underset{S\in P}\sum \inf\{f(x):x\in S\}v(s)=s(f,P)\implies S(f,P)-s(f,P) < \varepsilon$
+	\end{itemize}
+	\end{proof}
+	\end{teor}
+	
+	\begin{proposicion} Sea $R\subset\R^n$ rectángulo, sea $P$ partición de $R$, entonces $\forall\varepsilon>0\ \ \exists\delta>0$ tal que sea una partición $P'$ con $|P|\leq\delta$, entonces $\underset{S'\nsubset S\ \forall S\in P}{\underset{S'\subset P'}\sum}v(S')\leq \varepsilon$
+	\begin{proof}\ \\
+		El siguiente resultado nos muestra la suma de las áreas de las caras (hiperplanos) de todos los subrectángulos de $P$:
+		\[T=\underset{S\in P}\sum\left(\stackbin[i=1]{n}2\left(\underset{j\neq i}{\stackbin[i=1]{n}\prod}(b_i-a_i)\right)\right)\]
+ Ahora, sea $S'\in P'\talque S'\nsubset S\ \forall S\in P$, entonces $S'$ corta a alguna de estos hiperplanos. Como $v(S)\leq \delta^n$ y $S$ corta a alguno de los hiperplanos cuyas áreas suman $T\implies\\\implies\underset{S'\nsubset S\ \forall S\in P}{\underset{S'\subset P'}\sum}v(S')\leq T\cdot\delta$.\\
+ Por tanto si tomamos $\delta = \dfrac{\varepsilon}{2T}$, entonces $\underset{S'\nsubset S\ \forall S\in P}{\underset{S'\subset P'}\sum}v(S')\leq T\cdot\dfrac{\varepsilon}{2T}=\dfrac{\varepsilon}{2}<\varepsilon$
+	\end{proof}
+	\begin{nota} Podemos tomar un $\delta$ mayor pues estamos contando caras de subrectángulos contiguos como dos distintas cuando en realidad son coincidentes y por tanto el mismo hiperplano.\end{nota}
+	\end{proposicion}
+	
+\section{Medibilidad de conjuntos}
+
+	\begin{defi} Sea $A\subset\R^n$ acotado, diremos que $A$ es \underline{medible-Jordan} si existe un rectángulo $R$ con $A\subset R$ tal que la función característica de $A$, $\chi_A$ es integrable en $R$
+	\begin{center}donde $\chi_A(x)=\doubleleft{1\mathrm{\ si\ }x\in A}{0\mathrm{\ si\ }x\notin A}$\end{center}
+	Entonces $v(A)=\integral{}{R}\chi_A$
+	\end{defi}
+	
+	\begin{ejem}\ 
+	\begin{enumerate}[1)]
+	\item $\Q \cap [0,1]$ no es medible-Jordan.
+	\item $\Q^2\cap[0,1]\times[0,1]$ no es medible-Jordan.
+	\item $(\Q\times\R)\cap[0,1]^2\subset\R^2$ no es medible-Jordan.
+	\item Los rectángulos y los conjuntos finitos son medibles-Jordan. En el primer caso\\ $v(R)=\integral{}{R}\chi_R$. En el segundo caso $v(F)=0$ siendo $F$ un conjunto finito.
+	\end{enumerate}
+	\end{ejem}
+	
+	\begin{observacion} Veamos que forma tienen las sumas superiores e inferiores de $\chi_A$:
+	\begin{itemize}
+	\item $S(f,P)=\underset{S\in P}\sum \sup\{f(x):x\in S\}\cdot v(S)=\underset{S\cap A\neq\emptyset}{\underset{S\in P}\sum}v(S)$
+	\item $s(f,P)=\underset{S\in P}\sum \inf\{f(x):x\in S\}\cdot v(S)=\underset{S\subset A}{\underset{S\in P}\sum}v(S)$
+	\end{itemize}
+	\end{observacion}
+	
+	\begin{defi} Sea $A\subset\R^n$ acotado, diremos que $A$ tiene \underline{contenido nulo} si $A$ es\\ medible-Jordan y $v(A)=0$.
+	\end{defi}
+	
+	\begin{proposicion} Tenemos que $0\leq \lowint{}{R}\chi_A\leq\upint{}{R} \chi_A$, entonces $A\subset\R^n$ tiene contenido \\\\ nulo $\iff\forall\varepsilon>0\ \exists P\in\pi(R)\talque \underset{S\cap A\neq\emptyset}{\underset{S\in P}\sum}v(S)<\varepsilon\equiv S(\chi_A,P)<\varepsilon$ 
+	\end{proposicion}
+	\ \\
+	\begin{teor} Sea $A\subset \R^n$ acotado, $A\neq\emptyset$, $A$ tiene contenido nulo $\iff\forall\varepsilon>0\ \exists \{R_i\}_{i\in F}$ colección finita de rectángulos tales que $A\subset \underset{i\in F}\bigcup R_i$ y además $\underset{i\in F}\sum v(R_i)<\varepsilon$
+	\begin{proof}\ 
+	\begin{itemize}
+	\item ($\implies$)\\
+	Visto por la proposición anterior.
+	\item ($\impliedby$)\\
+	Veamos antes la siguiente observación:	
+	\begin{observacion} Si se cumple la hipótesis, entonces se cumple $\forall\varepsilon>0\ \exists\{Q_i\}_{i\in F}$ colección finita de rectángulos tales que $A\subset\underset{i\in F}\bigcup\mathring{Q_i}$ y además $\underset{i\in F}\sum v(Q_i)<\varepsilon$\\
+	Veamos que esto se cumple. En efecto:\\
+	Dado $\varepsilon>0$ si la hipótesis se cumple $\forall\varepsilon >0$, en particular se cumple para $\dfrac{\varepsilon}{2}$. por tanto existe $\{R_i\}_{i\in F}$ colección finita de rectángulos tales que $A\subset\underset{i\in F}\bigcup R_i$ y además $\underset{i\in F}\sum\ v(R_i)<\dfrac{\varepsilon}{2}$. Y ahora, $\forall i\in F$ podemos tomar un rectángulo $Q_i\talque R_i\subset\mathring{Q_i}$ y además $\underset{i\in F}\sum\ v(Q_i)<\varepsilon$.
+	\end{observacion}
+	Probada la observación continuemos con la demostración. Ahora, por hipótesis se cumple la observación anterior.\\
+	Tomemos $R$ rectángulo tal que $A\subset R$. Queremos que dado $\varepsilon >0$, se cumple que $\upint{}{R}\chi_A <\varepsilon$.\\
+	Dado $\varepsilon>0$ por la observación tenemos que $\exists\{Q_i\}_{i\in F}$ colección finita de rectángulos tal que $A\subset\underset{i\in F}\bigcup\mathring{Q_i}$ y además $\underset{i\in F}\sum v(Q_i)<\varepsilon$\\
+	Tomemos una partición $P\in\pi(R)$ de manera que:
+	\begin{center}Si $S\in P\implies\tripleleft{S\cap\left(\underset{i\in F}\bigcup\mathring{Q_i}\right)=\emptyset}{\ \ \ \ \ \ \ \mathrm{o}}{\exists i\in F\talque S\subset Q_i}$	\end{center}
+	Tenemos que $S(\chi_A,P)=\underset{S\cap A\neq\emptyset}{\underset{S\in P}\sum}\ v(S)\leq \underset{i\in F}\sum\ v(Q_i) < \varepsilon$, puesto que para cada $S\in P$ tal que $S\cap A\neq\emptyset\ximplies{A\subset\cup Q_i}{} \exists j\talque S\subset Q_j$.\\
+	Por último, si $S(\chi_A, P)<\varepsilon \implies \upint{}{R}\chi_A<\varepsilon$.
+	\end{itemize}
+	\end{proof}
+	\end{teor}
+	
+	\begin{defi} Sea $A\subset\R^n$ (no necesariamente acotado) no vacío, diremos que $A$ tiene \underline{medida nula} si $\forall\varepsilon>0 \ \ \exists\sucesionelement{R_m}{m}$ sucesión de rectángulos tal que $A\subset \stackbin[m=1]{\infty}\bigcup R_m$ y además $\stackbin[m=1]{\infty}\sum v(R_m)<\varepsilon$.
+	\end{defi}
+	
+	\begin{observacion} Si $A$ tiene contenido nulo $\implies A$ tiene medida nula.
+	\end{observacion}
+	
+	\begin{ejem}\ 
+	\begin{enumerate}[1)]
+	\item Los conjuntos numerables tienen medida nula.
+	\item Los hiperplanos tienen medida nula.
+	\end{enumerate}
+	\end{ejem}
+	
+	\begin{observacion}\ 
+	\begin{enumerate}[1)]
+	\item Si $A\subset B$ y $B$ tiene contenido nulo $\implies A$ tiene contenido nulo.\\
+	Además si $B$ tiene medida nula $\implies A$ tiene medida nula.
+	\item Si $A,B$ tienen contenido nulo $\implies A\cup B$ tiene contenido nulo.\\
+	Además si $A,B$ tienen medida nula $\implies A\cup B$ tiene medida nula.\\
+	Por tanto sea $\{A_k\}_{k=1}^m$ un conjunto finito de contenido nulo (respectivamente medida nula) $\implies \stackbin[k=1]{m}\bigcup A_k$ tiene contenido nulo (respectivamente medida nula).
+	\end{enumerate}	 
+	\end{observacion}
+	
+	\begin{proposicion} Sea $\{A_k\}_{k=1}^\infty$ una sucesión de conjuntos de medida nula $\implies\stackbin[k=1]{\infty}\bigcup A_k$ tiene medida nula.
+	\begin{proof}\ \\
+	Sea $\varepsilon >0\ \exists \{R^k_m\}_{m\in\N}\ \forall k\in \N\talque A_k\subset \stackbin[m=1]{\infty}\bigcup R_m^k$ y además $\stackbin[m=1]{\infty}\sum v(R_m^k)<\dfrac{\varepsilon}{2^k}\ \forall k\in\N$
+	\end{proof}
+	\end{proposicion}
+
+	\begin{observacion} El teorema anterior no se cumple para contenido nulo.
+	\end{observacion}
+	
+	\begin{observacion} Si $A$ es medible-Jordan, entonces $A$ tiene medida nula $\xiff{\left(\ximpliedby{\mathrm{siempre}}{}\right)}{}$ tiene contenido nulo.
+	%--- La demostracion solo esta para compactos
+	\end{observacion}

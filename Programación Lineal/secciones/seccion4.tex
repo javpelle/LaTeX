@@ -1,0 +1,170 @@
+\section{Algoritmo del \textit{Símplex}}
+No hemos hablado hasta ahora de complejidad salvo en el último ejemplo. Esto es porque, salvo el susodicho ejemplo (\textit{Ejemplo 3.4}), hemos conseguido representar de forma correcta cada uno de los ejemplos vistos como programas lineales correspondientes a la \textit{Definición 1.1}. El último ejemplo se escapaba de la linealidad y hemos tenido que ingeniárnoslas mediante la recursión para poder hallar la solución. Además la complejidad $\mathcal{O}(nb)$ es engañosa a causa del uso de programación dinámica para su resolución, puesto que $b$ puede alcanzar valores cuantiosos, y realmente esconde un orden pseudopolinómico. En cambio, el resto van a poder ser resueltos mediante el \textit{método Símplex}, del que ya hemos comentado brevemente y estudiaremos en esta sección y, aunque en caso peor es NP-completo, en la práctica, con $n$ de tamaño prudente resulta un algoritmo eficiente.
+\subsection{¿Cómo funciona el \textit{Símplex}?}
+\begin{defi} Decimos que un problema de programación lineal está en su \textbf{forma estándar} cuando todas las restricciones son del tipo:
+\[\stackbin[j=1]{n}\sum a_{ij}x_j=b_i,\ 1\leq i\leq m\mathrm{\ donde\ }m\mathrm{\ es\ el\ n\acute{u}mero\ de\ restricciones.}\]
+
+Esta definición se aleja de la \textit{Definición 1.1}, pero podemos convertir restricciones conformadas por inecuaciones en igualdades del tipo anterior de la siguiente forma:
+\[\stackbin[j=1]{n}\sum a_{ij}x_j\leq b_i\implies \stackbin[j=1]{n}\sum a_{ij}x_j+x_{n+i}=b_i\]
+\[\stackbin[j=1]{n}\sum a_{ij}x_j\geq b_i\implies \stackbin[j=1]{n}\sum a_{ij}x_j-x_{n+i}=b_i\]
+
+A las variables $x_{n+i}$ las denominamos \textbf{variables de holgura o excedente, respectivamente, asociada a la restricción $i$-ésima}.
+\end{defi}
+
+¿Por qué esta definición? Pues sencillamente porque es un prerrequisito del \textit{método Símplex} que nuestro problema esté formulado en forma estándar.
+
+Aún no estamos listos, sin embargo, para aplicar el método. Como ya comentamos, \textit{Símplex} visita los vértices de la región factible buscando el óptimo, pero, ¿por cuál empieza? Pues este método empieza por el origen, es decir por $x=\overline{0}\in\R^n$. Y aquí surge el problema, qué pasa si dicho punto no pertenece a la región factible.\\
+
+En los ejemplos vistos en la \textit{Sección 2}, todas las restricciones eran del tipo ``$\leq$''. Esto, sumado a que las restricciones de no negatividad $x_j\geq0$ nos aseguraba la existencia del origen en la región factible. Sin embargo, si existen restricciones del tipo ``$\geq$'' o ``$=$'' no nos asegura tal existencia. La solución a este problema es la introducción de una \textbf{variable artificial}, que denotaremos $a_i$, en cada $i$-ésima restricción de este tipo \textbf{después de ser convertida a forma estándar}. En la siguiente tabla podemos ver los pasos a seguir en función del tipo de restricción:
+\begin{center}\begin{tabular}{|c|c|c|} \hline
+Formulación inicial & Forma estándar & Forma ampliada\\\hline\hline
+$\stackbin[j=1]{n}\sum a_{ij}x_j\leq b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j+x_{n+i}= b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j+x_{n+i}= b_i$\\\hline
+$\stackbin[j=1]{n}\sum a_{ij}x_j\geq b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j-x_{n+i}= b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j-x_{n+i}+a_i=b_i$\\\hline
+$\stackbin[j=1]{n}\sum a_{ij}x_j=b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j= b_i$&$\stackbin[j=1]{n}\sum a_{ij}x_j+a_i= b_i$\\\hline
+\end{tabular}\end{center}\ \\
+
+El objetivo de la inclusión de variables artificiales es la de llevar el problema a una dimensión de $\R$ superior donde si exista el origen en la región factible.
+
+Denominamos comúnmente \textbf{forma ampliada} a las restricciones donde ya han sido incluidas variables de holgura (para ``$\leq$'') y variables artificiales (para ``$\geq$'' y ``$=$'').
+Dichas variables de holgura y artificiales conformarán las \textbf{variables básicas}, o lo que es lo mismo, una solución básica factible (no óptima en general) que se centra en el origen.
+
+\subsection{Explicación e implementación del algoritmo}
+
+Si las variables básicas están compuestas sólo de variables de holgura, podemos proceder con el \textit{Símplex}, en otro caso, debemos recurrir a otros métodos como el \textit{método de las dos fases} o el \textit{método Big M} (o \textit{M grande}).\\
+
+El primero consta de dos fases, la primera, que no detallaremos, consiste en aplicar el \textit{Símplex} en busca de que las variables artificiales sean nulas donde la función objetivo es $\min\ z=\stackbin[i=0]{k}\sum a_i$. Si esto ocurre podemos eliminar dichas variables y continuar con el \textit{Símplex} habitual. \textit{Big M} es un único proceso que combina ambas fases.\\
+
+Procedamos con el \textit{Símplex}. Si todas las restricciones eran del tipo ``$\leq$'' entonces no ha hecho falta el \textit{método de las dos fases} y el origen es el vértice inicial. En caso contrario, hemos ejecutado la primera fase y nuestro algoritmo y tenemos un vértice $P$ que es solución factible básica. La idea del algoritmo es desplazarse desde ese punto extremo o vértice a otro vecino a lo largo de una arista que los una, mejorando con ello la función objetivo. Continuaremos realizando este proceso hasta llegar a un vértice óptimo o que una arista nos lleve a $\infty$.\\
+
+Sea $B$ la matriz definida por las variables básicas de la forma aumentada, es decir, la base. Cada vez que nos desplacemos a un vértice vecino, una variable básica saldrá de $B$ y por tanto dejará de formar parte de la solución (valdrá 0) y dejará entrar a otra. Las variables que no pertenecen a la base forman la matriz $N$. Estas matrices irán variando en cada iteración del algoritmo.\\
+
+La variable que entra puede ser cualquiera de coste $c_i>0$, pero nosotros cogeremos $c_e=\max\{c_i\}$. Si $c_e\leq 0$, hemos acabado. Para escoger la variable que sale tomamos $l\in B$ tal que $\Delta_l=\min\{\Delta_i:i\in B\}$ donde $\Delta_i=\doubleleft{\infty\mathrm{\ si\ } a_{ei}\geq0}{\dfrac{b_i}{a_{ie}}\mathrm{\ si\ }a_{ie}>0}$. Si el mínimo $\Delta_l=\infty$ el problema es no acotado. En caso contrario pivotamos, consistente en dividir toda la fila $l$ entre $a_{le}$ de forma que el nuevo $a_{le}$ (denotamos $\hat{a}_{le}$) valga 1. Además queremos que el resto de valores de la columna $e$ pasen a valer 0.
+
+Conseguimos esto sumándole a la fila $i(\neq l)$ la fila $l\cdot(-a_{ie})$, luego $\hat{a}_{ij}=a_{ij}+\hat{a}_{lj}(-a_{ie})$ para todo $j$ y para todo $i\neq l$. En particular, $\hat{a}_{ie}=a_{ie}+\equals{\hat{a}_{le}}{1}(-a_{ie})=0$.\\
+
+Además $\hat{b}_i=\doubleleft{b_l/a_le &\mathrm{\ si\ }i=l}{b_i-a_{ie}\hat{b}_l&\mathrm{\ si\ }i\neq l}$, $\hat{c}_j=c_j-c_e\hat{a}_{lj}$ (En particular $\hat{c}_e=0$) y $\hat{z} = z +c_e\hat{b}_e$. Por último, y no menos importante, la fila $l$ pasa a ser la $e$ intercambiando sus componentes a $B$ y $N$ respectivamente. Recordemos que los $a_{ij}$ son los coeficientes tecnológicos, que conforman la matriz $A$, los $c_j$ son los coeficientes de costo que conforman la matriz $C$, los $b_i$, a los que no hemos puesto nombre, conforman la matriz $B$ y por último, $z$ representa el valor de la función $z$ en el vértice en el que nos encontramos.
+
+A continuación presentamos el algoritmo en pseudocódigo.
+
+\begin{algorithmic}[1]
+\State /*********************
+\State	* simplex ($A,b,c$)
+\State *********************/
+\State ($N,B,A,b,c,z$) = inicializarSimplex($A,b,c$)
+\State Creamos $\Delta[m]$
+\While {$\exists j\in N$ tq $c_j>0$}
+    \State Elegimos $e\in N$ tq $c_e=\max\{c_j:j\in N\}$
+    \For {cada $i\in B$}
+    	\If {$a_{ie}>0$}
+    		\State$\Delta_i=b_i/a_{ie}$
+    	\Else
+	    	\State $\Delta_i=\infty$
+    	\EndIf	
+    \State Elegimos $l\in B$ tq $\Delta_l=\min\{\Delta_j:j\in B\}$
+    \If {$\Delta_l==\infty$}
+    	\State\Return ``no acotado''
+    \Else
+    	\State ($N,B,A,b,c,v$) = pivotar($N,B,A,b,c,z,l,e$)
+    \EndIf
+    \EndFor
+\EndWhile
+\For {$i=0$ \textbf{to} $n$}
+	\If {$i\in B$}
+		\State $\overline{x}_i = b_i$
+	\Else
+		\State $\overline{x}_i = 0$
+	\EndIf
+\EndFor	
+\State\Return ($\overline{x}_1,\overline{x}_2,...,\overline{x}_n$)
+\State
+\State
+\State
+\State
+\State /*********************
+\State	* pivotar($N,B,A,b,c,z,l,e$)
+\State *********************/
+\State// Calcula los coeficientes de la ecuación para la nueva variable básica $x_e$.
+\State Creamos $\hat{A}[m][n]$
+\State $\hat{b}_e=b_l/a_{le}$
+\For{cada $j\in N-\{e\}$}
+	\State $\hat{a}_{ej}=a_lj/a_{le}$
+\EndFor
+\State $\hat{a}_{el}=1/a_{le}$
+\State //Calculamos los coeficientes de las demás constantes
+\For{cada $i\in B-\{l\}$}
+	\State $\hat{b}_i=b_i-a_{ie}\hat{b}_e$
+	\For{cada $j\in N-\{e\}$}
+		\State $\hat{a}_{ij}=a_{ij}-a_{ie}\hat{a}_{ej}$
+	\EndFor
+	\State $\hat{a}_{il}=-a_{ie}\hat{a}_{el}$
+\EndFor
+\State // Calculemos el nuevo valor de la función objetivo
+\State $\hat{z}=z+c_e\hat{b}_e$
+\For{cada $j\in N-\{e\}$}
+	\State $\hat{c}_j=c_j-c_e\hat{a}_{ej}$
+\EndFor
+\State $\hat{c}_l=-c_e\hat{a}_{el}$
+\State // Calculamos los nuevos conjuntos de variables básicas y no básicas.
+\State $\hat{N}=N-\{e\}\cup\{l\}$
+\State $\hat{B}=B-\{l\}\cup\{e\}$
+\State \Return $(\hat{N},\hat{B},\hat{A},\hat{b},\hat{c},\hat{z})$
+\end{algorithmic}
+
+\begin{ejem} Veamos un ejemplo de problema de programación lineal resuelto mediante el \textit{algoritmo Símplex}:
+\[\max\ z= 3x_1+x_2+3x_3\]
+\[\mathrm{sujeto\ a:\ }\left\{\begin{array}{rrrr}	2x_1+x_2+x_3\leq2 \\x_1+2x_2+3x_3\leq 5 \\2x_1+2x_2+x_3\leq6\\x_1\geq 0,x_2\geq 0,x_3\geq 0\end{array}	\right.\]
+Consideramos el problema en la forma ampliada:
+\[\max\ z= 3x_1+x_2+3x_3\]
+\[\mathrm{sujeto\ a:\ }\left\{\begin{array}{rrrr}	2x_1+x_2+x_3&+x_4&&=2 \\x_1+2x_2+3x_3&&+x_5&= 5 \\2x_1+2x_2+x_3&&&+x_6=6\\x_1\geq 0,x_2\geq 0,x_3,x_4\geq 0,x_5\geq 0,x_6\geq 0\end{array}	\right.\]
+\begin{center}\begin{tabular}{|c|ccc|ccc|c|}\hline
+&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&\\\hline
+$x_4$&\cellcolor{blue!25}2&1&1&1&0&0&2\\
+$x_5$&1&2&3&0&1&0&5\\
+$x_6$&2&2&1&0&0&1&6\\\hline
+&3&1&3&0&0&0&$z=0$\\\hline
+\end{tabular}\end{center}
+Elegimos $a_{41}=2$ para pivotar. Pivotamos:
+\begin{center}\begin{tabular}{|c|ccc|ccc|c|}\hline
+&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&\\\hline
+$x_1$&1&1/2&1/2&1/2&0&0&1\\
+$x_5$&0&3/2&\cellcolor{blue!25}5/2&-1/2&1&0&4\\
+$x_6$&0&1&0&-1&0&1&4\\\hline
+&0&-1/2&3/2&-3/2&0&0&$Z=3$\\\hline
+\end{tabular}\end{center}
+Elegimos $a_{53}=5/2$ para pivotar. Pivotamos:
+\begin{center}\begin{tabular}{|c|ccc|ccc|c|}\hline
+&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&\\\hline
+$x_1$&1&1/5&0&3/5&-1/5&0&1/5\\
+$x_3$&0&3/5&1&-1/5&2/5&0&8/5\\
+$x_6$&0&1&0&-1&0&1&4\\\hline
+     &0&-7/5&3/2&-3/2&0&0&$Z=27/5$\\\hline
+\end{tabular}\end{center}
+Luego $x_1=1/5,x_2=0,\ x_3=8/5\y z=27/5$
+\end{ejem}
+
+\subsection{Complejidad}
+La complejidad del \textit{algoritmo Símplex} es difícil de determinar, así que vamos a dar pinceladas sobre el coste esperado de ejecución.\\
+
+Sea un problema en forma aumentada de $n$ incógnitas (incluyendo variables de holgura y excedente) y $m$ restricciones. Cabe esperar que $n\geq 2m$, debido a que hemos incluido entre una y 2 incógnitas por restricción. Si es así, podemos aproximar el número de puntos extremos (vértices) en $\dfrac{n!}{m!(n-m)!}\geq\left(\dfrac{n}{m}\right)^m\geq 2^m$.
+De acuerdo con esto podemos decir que en el caso peor \textit{Símplex} es exponencial, sin olvidar que cada iteración tiene un alto coste de multiplicaciones y sumas también.
+
+\begin{ejem} Un problema clásico es el de \textbf{Klee} y \textbf{Minty}:
+\[\max\ z= \stackbin[i=n]{n}\sum 2^{n-i}x_i\]
+Sujeto a $n$ restricciones:\\
+$x_1\leq 5$\\
+$4x_1+x_2\leq25$\\
+$8x_1+4x_2+x_3\leq125$\\
+...\\
+$2^nx_1+2^{n-1}x_{n-1}+...+4x_{n-1}+x_n\leq5^n$\\
+
+Este problema tiene $2^n$ puntos extremos y, empezando por el origen los recorre todos los vértices. En la \textit{figura 4.1} se muestra el caso $n=3$.
+\begin{figura}\ \begin{center}\input{figuras/figura6.tex}\end{center}\end{figura}
+\end{ejem}
+
+\begin{observacion}\ 
+\begin{itemize}
+\item Sin embargo, el estudio del \textit{Símplex} desde su invención en 1947 permite certificar que los peores casos, como el ejemplo de Klee y Minty, rara vez ocurren en la realidad.
+\item El número de iteraciones esperado para problemas de tamaño moderado es polinómico (\textit{Spielman} \& \textit{Teng} (2001), \textit{Kelner} \& \textit{Spielman} (2006) y \textit{Dasgupta}, \textit{Leiserson}, \textit{Rivest} \& \textit{Stein} (2011)).
+\item En resumen, se estima que el coste promedio esperado es $\mathcal{O}(km^2n)$ donde $k$ es una constante y $mn$ es el coste de cada iteración (correspondiente al tamaño de $A$).
+\end{itemize}
+\end{observacion}

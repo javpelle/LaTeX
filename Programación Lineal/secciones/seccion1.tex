@@ -1,0 +1,15 @@
+\section{Introducción}
+Cuando hablamos de programación lineal, estamos tratando el campo de la optimización que busca la maximización de o minimización de una función lineal de acuerdo a que las variables de la misma estén sujetas a unas restricciones interpretadas en forma de ecuaciones o inecuaciones también lineales.\\
+
+En definitiva, nos son dadas una variables a las que que queremos asignar valores reales satisfaciendo las restricciones y optimizando (maximizando o minimizando) la función objetivo dada. Antes de continuar veamos algunas definiciones.
+
+\begin{defi} Sea un problema de programación lineal, distinguimos en este los siguientes elementos:
+\begin{enumerate}[1)]
+\item Definimos como \textbf{función objetivo} a la función $z=\stackbin[j=1]{n}\sum c_jx_j$, donde cada $x_j$ es una \textbf{variable de decisión} que debemos determinar y $c_j$ son los \textbf{coeficientes de costo} asignados a cada variable, que son conocidos.
+\item Denominamos \textbf{restricciones $i$-ésimas} a las ecuaciones e inecuaciones\\
+$\stackbin[j=1]{n}\sum a_{ij}x_j\leq,\geq$ o $=b_i$, $1\leq i\leq m$ donde $m$ es el número de restricciones, $a_{ij}$ son los \textbf{coeficientes tecnológicos} que son conocidos, al igual que $b_i$. Además definimos las restricciones $x_j \geq 0$ como \textbf{restricciones de no negatividad}.\\
+Los coeficientes $a_{ij}$ forman la denominada \textbf{matriz de restricciones} $A=\begin{pmatrix}
+a_{11}&\hdots&a_{1n}\\ \vdots&\ddots&\vdots\\a_{m1}&\hdots&a_{mn}\end{pmatrix}$
+\item Si un conjunto de variables $x_1,...,x_n$ satisface todas y cada una de las restricciones del problema, entonces lo denominamos \textbf{punto factible}. Por último, al conjunto de todos estos puntos factibles los denominamos \textbf{región factible}.
+\end{enumerate}
+\end{defi}

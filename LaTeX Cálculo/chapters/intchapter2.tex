@@ -1,0 +1,119 @@
+\chapter{Teorema de Lebesgue}
+	\section{Teorema de Lebesgue y aplicaciones de medibilidad}
+	\begin{teor} Teorema de Lebesgue.\\
+	Sea $\function{f}{R}{\R}$ acotada, entonces $f$ es integrable de Riemann$\iff D(f)=\{x\in R:f\ \mathrm{no\ es\ continua\ en\ }x\}$ tiene medida nula.
+	\end{teor}
+	
+	\begin{observacion}\ 
+	\begin{enumerate}[1)]
+	\item  Si $D(f)$ tiene contenido nulo $\implies f$ es integrable.
+	\item Las funciones continuas son integrables.
+	\item Las funciones continuas excepto en un número finito de puntos son integrables.
+	\item Las funciones continuas excepto en una cantidad numerable de puntos son integrables.
+	\end{enumerate}	
+	\end{observacion}
+	
+	\begin{corolario} Sea $A\subset\R^n$ acotado, entonces $A$ es medible-Jordan $\iff D(\chi_A)$ tiene medida nula.\\
+	En concreto $D(\chi_A)=Fr(A)$, por tanto $A$ es medible-Jordan $\iff Fr(A)$ tiene medida nula $\overset{Fr(A)\ \mathrm{es\ compacto}}\iff Fr(A)$ tiene contenido nulo.
+	\end{corolario}
+	
+	\begin{proposicion} Sea $\function{f}{R}{\R}$ integrable y supongamos que $\{x\in R:f(x)\neq 0\}$ tiene medida nula, entonces $\integral{}{R}f=0$
+	\begin{proof}\ \\
+	Veamos que $\upint{}{R}f\geq 0$\\
+	Sea $P\in \pi(R)$, tenemos que $S(f,P)=\underset{s\in P}\sum\sup\{f(x):x\in S\}v(S)$\\
+	$S\nsubset\{x:f(x)\neq 0\}\ \forall S\in P$, pues este último conjunto tiene medida nula y $S$ es un subrectángulo $\implies \exists x\in S\talque f(x)=0\ \forall S\in P\implies \underset{s\in P}\sum\sup\{f(x):x\in S\}v(s)\geq 0\implies\\\implies S(f,P)\geq 0\implies \upint{}{R}f\geq 0$\\
+	Análogamente, veamos que $\lowint{}{R}f\leq 0$\\
+	Como hemos visto antes, sea $P\in\pi(R),\ \forall S\in P\ \exists x\in S\talque f(x)=0\implies\\\implies \sup\{f(x):x\in S\}v(S)\leq 0\ \forall S\in P\implies s(f,P) \leq 0\implies \lowint{}{R}f\leq 0$\\
+	Como $\lowint{}{R}f=\upint{}{R}f\implies \integral{}{R}f=0$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{proposicion} Sea $\function{f}{R}{\R}$ integrable y $f(x)\geq 0\ \forall x\in R$. Supongamos que $\integral{}{R}f=0$, entonces $\{x\in R:f(x)\neq 0\}$ tiene medida nula.
+	\begin{proof} \ \\
+	Supongamos que $\function{f}{R}{\R}$ es integrable, $f\geq 0$ y $\integral{}{R}f=0$.\\
+	Veamos que $\{x\in R:f(x)\neq 0\}$ tiene medida nula.\\
+	Tenemos que $\{x\in R:f(x)\neq 0\}=\{x\in R:f(x)>0\}=\stackbin[m=1]{\infty}\bigcup\left\{x\in R:f(x)\geq \dfrac{1}{m}\right\}$\\
+	Hemos demostrado que la unión de los elementos de una sucesión de conjuntos de medida nula tiene medida nula, por lo tanto basta con probar que $\left\{x\in R:f(x)\geq \dfrac{1}{m}\right\}$ tiene medida nula $\forall m\in\N$ (de hecho tiene contenido nulo). Veamos esto último:\\
+	Sea $A_m=\left\{x\in R:f(x)\geq \dfrac{1}{m}\right\}$ tiene medida nula $\forall m\in\N$, dado $\varepsilon >0$, tenemos\\
+	$0=\integral{}{R}f=\upint{}{R}f=\inf\{S(f,P):P\in\pi(R)\}$ por tanto existe $P_0\in \pi(R)\talque\dfrac{\varepsilon}{m}>S(f,P_0)=\underset{S\in P_0}\sum v(S)\sup\{f(x):s\in S\}\geq \underset{S\cap A_m\neq\emptyset}{\underset{S\in P_0}\sum}v(S)\sup\{f(x):x\in S\}\geq\underset{S\cap A_m\neq\emptyset}{\underset{S\in P_0}\sum} v(S)\dfrac{1}{m} $\\ 
+	Por tanto: $\underset{S\cap A_m\neq\emptyset}{\underset{S\in P_0}\sum}v(S)<\varepsilon\implies A_m\subset \underset{S\cap A_m\neq\emptyset}{\underset{S\in P_0}\bigcup}S\implies A_m$ tiene contenido nulo$\implies A_m$ tiene medida nula $\forall m\in \N$
+	\end{proof}
+	\end{proposicion}
+	
+	\section{Integrabilidad en conjuntos distintos de rectángulos}
+	\begin{defi} Sea $A\subset\R^n$ acotado, $\function{f}{A}{\R}$ definimos $\integral{}{A}f=\integral{}{R}\overline{f}$,\\
+	donde $\xfunction{\overline{f}}{R}{\R}{x\to\doubleleft{f(x) \mathrm{\ si\ }x\in A}{0 \mathrm{\ si\ }x\notin A}}$ con $R$ rectángulo tal que $A\subset R$. \\
+	Entonces tenemos $\integral{}{A}f=\integral{}{R}\chi_A f$
+	\end{defi}
+	
+	\begin{observacion} Sea $\function{f}{R}{\R}$ integrable y sea $A\subset R$ medible-Jordan $\implies f$ es integrable en $A$. La prueba de esto es que $f$ integrable en $A\equiv f\chi_A$ es integrable en $R$. Veamos que $D(f\chi_A)$ tiene medida nula. Es fácil ver que $D(f\chi_A)\subset D(f)\cup Fr(A)$ que tienen medida nula, por tanto $D(f\chi_A)$ tiene medida nula $\implies A$ integrable.	
+	\end{observacion}
+	
+	\section{Propiedades de las integrales}
+	
+	\begin{proposicion} Linealidad de la integral.\\
+	Sea $R\subset \R^n$ rectángulo, sea $A\subset R$ y sea $\function{f,g}{A}{\R}$ integrables entonces $\alpha f+\beta g$ es integrable en $A$ y $\integral{}{A}\alpha f+\beta g=\alpha\integral{}{A}f+\beta\integral{}{A}g$.	
+	\begin{proof}\ \\
+	Extendamos $f$ y $g$ a $R$ haciéndolas cero fuera de $A$. Tomemos $\sucesion{P}{n}$ sucesión de particiones de $R$ tales que $\norm{P_n}\limited 0$. Ahora, para cualesquiera $x_S\in S$ con $S\in P_n\ \forall n\in\N$ tenemos por el \textit{teorema de Darboux}:
+	\begin{center}
+	$\integral{}{A}f=\limite{}{\ntiende}\underset{S\in P_n}\sum f(x_S)v(S)$
+	\end{center}
+	\begin{center}
+	$\integral{}{A}g=\limite{}{\ntiende}\underset{S\in P_n}\sum g(x_S)v(S)$
+	\end{center}
+	Y ahora como $\forall n\in\N$ tenemos que $\underset{S\in P_n}\sum (\alpha f + \beta g)(x_S)v(S)=\underset{S\in P_n}\sum (\alpha f(x_S)+\beta g(x_S))v(S)=\alpha\underset{S\in P_n}\sum f(x_S)v(S)+\beta\underset{S\in P_n}\sum g(x_S)v(S)$\\
+	Por tanto $\alpha f+\beta g$ es integrable en $A$ y $\integral{}{A}\alpha f+\beta g=\alpha\integral{}{A}f+\beta\integral{}{A}g$.
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{proposicion} Monotonía de la integral.\\	
+	Sea $R\subset \R^n$ rectángulo, sea $A\subset R$ y sea $\function{f,g}{A}{\R}$ integrables, si $f\leq g$ entonces $\integral{}{A}f\leq\integral{}{A}g$.
+	\begin{proof}\ \\
+	Extendamos de la manera habitual $f$ y $g$ a $R$ haciéndola nula fuera de $A$. Tenemos que $g-f\geq 0$. Sea $P\in\pi(R)$, tenemos que $s(g-f,P)\geq 0$.\\
+	Por la proposición anterior tenemos que $g-f$ es integrable, por tanto tenemos que $\integral{}{A}(g-f)=\\=\lowint{}{A}(g-f)=\sup\{s(g-f,P):P\in\pi(R)\}$. Como $s(g-f,P)\geq 0\implies\\\implies 0\leq \integral{}{A}(g-f)\overset{\mathrm{por\ prop.\ 1}}=\integral{}{A}g-\integral{}{A}f\implies\ \integral{}{A}f\leq\integral{}{A}g$. 
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{proposicion} Aditividad respecto del conjunto de integración.\\
+	Sean $A,B$ conjuntos acotados, sea $\function{f}{A\cup B}{\R}$ acotada, y $A\cap B$ medida nula. Si $f$ es integrable en $A$, en $B$ y en $A\cap B$, entonces $f$ es integrable en $A\cup B$ y $\integral{}{A\cup B}f=\integral{}{A}f+\integral{}{B}f$
+	\begin{proof}\ \\
+	Sea $R$ rectángulo tal que $A\cup B \subset R$, sea $\xfunction{\overline{f}}{R}{\R}{x\to\doubleleft{f(x)\ \mathrm{si\ }x\in A\cup B}{0\ \mathrm{si\ }x\notin A\cup B}}$\\
+	$\overline{f}=\overline{f}\chi_{A\cup B}\overset{\chi_A+\chi_B-\chi_{A\cap B}=\chi_{A\cup B}}=\overline{f}\chi_A+\overline{f}\chi_B-\overline{f}\chi_{A\cap B}\implies f$ integrable en $A\cup B$.\\
+	Tenemos:\\
+	$\integral{}{A\cup B}f=\integral{}{R}\overline{f}\chi_{A\cup B}=\integral{}{R}\overline{f}\chi_A + \integral{}{R}\overline{f}\chi_B -\underset{0\mathrm{\ en\ casi\ todo\ punto}}	{\underset{\shortparallel}{\integral{}{R}\overline{f}\chi_{A\cap B}}}=\integral{}{A}f+\integral{}{B}f$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{observacion} Si $A$ y $B$ son medibles-Jordan, entonces $f$ es integrable en $A\cup B\iff f$ es integrable en $A$ y en $B$, además si esto ocurre, $f$ es integrable en $A\cap B$.
+	\end{observacion}
+	
+	\begin{corolario} Consecuencias inmediatas de las propiedades anteriores.
+	\begin{enumerate}[1)]
+	\item $f$ integrable en $A\implies |f|$ integrable en $A$ y además $\left|\integral{}{A}f\right|\leq\integral{}{A}|f|$.
+	\item Si $f$ es integrable en $A$ medible-Jordan, y $|f(x)|\leq M\ \forall x\in A$, entonces $\left|\integral{}{A}f\right|\leq M\cdot v(A)$.
+	\end{enumerate}
+	\begin{proof}\ 
+	\begin{enumerate}[1)]
+	\item $f$ integrable en $A\implies |f|$ integrable en $A$.\\
+	Ahora tenemos $-|f|(x)=-|f(x)|\leq f(x)\leq|f(x)|=|f|(x)\ \forall x\in A\ximplies{\mathrm{por\ monotonia}}{} \\
+	\implies\integral{}{A}-|f|\leq\integral{}{A}f\leq\integral{}{A}|f|\ximplies{\mathrm{por\ linealidad}}{}-\integral{}{A}|f|\leq\integral{}{A}f\leq\integral{}{A}|f|\implies \left|\integral{}{A}f\right|\leq\integral{}{A}|f|$
+	\item Tenemos que $\left|\integral{}{A}f\right|\overset{\mathrm{por\ 1)}}\leq\integral{}{A}|f|\leq \integral{}{A}M\chi_A\overset{\mathrm{por\ linealidad}}=M\integral{}{A}\chi_A=Mv(A)$
+	\end{enumerate}
+	\end{proof}
+	\end{corolario}
+	
+	\begin{proposicion} Teorema del valor medio para integración.\\
+	Sea $A\subset \R^n$ medible-Jordan, conexo y compacto, sea $\function{f}{A}{\R}$ continua, entonces $\exists x_0\in A$ tal que:
+	\begin{center}
+	$f(x_0)=\dfrac{1}{v(A)}\integral{}{A}f$ $\left(\mathrm{si\ }v(A)\neq 0,\mathrm{\ en\ general\ llegamos\ a\ }f(x_0)v(A)=\integral{}{A}f\right)$.
+	\end{center}
+	\begin{proof}\ \\
+	Por ser $A$ compacto $\implies \exists x_1,x_2\in A \talque f(x_1)\leq f(x)\leq f(x_2)\ \forall x \in A$\\
+	Tenemos ahora $f(x_1)v(A)\leq \integral{}{A} f\leq f(x_2)v(A)$\\
+	Supongamos $v(A) >0$, entonces $f(x_1)\leq \dfrac{1}{v(A)}\integral{}{A}f\leq f(x_2)\ximplies{f \mathrm{continua\ en\ }A}{A\mathrm{\ conexo}} \exists x_0\in A\talque f(x_0)=\\=\dfrac{1}{v(A)}\integral{}{A}f$.
+	Si $v(A)=0$ se cumple trivialmente para cualquier $x_0\in A$
+	\end{proof}
+	\end{proposicion}
+	
+	\begin{nota} A $\dfrac{1}{v(A)}\integral{}{A}f$ se le llama ``valor promedio'' o ``valor medio'' de $f$ en $A$.
+	\end{nota}

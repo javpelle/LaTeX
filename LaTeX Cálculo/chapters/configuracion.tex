@@ -1,0 +1,104 @@
+\documentclass[11pt, oneside]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+%--------Codigos para la caligrafia, tipos de letras%---------------
+\usepackage[T1]{fontenc}
+%\usepackage[bitstream-charter]{mathdesign} 
+%\usepackage{textcomp} %Paquete para algunos caracteres especiales
+
+\usepackage{afterpage}
+\usepackage{mathtools}
+
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{enumerate}
+\usepackage{stackrel}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{pgfplots}
+\usepackage[toc,page]{appendix}
+\usepackage{graphicx} % graficos
+
+
+
+\newtheorem{teor}{Teorema} % Estilo de texto cursivo
+
+\theoremstyle{definition} % Cambio del estilo de los teoremas a normal
+\newtheorem{proposicion}{\textbf{Proposici\'on}}
+\newtheorem{proposicioni}{\textbf{Proposici\'on \textit{(Teorema de la función inversa)}}}
+\newtheorem{defi}{\textbf{Definición}}
+\newtheorem{corolario}{Corolario}
+\newtheorem{figura}{Figura}
+\newtheorem*{lema}{Lema}
+\newtheorem*{ejem}{\underline{Ejemplo}}
+\newtheorem*{nota}{Nota}
+\newtheorem*{observacion}{Observación}
+%\renewenvironment{proof}{{\bfseries Demostración}}{\begin{flushright}\qedsymbol\end{flushright}} %Demostración en negrita
+
+\newcommand{\talque}{\mathrm{\ _\shortparallel\ }}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Cgot}{\mathcal{C}}
+\newcommand{\dom}{\mathrm{Dom\ }}
+\newcommand{\upint}[2]{\overline{\displaystyle\int_{#2}^{#1}}}
+\newcommand{\lowint}[2]{\underline{\displaystyle\int_{#2}^{#1}}}
+\newcommand{\integral}[2]{\displaystyle\int_{#2}^{#1}}
+\newcommand{\gradiente}{\bigtriangledown}
+\newcommand{\nimplies}{\centernot\implies}
+\newcommand{\nimpliedby}{\centernot\impliedby}
+\newcommand{\nlongrightarrow}{\centernot\longrightarrow}
+\newcommand{\nsubset}{\centernot\subset}
+\newcommand{\oversim}[1]{\stackbin{_\sim}{#1}}
+\newcommand{\sucesion}[2]{\left\{#1_{#2}\right\}^\infty_{#2 = 1}}
+\newcommand{\sucesionelement}[2]{\left\{#1\right\}^\infty_{#2 = 1}}
+\newcommand{\doubleright}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\ \end{array} 	\right\} }
+\newcommand{\doubleleft}[2]{ \left\{\begin{array}{ll}	#1 \\	#2 \\  \end{array}	\right. }
+\newcommand{\doubleleftright}[2]{ \left\{\begin{array}{ll} #1 \\ #2 \\ \end{array} \right\}}
+\newcommand{\double}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\	 \end{array} \right. }	
+\newcommand{\tripleright}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} \right\} }
+\newcommand{\tripleleft}[3]{ \left\{ \begin{array}{ll} #1 \\#2 \\#3\\ \end{array} \right. }
+\newcommand{\triple}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} 	\right. }
+\newcommand{\ximplies}[2]{\stackbin[#2]{#1}\implies}
+\newcommand{\xiff}[2]{\stackbin[#2]{#1}\iff}
+\newcommand{\ximpliedby}[2]{\stackbin[#2]{#1}\impliedby}
+\newcommand{\dotproduct}[2]{<#1,#2>}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\function}[3]{#1\colon #2\longrightarrow #3}
+\newcommand{\xfunction}[4]{\stackbin[#4]{}{#1\colon #2\longrightarrow #3}}
+\newcommand{\equals}[2]{\underset{#2}{\underset{\shortparallel}{#1}}}
+\newcommand{\limite}[2]{\stackbin[#2]{\ }\lim\ #1}
+\newcommand{\limited}{\stackbin{n\rightarrow\infty}\longrightarrow}
+\newcommand{\xtiende}{x\rightarrow x_0}
+\newcommand{\ntiende}{n\rightarrow\infty}
+\newcommand{\ttiende}{t\rightarrow 0}
+\newcommand{\htiende}{h\rightarrow 0}
+\newcommand{\ktiende}{k\rightarrow 0}
+\newcommand{\y}{\mathrm{\ y\ }}
+\newcommand{\cte}{\mathrm{cte}}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\ais}{\mathrm{Ais}}
+\newcommand{\fr}{\mathrm{Fr}}
+\newcommand{\vacio}{\emptyset}
+\newcommand{\deter}[1]{\left| \begin{matrix} #1	\end{matrix}\right|}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+
+
+
+\title{C\'alculo Integral}
+
+
+\author{Javier Pellejero Ortega}
