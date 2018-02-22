@@ -7,17 +7,29 @@ Una solución a este ejercicio $\alpha(t)=(\sin t, \cos t)$. Es claro que $\alph
 
 \begin{ejercicio} Sea $\alpha(t)$  una curva que no pasa por el origen. Si $\alpha(t_0)$ es el punto de la traza de $\alpha$ más cercano al origen y $\alpha'(t_0)\neq 0$, demostrar que el vector posición $\alpha(t_0)$ es ortogonal a $\alpha'(t_0)$.\\
 
-Definimos la norma
+Definimos la función $D(t):=\alpha^2(t)=\alpha(t)\alpha(t)=\norm{\alpha(t)}^2$ que mide el cuadrado de la distancia de los puntos de la curva al origen.\\
+$t_0$ es un punto relativo de dicha función por ser el punto más cercano al origen, entonces $D'(t_0)=0\implies 2\alpha(t_0)\alpha'(t_0)=0\implies\alpha(t_0)\perp\alpha'(t_0)$.
 \end{ejercicio}
 
-\begin{ejercicio} Sea $\ait$ una curva y $v\in\R^3$ un vector dado. Si $\alpha'(t)$ es ortogonal a $v$ para todo $t\in I$, y si $\alpha(0)$ también lo es, demuestre que $\alpha(t)$ es ortogonal a $v$ para todo $t\in I$.
+\begin{ejercicio} Sea $\ait$ una curva y $v\in\R^3$ un vector dado. Si $\alpha'(t)$ es ortogonal a $v$ para todo $t\in I$, y si $\alpha(0)$ también lo es, demuestre que $\alpha(t)$ es ortogonal a $v$ para todo $t\in I$.\\
+
+Definimos $f(t):= \alpha(t)v= \alpha_1(t)v_1 + \alpha_2(t)v_2 +\alpha_3(t)v_3$.\\
+Tenemos que $f'(t) = \alpha'(t)v= 0\ \forall t\in I$. Luego $f(t)= c\in \R,\ \forall t\in I$. Como en particular $f(0)=\alpha(0)v=0\implies c=0\implies \alpha(t)\perp v$.
 \end{ejercicio}
 
-\begin{ejercicio} Si $\ait$ es una curva regular, demuestre que $|\alpha(t)|$ es constante (diferente de cero) si y sólo si $\alpha(t) \perp \alpha'(t)$ para todo $t\in I$.
+\begin{ejercicio} Si $\ait$ es una curva regular, demuestre que $\norm{\alpha(t)}$ es constante (diferente de cero) si y sólo si $\alpha(t) \perp \alpha'(t)$ para todo $t\in I$.\\
+\begin{itemize}
+\item ($\implies$). $\norm{\alpha(t)}^2 = \alpha(t)\alpha(t)=c^2$. Derivando, $2\alpha(t)\alpha'(t)=0\implies \alpha(t)\perp\alpha'(t)$.
+\item ($\impliedby$).$\alpha(t)\alpha'(t)=0\implies\dfrac{1}{2}(\alpha(t)\alpha(t))'=0\ximplies{\mathrm{Integrando}}{}\alpha(t)\alpha(t)=c\implies\\\implies\norm{\alpha(t)}^2=c\implies\norm{\alpha(t)}$ es constante.
+\end{itemize}
 \end{ejercicio}
 
-\begin{ejercicio} Si $\ait$ es una curva, y $\function{M}{\R^3}{\R^3}$ es un movimiento rígido, demostrar que las longitudes de $\alpha$ y $M\circ\alpha$ entre $a\y b$ coinciden.
+\begin{ejercicio} Si $\ait$ es una curva, y $\function{M}{\R^3}{\R^3}$ es un movimiento rígido, demostrar que las longitudes de $\alpha$ y $M\circ\alpha$ entre $a\y b$ coinciden.\\
+
+$\arc M\circ\alpha(t)=\integral{b}{a}\norm{(M\circ \alpha)'}=\integral{b}{a}\norm{M'(\alpha(s))\alpha'(s)}ds=\integral{b}{a}\norm{\overrightarrow{M}\alpha'(s)}ds\overset{\mathrm{por\ ser\ mov.\ rigido}}{=}\\=\integral{b}{a}\norm{\alpha'(s)}ds=\arc\alpha$.
 \end{ejercicio}
 
-\begin{ejercicio} Demuestre que las líneas tangentes a la curva $\alpha(t)=(3t,3t^2,2t^3)$ forman un ángulo constante con la recta $y=0,\ z=x$.
+\begin{ejercicio} Demuestre que las líneas tangentes a la curva $\alpha(t)=(3t,3t^2,2t^3)$ forman un ángulo constante con la recta $y=0,\ z=x$.\\
+
+Tenemos que $\alpha'(t) = (3,6t,6t^2)$. La recta $r\equiv\doubleleft{y=0}{x=z}$ tiene como vector director\\$v:=(1,0,1)$. El ángulo $\theta$ que forman $v\y\alpha'(t)$ viene determinado por $\theta=\underset{[0,\pi)}\arccos\dfrac{\alpha'(t)v}{\norm{\alpha'(t)}\norm{v}}=\\=\underset{[0,\pi)}\arccos\dfrac{3+6t^2}{\sqrt{9+36t^2+36t^4}\sqrt{2}}=\underset{[0,\pi)}\arccos\dfrac{3+6t^2}{(3+6t^2)\sqrt{2}}=\underset{[0,\pi)}\arccos\dfrac{\sqrt{2}}{2}$ que es constante.
 \end{ejercicio}
