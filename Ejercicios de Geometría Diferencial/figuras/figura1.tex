@@ -22,18 +22,19 @@
   \coordinate (X) at (\x, 0 );
   \coordinate (Y) at (0, \y );
   \coordinate (XY) at (\x, \y );
-
+  
+  \node[anchor=south east] at (XY) {$P$};
   \node[anchor=north] at (X) {$x$} ;
 
   % draw center of circle
   \draw[fill=blue] (C) circle (1pt);
 
   % draw radius of the circle
-  \draw[] (C) -- node[anchor=south] {\; $a$} (XY);
+  \draw[] (C) -- node[anchor=south] {\; $r$} (XY);
 
   % bottom of circle, radius to the bottom
   \coordinate (B) at (\c, 0);
-  \draw[] (C) -- (B) node[anchor=north] {$a \, t$};
+  \draw[] (C) -- (B) node[anchor=north] {$M$};
 
   % projections of point XY
   \draw[dotted] (XY) -- (X);
@@ -63,18 +64,16 @@
 
   % top label
   \coordinate (T) at (pi, 2);
-  \node[anchor=south] at (T)  {$(\pi a, 2 a )$} ;
+  \node[anchor=south] at (T)  {$(\pi r, 2 r )$} ;
   \draw[fill=black] (T) circle (1pt);
 
   % equations
-  \coordinate (E) at ( 4,1.2);
-  \coordinate (F) at ( 4,0.9);
-  \node[] at (E) {\scriptsize $x=a(t - \sin t)$};
-  \node[] at (F) {\scriptsize $y=a(1 - \cos t)$};
+  \coordinate (E) at ( 4,2.9);
+  \node[] at (E) {\scriptsize $P=\alpha(t)=(r(t - \sin t),r(1 - \cos t))$};
 
   % label 2pi a
   \coordinate (TPA) at (2*pi, 0);
-  \node[anchor=north] at (TPA) {$2 \pi a$};
+  \node[anchor=north] at (TPA) {$2 \pi r$};
 
 
   \end{tikzpicture}
