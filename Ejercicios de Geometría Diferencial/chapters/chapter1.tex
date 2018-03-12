@@ -50,5 +50,21 @@ prácticos que la longitud del arco $MP$ coicide con la longitud del segmento $O
 función del radio de la circunferencia rodante.
 \end{ejercicio}
 
-\begin{ejercicio} La \textit{espiral logarítmica} $\function\alpha{\R}{\R^2}$ 
+%\begin{ejercicio} La \textit{espiral logarítmica} $\function\alpha{\R}{\R^2}$ \end{ejercicio}
+
+\begin{ejercicio} Sea $\function{\alpha}{(-1,\infty)}{\R^2}$ la curva
+\[\alpha(t)=\left(\dfrac{3at}{1+t^3},\dfrac{3at^2}{1+t^3}\right),\ a>0\]
+Se pide demostrar:
+\begin{itemize}
+\item La tangente a $\alpha$ en $t=0$ es el eje $OX$.
+\item Cuando $t\to\infty,\ \alpha(t)\to(0,0)\y\alpha'(t)\to(0,0).$
+\item Si se toma la curva con la orientación opuesta, demuestre que cuando $t\to -1,\ \alpha(t)$ y su tangente se acecan a la recta $x+y+a=0$.
+\end{itemize}
+
+\begin{itemize}
+\item $\alpha(t)= \left(\dfrac{3at}{1+t^3},\dfrac{3at^2}{1+t^3}\right)=\dfrac{3at}{1+t^3}(1,t)\implies\alpha'(t)=\dfrac{3a(1+t^3)-3t^2(3at)}{(1+t^3)^2}(1,t)+\\+\dfrac{3at}{1+t^3}(0,1)=\dfrac{3a}{1+t^3}\left(\dfrac{1-2t^3}{1+t^3},\dfrac{t-2t^4}{1+t^3}+t\right)=\dfrac{3a}{1+t^3}\left(\dfrac{1-2t^3}{1+t^3},\dfrac{2t-t^4}{1+t^3}\right)=\\=\dfrac{3a}{(1+t^3)^2}(1-2t^3,2t-t^4)\overset\ttiende\longrightarrow(3a,0)$.
+\item $\limite{}{t\to\infty}\alpha(t)=\limite{}{t\to\infty}\left(\dfrac{3at}{1+t^3},\dfrac{3at^2}{1+t^3}\right)\overset{\mathrm{L'H\hat{o}pital}}=\limite{}{t\to\infty}\left(\dfrac{3a}{3t^2},\dfrac{6a}{6t}\right)=(0,0)$.\\
+$\limite{}{t\to\infty}\alpha'(t)=\limite{}{t\to\infty}\dfrac{3a}{(1+t^3)^2}(1-2t^3,2t-t^4)=(0,0)$.
+\item 
+\end{itemize}
 \end{ejercicio}
