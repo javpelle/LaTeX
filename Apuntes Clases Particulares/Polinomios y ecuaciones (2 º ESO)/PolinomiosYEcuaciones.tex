@@ -1,0 +1,126 @@
+\documentclass[11pt, oneside]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+%--------Codigos para la caligrafia, tipos de letras%---------------
+\usepackage[T1]{fontenc}
+%\usepackage[bitstream-charter]{mathdesign} 
+%\usepackage{textcomp} %Paquete para algunos caracteres especiales
+
+\usepackage{afterpage}
+\usepackage{mathtools}
+
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{enumerate}
+\usepackage{stackrel}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{tikz}
+\usepackage{multicol}
+\usetikzlibrary{arrows,matrix,positioning}
+
+\theoremstyle{definition} % Cambio del estilo de los teoremas a normal
+\newtheorem{ejercicio}{Ejercicio}
+
+
+\newcommand{\deter}[1]{\left| \begin{matrix} #1	\end{matrix}\right|}
+
+\newcommand{\doubleright}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\ \end{array} 	\right\} }
+\newcommand{\doubleleft}[2]{ \left\{\begin{array}{ll}	#1 \\	#2 \\  \end{array}	\right. }
+\newcommand{\doubleleftright}[2]{ \left\{\begin{array}{ll} #1 \\ #2 \\ \end{array} \right\}}
+\newcommand{\double}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\	 \end{array} \right. }	
+\newcommand{\tripleright}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} \right\} }
+\newcommand{\tripleleft}[3]{ \left\{ \begin{array}{ll} #1 \\#2 \\#3\\ \end{array} \right. }
+\newcommand{\triple}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} 	\right. }
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\y}{\mathrm{\ y\ }}
+
+
+\title{Resolución y discusión de sistemas lineales mediante sistemas matriciales y determinantes}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Javier Pellejero Ortega}
+
+
+\author{Javier Pellejero Ortega}
+
+
+\begin{document}
+
+\begin{ejercicio} Dados los polinomios $P(x)=4x^4+\dfrac{3}{2}x^2-x-\dfrac{4}{3},\ Q(x)=x^3-x^2+3x,\\R(x)= x^3 - 1,\ S(x)= \dfrac{6}{5}x^4-\dfrac{1}{2}x+1$. Calcula:
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $P(x)+Q(x)$
+    \item $P(x)-S(x)+R(x)$
+    \item $P(x)\cdot R(x) + S(x)$
+    \item $(Q(x)\cdot S(x))\cdot R(x)$
+    \item $(Q(x)+S(x)) \cdot Q(x)$
+    \item $P(x)\cdot(-Q(x))$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\begin{ejercicio} Calcula las siguientes identidades notables.
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $(y-2)^2$
+    \item $\left(xy-\dfrac{2}{3}\right)^2$
+    \item $\left(\dfrac{1}{x}+\dfrac{2}{3}\right)^2$
+    \item $(2x+3)(2x-3)$
+    \item $\left(3x+\dfrac{1}{5}\right)^2$
+    \item $(-2x+3)(2x+3)$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\begin{ejercicio} Expresa como identidades notables.
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $y^2 +2y +1$
+    \item $x^2-4$
+    \item $4x^2+4-8x$
+    \item $\dfrac{1}{4}x^2-1$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\begin{ejercicio} Calcula las siguientes ecuaciones de primer grado.
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $\dfrac{3x+1}{2}+\dfrac{1-x}{6}= \dfrac{7x+4}{4}$
+    \item $\dfrac{2[3x+4\cdot(x-5)]}{3}=\dfrac{x-1}{2}+\dfrac{2x+1}{4}$
+    \item $\left(\dfrac{1}{2}+3\right)(x-2)=\dfrac{2x+3}{2}+\dfrac{x+1}{6}$
+    \item $\left(\dfrac{1}{2}+3\right)3x=\dfrac{3}{2}+\dfrac{x+1}{-1}$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\begin{ejercicio} Calcula las siguientes ecuaciones de segundo grado.
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $4x^2+4-8x=0$
+    \item $2x^2+2x=12$
+    \item $(x-1)(x+1)=0$
+    \item $x^2-3x-4=0$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\begin{ejercicio} Calcula las siguientes ecuaciones de segundo grado incompletas.
+\begin{multicols}{2}
+\begin{enumerate}[a)]
+    \item $4x^2-8x=0$
+    \item $2x^2=-12$
+    \item $x(x+1)=0$
+    \item $x^2-4=0$
+\end{enumerate}
+\end{multicols}
+\end{ejercicio}
+
+\end{document}

@@ -1,0 +1,143 @@
+\documentclass[11pt, oneside]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+%--------Codigos para la caligrafia, tipos de letras%---------------
+\usepackage[T1]{fontenc}
+%\usepackage[bitstream-charter]{mathdesign} 
+%\usepackage{textcomp} %Paquete para algunos caracteres especiales
+
+\usepackage{afterpage}
+\usepackage{mathtools}
+
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{enumerate}
+\usepackage{stackrel}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{tikz}
+\usepackage{multicol}
+\usetikzlibrary{arrows,matrix,positioning}
+
+\theoremstyle{definition} % Cambio del estilo de los teoremas a normal
+\newtheorem{ejercicio}{Ejercicio}
+\newtheorem*{nota}{Nota}
+
+
+\newcommand{\deter}[1]{\left| \begin{matrix} #1	\end{matrix}\right|}
+
+\newcommand{\doubleright}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\ \end{array} 	\right\} }
+\newcommand{\doubleleft}[2]{ \left\{\begin{array}{ll}	#1 \\	#2 \\  \end{array}	\right. }
+\newcommand{\doubleleftright}[2]{ \left\{\begin{array}{ll} #1 \\ #2 \\ \end{array} \right\}}
+\newcommand{\double}[2]{ \left. \begin{array}{ll}	#1 \\	#2 \\	 \end{array} \right. }	
+\newcommand{\tripleright}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} \right\} }
+\newcommand{\tripleleft}[3]{ \left\{ \begin{array}{ll} #1 \\#2 \\#3\\ \end{array} \right. }
+\newcommand{\triple}[3]{ \left. \begin{array}{ll}	#1 \\#2 \\#3\\	\end{array} 	\right. }
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\y}{\mathrm{\ y\ }}
+
+
+%------------------------------- RUFFINI
+\usepackage{xparse}
+\ExplSyntaxOn
+\NewDocumentCommand{\ruffini}{mmmm}
+ {% #1 = polynomial, #2 = divisor, #3 = middle row, #4 = result
+  \franklin_ruffini:nnnn { #1 } { #2 } { #3 } { #4 }
+ }
+
+\seq_new:N \l_franklin_temp_seq
+\tl_new:N \l_franklin_scheme_tl
+\int_new:N \l_franklin_degree_int
+
+\cs_new_protected:Npn \franklin_ruffini:nnnn #1 #2 #3 #4
+ {
+  % Start the first row
+  \tl_set:Nn \l_franklin_scheme_tl { #2 & }
+  % Split the list of coefficients
+  \seq_set_split:Nnn \l_franklin_temp_seq { , } { #1 }
+  % Remember the number of columns
+  \int_set:Nn \l_franklin_degree_int { \seq_count:N \l_franklin_temp_seq }
+  % Fill the first row
+  \tl_put_right:Nx \l_franklin_scheme_tl
+   { \seq_use:Nnnn \l_franklin_temp_seq { & } { & } { & } }
+  % End the first row and leave two empty places in the next
+  \tl_put_right:Nn \l_franklin_scheme_tl { \\ & & }
+  % Split the list of coefficients and fill the second row
+  \seq_set_split:Nnn \l_franklin_temp_seq { , } { #3 }
+  \tl_put_right:Nx \l_franklin_scheme_tl
+   { \seq_use:Nnnn \l_franklin_temp_seq { & } { & } { & } }
+  % End the second row
+  \tl_put_right:Nn \l_franklin_scheme_tl { \\ }
+  % Compute the \cline command
+  \tl_put_right:Nx \l_franklin_scheme_tl
+   {
+    \exp_not:N \cline { 2-\int_to_arabic:n { \l_franklin_degree_int + 1 } }
+   }
+  % Leave an empty place in the third row (no rule either)
+  \tl_put_right:Nn \l_franklin_scheme_tl { \multicolumn{1}{r}{} & }
+  % Split and fill the third row
+  \seq_set_split:Nnn \l_franklin_temp_seq { , } { #4 }
+  \tl_put_right:Nx \l_franklin_scheme_tl
+   { \seq_use:Nnnn \l_franklin_temp_seq { & } { & } { & } }
+  % Start the array (with \use:x because the array package
+  % doesn't expand the argument)
+  \use:x
+   {
+    \exp_not:n { \begin{array} } { r | *{\int_use:N \l_franklin_degree_int} { r } }
+   }
+  % Body of the array and finish
+  \tl_use:N \l_franklin_scheme_tl
+  \end{array}
+ }
+\ExplSyntaxOff
+%-------------------------------------------------------------------
+
+
+\title{Resolución y discusión de sistemas lineales mediante sistemas matriciales y determinantes}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Javier Pellejero Ortega}
+
+
+\author{Javier Pellejero Ortega}
+
+
+\begin{document}
+
+\begin{ejercicio} Calcula y expresa el resultado como una fracción algebraica irreducible: \[\dfrac{3x-6}{x^2-5x+6}+\dfrac{x^2-2x}{x^2+x-6}\]
+Es una suma de fracciones algebraicas con denominadores distintos. Al igual que con suma de fracciones de enteros (las habituales), queremos tener un mismo denominador para poder operar. Así, calculemos el mínimo común múltiplo de los polinomios de los denominadores.\\
+
+Empecemos hallando los factores del polinomio $x^2 -5x +6$ que conforma el denominador de la primera fracción. Tenemos entonces $x^2 -5x +6=0\implies x = \dfrac{+5\pm\sqrt{(-5)^2-4\cdot1\cdot6}}{2\cdot1}=\\= \dfrac{5\pm1}{2}\implies \doubleleft{x_1=2}{x_2=3}\implies \underline{x^2 -5x +6 = (x-2)(x-3)}$.\\
+
+Análogamente para el polinomio $x^2 +x -6$ del denominador de la segunda fracción tenemos $x^2 +x -6=0\implies x = \dfrac{-1\pm\sqrt{1^2-4\cdot1\cdot(-6)}}{2\cdot1}= \dfrac{-1\pm5}{2}\implies \doubleleft{x_1=2}{x_2=-3}\implies\\\implies \underline{x^2 +x -6 = (x-2)(x+3)}$.\\
+
+Tenemos así que el m.c.d.($x^2 -5x +6$, $x^2 +x -6)= (x-2)(x-3)(x+3)$ y así podemos empezar a sumar:$\dfrac{3x-6}{x^2-5x+6}+\dfrac{x^2-2x}{x^2+x-6}=\dfrac{(3x-6)(x+3)+(x^2-2x)(x-3)}{(x-2)(x-3)(x+3)}=\\=\dfrac{3x^2+3x-18+x^3-5x^2+6x}{(x-2)(x-3)(x+3)}=\dfrac{x^3-2x^2+9x-18}{(x-2)(x-3)(x+3)}$\\
+
+Esto ya estaría bien operado pero no hemos acabado, pues el enunciado nos pide que la fracción algebraica sea irreducible y no podemos estar seguro de ello (de hecho, os adelanto que no es irreducible). Una manera de comprobar esto sería tratar de factorizar\\ $x^3-2x^2+9x-18$ por \textit{Ruffini} y con ecuación de segundo grado de manera habitual. Pero esto es trabajo en vano, sobre todo si al final acaba siendo irreducible, pues habríamos factorizado para nada.\\
+
+El porqué no es necesario factorizar completamente dicho polinomio es porque si no es irreducible es que se puede dividir por $(x-2)$, $(x-3)$ o $(x+3)$ y que el resto sea cero. Propongo un ejemplo en fracciones habituales. Si queremos saber si $\dfrac{625}{10}$ es irreducible, no sacamos todos los primos de $625$ (es decir, no factorizamos $625$), si no que probamos dividiendo por $2$ y $5$ que son los primos que conforman el $10$ del denominador. De esta manera llegamos a $\dfrac{625}{10}=\dfrac{125}{2}$ dividiendo numerador y denominador por $5$\\
+
+¿Y cómo hacemos esto con polinomios? Voy a denominar $P(x)=x^3-2x^2+9x-18$ para no escribirlo tan a menudo. Os propongo dos maneras. La primera consiste en hacer \textit{Ruffini} de 2, 3 y $-3$ sobre $P(x)$. Recordad que esto no es más que una forma rápida de dividir $P(x)$ entre $(x-2)$, $(x-3)$ y $(x+3)$ respectivamente. Si el resto es cero en alguno de los casos, entonces no es irreducible. Continuemos con el ejemplo:\\
+
+Para $(x-2)$ tenemos $\ruffini{1,-2,9,-18}{2}{2,0,18}{1,0,9,0}$ luego la división es exacta y\\ $P(x)=(x-2)(x^2+9)$. Así $\dfrac{x^3-2x^2+9x-18}{(x-2)(x-3)(x+3)}=\dfrac{(x-2)(x^2+9)}{(x-2)(x-3)(x+3)}=\dfrac{x^2+9}{(x-3)(x+3)}$. Y ahora sí habríamos acabado ya que $x^2+9$ es un polinomio irreducible (véase que\\ $x^2+9=0\implies x^2=-9\implies x=\pm\sqrt{-9}$ que no tiene solución). Por supuesto, si hubiéramos empezado haciendo \textit{Ruffini} de $3$ y $-3$ hubiéramos obtenido:\\
+$\ruffini{1,-2,9,-18}{3}{3,3,36}{1,1,12,18}\ \ \ \ \ruffini{1,-2,9,-18}{-3}{-3,15,-72}{1,-5,24,-90}$. Como ninguna de las divisiones era exacta, $P(x)$ no puede factorizarse como $(x-3)$ ``por algo'' ni como $(x+3)$ ``por algo''.\\
+
+Vamos a por la segunda manera. Es más corta si la fracción es irreducible (no es el caso) y se basa en el uso de los teoremas del \textbf{resto} y del \textbf{factor}.
+Si para $P(x)$ yo calculo\\ $\tripleleft{P(3)=27-18+27-18= 18}{P(-3)=-27-18-27-18= -90}{P(2)=8-8+18-18=0}$ Podemos descartar rápidamente a 3 y $-3$ como raíces de $P(x)$ (y por tanto a $(x-3)$ y $(x+3)$ como factores de $P(x)$). Si $P(2)\neq0$ hubiéramos acabado y la fracción algebraica sería irreducible. Sin embargo, no es el caso y al ser $2$ raíz, $(x-2)$ es factor y nos vemos obligados a hacer \textit{Ruffini} como en el paso anterior puesto que $P(x)$ se puede expresar como $(x-2)$ ``por algo'' y queremos saber qué es ese algo.
+\end{ejercicio}
+
+\begin{nota} Las fracciones algebraicas son una parte del álgebra abstracta y complicada y para comprender su existencia y propiedades de manera completa hace falta un nivel de matemáticas muy avanzado.\\
+
+Lo que vuestro libro llama fracciones algebraicas se denomina en realidad \textit{Cuerpo de fracciones del anillo de polinomios con coeficientes en $\mathbb{R}$} y lo denotamos abreviadamente como $Q_f(\mathbb{R}[x])$.\\
+
+¿Por qué dar algo tan complejo? Lo que dais es una vistazo muy rápido con el objetivo de aprender a hacer el mínimo común múltiplo sobre los polinomios de los denominadores de dichas fracciones algebraicas para poder resolver en el siguiente tema ecuaciones racionales (que no son más que fracciones algebraicas con un = de por medio).
+
+\end{nota}
+
+\end{document}

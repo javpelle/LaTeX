@@ -4,6 +4,8 @@ Este repositorio contiene archivos .tex y .pdf de apuntes de algunas asignaturas
 como *cálculo diferencial e integral* o *matemáticas discretas*. También contiene algunos breves trabajos de investigación
 en la rama de las matemáticas de ámbito computacional y una plantilla en LaTex de mi currículum.
 
+* **Apuntes Clases Particulares:** Carpeta para almacenamiento de apuntes extras para los alumnos de clases particulares. Contiene desde hojas de ejercicios y ejemplos completos resueltos hasta problemas que van más allá de los temarios con el objetivo de ver cuánto han comprendido y en qué profundidad dicho temario.
+
 * **Currículum:** Contiene una plantilla en LaTeX de mi currículum, además de compilados en .pdf.
 
 * **Ejercicios de Geometría Diferencial:** Contiene la resolución de 8 ejercicios de introducción a *curvas diferenciables*. Estuvo pensado como unas notas de ejercicios completos tanto de *curvas* como de *superficies diferenciables* pero el proyecto fue abandonado pronto. No está pensado para ser retomado.
