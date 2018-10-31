@@ -6,7 +6,7 @@
 
 %--------Codigos para la caligrafia, tipos de letras%---------------
 \usepackage[T1]{fontenc}
-%\usepackage[bitstream-charter]{mathdesign} 
+%\usepackage[bitstream-charter]{mathdesign} 	
 %\usepackage{textcomp} %Paquete para algunos caracteres especiales
 
 \usepackage{afterpage}
@@ -140,4 +140,27 @@ Lo que vuestro libro llama fracciones algebraicas se denomina en realidad \texti
 
 \end{nota}
 
+\begin{ejercicio} Calcula y expresa el resultado como una fracción algebraica irreducible: \[\dfrac{x^2+3}{x^3-5x-2}+\dfrac{x +1}{x^2-2x-1}\]
+Factoricemos el primer denominador usando \textit{Riffini}. En este caso habría que probar $1,-1,2$ y $-2$. Los tres primeros no funcionan pero sí $-2$. Tenemos: $\ruffini{1,0,-5,-2}{-2}{-2,4,2}{1,-2,-1,0}$ y así, $x^3-5x-2=(x+2)(x^2-2x-1)$. Ya no haría falta hacer nada más, pues tenemos que el primer denominador es igual al segundo por $(x+2)$ luego el m.c.d.$(x^3-5x-2,x^2-2x-1)=x^3-5x-2$. Sin embargo voy a fingir no haberme dado cuenta de esto y voy a seguir factorizando. Tenemos $x^2-2x-1=0\implies x=\dfrac{2\pm\sqrt{(-2)^2-4\cdot1\cdot(-1)}}{2\cdot1}=\dfrac{2\pm\sqrt{8}}{2}=\\=\dfrac{2\pm2\sqrt{2}}{2}=1\pm\sqrt{2}$. Luego el $1^{\mathrm{er}}$ denominador es $x^3-5x-2=(x+2)(x-1-\sqrt{2})(x-1+\sqrt{2})$ y el 2º $x^2-2x-1=(x-1-\sqrt{2})(x-1+\sqrt{2})$, luego m.c.d.$(x^3-5x-2,x^2-2x-1)=\\=(x+2)(x-1-\sqrt{2})(x-1+\sqrt{2})$. Calculemos:
+\[\dfrac{x^2+3}{x^3-5x-2}+\dfrac{x +1}{x^2-2x-1}=\dfrac{x^2+3+(x+1)(x+2)}{(x+2)(x-1-\sqrt{2})(x-1+\sqrt{2})}=\]
+\[=\dfrac{x^2+3+x^2+3x+2}{(x+2)(x-1-\sqrt{2})(x-1+\sqrt{2})}=\dfrac{2x^2+3x+5}{(x+2)(x-1-\sqrt{2})(x-1+\sqrt{2})}\]
+
+Y habríamos acabado pues el numerador no tiene raíces (habría que comprobar como en el ejercicio anterior) por tanto es irreducible y por tanto la fracción algebraica también lo es.\\
+
+La idea de este ejercicio es darse cuenta de dos cosas, la primera es que nos pueden quedar factores con raíces (¡y no pasa nada!) y que a veces no hace falta seguir factorizando para obtener el m.c.d. (recordemos que me he hecho el ``tonto'' y he seguido factorizando cuando no hacía falta).
+\end{ejercicio}
+
+\begin{ejercicio} Resuelve la ecuación $\log_25x + 7 = \log_2 4x^2$.\\
+
+Como sabéis, para resolver ecuaciones logarítmicas, aplicamos las propiedades necesarias hasta quedarnos con 2 logaritmos, uno a cada lado del igual, tachamos logaritmos, resolvemos como una ecuación normal y comprobamos soluciones. ¿Pero qué pasa cuando tenemos como en este caso un 7 ``suelto''? Pues hay que convertirlo en logaritmo pero es bastante fácil independientemente del número. Tenemos:\\
+$7=7\cdot1= 7\log_aa=\log_aa^7$. En este caso como el resto del logaritmos de la ecuación tienen base 2, nos queda $7=\log_22^7=\log_2128$ y ya podemos resolver:
+\[\log_25x + 7 = \log_2 4x^2\implies\log_25x + \log_2128 = \log_2 4x^2\implies\log_2(5x\cdot128) = \log_2 4x^2\implies\]
+\[(5x\cdot128) =4x^2\implies 640x=4x^2\implies 160x=x^2\implies x^2-160x=0\implies x(x-160)=0\implies\]
+$\implies\doubleleft{x_1=0}{x_2=160}$ Comprobamos:
+\begin{itemize}
+\item$\log_20 + 7 \overset{?}= \log_2 0\implies$ no existe $\log_a0$, por lo tanto no es solución.
+\item$\log_2800 + \log_2128 \overset{?}= \log_2 102400\implies \log_2(800\cdot128) \overset{?}= \log_2 102400\implies\\\implies\log_2 102400 \overset{\mathrm{ok}}= \log_2 102400\implies$ Solución correcta.
+\end{itemize}
+
+\end{ejercicio}
 \end{document}
